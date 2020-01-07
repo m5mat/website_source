@@ -1,0 +1,57 @@
+@font-face {
+  font-family: 'Conspiracy';
+  src: url('/media/fonts/conspiracy/CONSPIRA.TTF')  format('truetype');
+}
+
+body {
+  background-image: url('/media/images/ukac-quad.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.typewriter {
+  font-family: 'Conspiracy';
+}
+
+.drop-shadow {
+  -webkit-box-shadow: 3px 6px 17px -4px rgba(0,0,0,0.37);
+  -moz-box-shadow: 3px 6px 17px -4px rgba(0,0,0,0.37);
+  box-shadow: 3px 6px 17px -4px rgba(0,0,0,0.37);
+}
+
+.avatar {
+  display: inline;
+  width: 44px;
+  height: 44px;
+  background-image: url('/media/images/avatar.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 50%;
+  border-radius: 22px;
+  background-color: #F5F5F5;
+}
+
+a.nav-previous::before {
+  content: "\2190\00a0";
+}
+
+a.nav-next::after {
+  content: "\00a0\2192";
+}
+
+/* Styles for project status */
+.status-completed {
+  background-color: green;
+}
+
+.status-in-progress {
+  background-color: yellow;
+}
+
+.status-stalled {
+  background-color: red;
+}
+
+.status-future {
+  background-color: purple;
+}

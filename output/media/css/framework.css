@@ -1,0 +1,163 @@
+/* Colours */
+:root {
+  --primary-color: #31517a;
+  --secondary-color: #dcf6d3;
+  --feature-color: #5695c8;
+  --text-color: #ffffff;
+  --alt-text-color: #0c0c0c;
+}
+
+/* Grid: https://www.w3schools.com/css/css_rwd_grid.asp */
+* {
+  box-sizing: border-box;
+}
+
+/* For mobile phones: */
+[class*="col-"] {
+  width: 100%;
+}
+
+.container {
+  margin-left: 5px;
+  margin-right: 5px;
+}
+
+@media only screen and (min-width: 768px) {
+  /* For desktop: */
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+  .container {
+    margin-left: 16.66%;
+    margin-right: 16.66%;
+  }
+
+}
+
+[class*="col-"] {
+  float: left;
+  padding: 0px;
+
+}
+
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+html {
+  font-family: "Lucida Sans", sans-serif;
+}
+
+body {
+  color: var(--text-color);
+}
+
+header {
+  background-color: var(--feature-color);
+  color: var(--text-color);
+  padding: 15px;
+}
+
+ul.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.nav li {
+  padding: 8px;
+  margin-bottom: 7px;
+  display: inline;
+}
+
+ul.nav li:hover {
+  color: var(--secondary-color);
+  background-color: var(--primary-color);
+}
+
+ul.nav a {
+  text-decoration: none;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+.card {
+  background-color: var(--secondary-color);
+  margin-top: 20px;
+  color: var(--alt-text-color);
+  border-radius: 5px;
+}
+
+.card .card-header {
+  background-color: var(--feature-color);
+  color: var(--text-color);
+  font-size: +2em;
+  padding: 10px 20px;
+  border-radius: 5px 5px 0px 0px;
+}
+
+.card .card-meta {
+  padding: 10px 20px;
+  border-bottom: 1px solid var(--feature-color);
+}
+
+.card .card-content {
+  padding: 10px 20px;
+}
+
+.card .card-footer {
+  padding: 10px 20px;
+  border-top: 1px solid var(--feature-color);
+}
+
+/* Some helper classes */
+
+.pill {
+  background-color: var(--feature-color);
+  color: var(--secondary-color);
+  text-decoration: none;
+  padding: 2px 4px;
+  border-radius: 5px;
+}
+
+.right-align {
+  text-align: right;
+}
+
+.plain-link {
+  text-decoration: none;
+}
+
+.primary-color {
+  color: var(--primary-color);
+}
+
+.secondary-color {
+  color: var(--secondary-color);
+}
+
+.feature-color {
+  color: var(--feature-color);
+}
+
+.text-color {
+  color: var(--text-color);
+}
+
+.alt-text-color {
+  color: var(--alt-text-color);
+}

@@ -1,0 +1,62 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+
+  <style>
+    path, circle {
+      stroke-width: 5px;
+      stroke: black;
+    }
+  </style>
+
+  <defs>
+    <filter id="softGlow" height="300%" width="300%" x="-75%" y="-75%">
+      <!-- Thicken out the original shape -->
+      <feMorphology operator="dilate" radius="4" in="SourceAlpha" result="thicken" />
+
+      <!-- Use a gaussian blur to create the soft blurriness of the glow -->
+      <feGaussianBlur in="thicken" stdDeviation="10" result="blurred" />
+
+      <!-- Change the colour -->
+      <feFlood flood-color="rgb(255,255,255)" result="glowColor" />
+
+      <!-- Color in the glows -->
+      <feComposite in="glowColor" in2="blurred" operator="in" result="softGlow_colored" />
+
+      <!--	Layer the effects together -->
+      <feMerge>
+        <feMergeNode in="softGlow_colored"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g filter="url(#softGlow)">
+
+    <!-- Car Outline -->
+    <path d="M20 150 L20 130 L60 125 L80 100 L160 100 L180 130 L180 150 L160 150 A5 5 0 0 0 130 150 L60 150 A5 5 0 0 0 30 150 Z" fill="white" stroke="black" />
+
+    <!-- Windows -->
+    <path d="M75 125 L85 110 L110 110 L110 125 Z" fill="transparent" />
+    <path d="M120 110 L150 110 L160 125 L120 125 Z" fill="transparent" />
+
+    <!-- Wheels -->
+    <circle cx="45" cy="150" r="10" fill="white" />
+    <circle cx="145" cy="150" r="10" fill="white" />
+
+    <!-- Antenna -->
+    <path d="M120 100 L120 50" fill="transparent" />
+    <circle cx="120" cy="50" r="5" fill="black" />
+
+    <!-- Emmission lines -->
+    <!-- closest -->
+    <path d="M140 30 A20 30 0 0 1 140 70" fill="transparent" stroke-linecap="round" />
+    <path d="M100 30 A20 30 0 0 0 100 70" fill="transparent" stroke-linecap="round" />
+
+    <!-- next -->
+    <path d="M160 25 A20 40 0 0 1 160 75" fill="transparent" stroke-linecap="round" />
+    <path d="M80 25 A20 40 0 0 0 80 75" fill="transparent" stroke-linecap="round" />
+
+    <!-- furthesr -->
+    <path d="M180 20 A20 50 0 0 1 180 80" fill="transparent" stroke-linecap="round" />
+    <path d="M60 20 A20 50 0 0 0 60 80" fill="transparent" stroke-linecap="round" />
+  </g>
+</svg>

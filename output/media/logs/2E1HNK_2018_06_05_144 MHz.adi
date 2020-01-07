@@ -1,0 +1,9 @@
+<ADIF_VERS:3>2.2
+<<PROGRAMID:24>M1GEO EDI-ADIF Converter
+<PROGRAMVERSION:9>Version 1
+<EOH>
+
+<call:7>M0RKX/P<band:2>2m<mode:3>SSB<qso_date:8>20180605<time_on:4>1852<time_off:4>1852<rst_rcvd:2>59<rst_sent:2>59<srx:3>046<stx:3>001<gridsquare:6>IO92ba<eor>
+<call:6>GW8ASD<band:2>2m<mode:3>SSB<qso_date:8>20180605<time_on:4>1854<time_off:4>1854<rst_rcvd:2>59<rst_sent:2>55<srx:3>016<stx:3>002<gridsquare:6>IO83lb<eor>
+<call:7>M1EYP/P<band:2>2m<mode:3>SSB<qso_date:8>20180605<time_on:4>1857<time_off:4>1857<rst_rcvd:2>59<rst_sent:2>59<srx:3>032<stx:3>003<gridsquare:6>IO83we<eor>
+<call:6>ON3BKM<band:2>2m<mode:3>SSB<qso_date:8>20180605<time_on:4>1903<time_off:4>1903<rst_rcvd:2>35<rst_sent:2>59<srx:0><stx:3>004<gridsquare:6>JO10jt<eor>

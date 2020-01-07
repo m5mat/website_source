@@ -1,0 +1,44 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+
+  <style>
+    path {
+      stroke-width: 10px;
+      stroke: red;
+    }
+  </style>
+
+  <defs>
+    <filter id="softGlow" height="300%" width="300%" x="-75%" y="-75%">
+      <!-- Thicken out the original shape -->
+      <feMorphology operator="dilate" radius="4" in="SourceAlpha" result="thicken" />
+
+      <!-- Use a gaussian blur to create the soft blurriness of the glow -->
+      <feGaussianBlur in="thicken" stdDeviation="10" result="blurred" />
+
+      <!-- Change the colour -->
+      <feFlood flood-color="rgb(255,255,255)" result="glowColor" />
+
+      <!-- Color in the glows -->
+      <feComposite in="glowColor" in2="blurred" operator="in" result="softGlow_colored" />
+
+      <!--	Layer the effects together -->
+      <feMerge>
+        <feMergeNode in="softGlow_colored"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g filter="url(#softGlow)">
+    <!-- Mast -->
+    <path d="M100 100 L100 200" fill="transparent" />
+
+    <!-- Boom -->
+    <path d="M50 110 L150 90" fill="transparent" />
+
+    <!-- Elements -->
+    <path d="M0 100 L100 120" fill="transparent" stroke-linecap="round" />
+    <path d="M50 90 L150 110" fill="transparent" stroke-linecap="round" />
+    <path d="M100 80 L200 100" fill="transparent" stroke-linecap="round" />
+  </g>
+</svg>

@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138987624-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-138987624-1');
+    </script>
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/media/css/all.css">
+    <link rel="stylesheet" href="/media/css/profile.css">
+
+    <title>MØIZZ</title>
+
+
+  <!-- LeafletJS CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="">
+  <link rel="stylesheet" href="/media/css/L.fullscreen.css" />
+  <meta name="description" content="">
+<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+  <script src="/media/js/leaflet-heatmap.js"></script>
+  <script src="/media/js/HamGridSquare.js"></script>
+  <script src="/media/js/adif.js"></script>
+  <script src="/media/js/chart.min.js"></script>
+
+    <style>
+      .header {
+        text-align: center;
+        vertical-align: middle;
+        margin-bottom: 20px;
+      }
+
+      .navbar-dark a span {
+        color: #212529 !important;
+      }
+
+      @media only screen and (min-width: 600px) {
+        .header {
+          background-image: url('/media/images/antennafield.jpg');
+          background-position-x: 50%;
+          background-position-y: 50%;
+          background-size: 100%;
+          display: block;
+          background-attachment: fixed;
+          color: white;
+        }
+        .navbar-dark {
+          color: #fff;
+        }
+
+        .navbar-dark a span {
+          color: #fff !important;
+        }
+
+        .header-text {
+          padding-top: 100px;
+          padding-bottom: 100px;
+        }
+      }
+
+
+
+      section {
+        padding-top: 10px;
+      }
+
+      footer {
+        margin-top: 50px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+      }
+    </style>
+
+  </head>
+  <body>
+    <div class="container-fluid header">
+      <div class="col-md-8 offset-md-2">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
+          <a class="navbar-brand" href="#">MØIZZ</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+              <li class="nav-item">
+                <a class="nav-link" href="/about.html">About</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/blog/">Blog</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/category/contests.html">Contest Reports</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/category/projects.html">Projects</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Tools
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/ogps/">OGPS</a>
+                  <a class="dropdown-item" href="/morsechallenge/">Morse Challenge</a>
+                  <!--
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  -->
+                </div>
+              </li>
+            </ul>
+            <!--
+            <form class="form-inline my-2 my-lg-0">
+              <input id="searchCallsign" class="form-control mr-sm-2" type="search" placeholder="Search the Logbook" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" id="btnLogSearch">Search</button>
+            </form>
+            -->
+          </div>
+        </nav>
+
+        <div class="header-text">
+          <h1 class="display-1">  Yaesu FT-857d Power Output Stuck
+</h1>
+          <h4 class="display-4"></h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-6 offset-md-2">
+<section>
+    <em class="text-muted">By Matt, 2E1HNK on <time datetime="2018-04-04">Wed, 04 Apr 2018</time></em>
+  </section>
+
+  <section>
+    <div class="tags">
+    </div>
+  </section>
+
+    <section>
+      <center>
+        <img class="img-fluid" style="margin-top: 20px; margin-bottom: 20px;" src="/media/images/ysu-ft-857d_xl.jpg" />
+      </center>
+    </section>
+
+
+  <section>
+        <p><img alt="Yaesu FT-857d" src="[[images/ysu-ft-857d_xl.jpg]]"></p>
+<p>I fired up my Yaesu FT857d to take part in the RSGB's April 2018 2m
+UKAC Contest a couple of days ago to discover that the RF power
+output (Menu Option 75) was stuck at 50W and wouldn't change by
+rotating the VFO knob as it should.</p>
+<p>Thankfully, despite being /P, I
+was in an area with good mobile coverage I had a quick google and
+although I found a few others who had experienced a few similar
+<a href="http://www.eham.net/ehamforum/smf/index.php?topic=74837.0">issues</a>,
+there was only one viable suggestion for resolving the problem,
+which was to perform a reset. There are three variations of reset
+available on an FT857d detailed <a href="https://www.hamradio.hanklambert.com/8-ham-radio/23-yaesu-ft-857d-reset-procedures">here</a>.
+It was the FUNC + PWR one that worked for me, however it wasn't
+clear to me that this is a power-on reset, so the rig has to be off
+for it to work. There is a sort of 'confirmation beep' to indicate
+that the memory has been reset and you'll also notice that the VFO
+will probably have changed (in my case it reset to 7MHz).</p>
+  </section>
+
+        </div>
+        <div class="col-md-2 offset-md-1">
+          <div class="profile-sidebar">
+    				<!-- SIDEBAR USERPIC -->
+    				<div class="profile-userpic ">
+    					<img src="https://pbs.twimg.com/profile_images/1196769278042742785/3PtAfM-f_400x400.jpg" class="img-responsive mx-auto d-block" alt="">
+    				</div>
+    				<!-- END SIDEBAR USERPIC -->
+    				<!-- SIDEBAR USER TITLE -->
+    				<div class="profile-usertitle">
+    					<div class="profile-usertitle-name">
+    						Matt
+    					</div>
+    					<div class="profile-usertitle-job">
+    						MØIZZ, 2E1HNK
+    					</div>
+    				</div>
+    				<!-- END SIDEBAR USER TITLE -->
+    				<!-- SIDEBAR BUTTONS -->
+            <!--
+    				<div class="profile-userbuttons">
+    					<button type="button" class="btn btn-success btn-sm">Follow</button>
+    					<button type="button" class="btn btn-danger btn-sm">Message</button>
+    				</div>
+          -->
+    				<!-- END SIDEBAR BUTTONS -->
+    				<!-- SIDEBAR MENU -->
+            <!--
+    				<div class="profile-usermenu">
+    					<ul class="nav">
+    						<li class="active">
+    							<a href="#">
+    							<i class="glyphicon glyphicon-home"></i>
+    							Overview </a>
+    						</li>
+    						<li>
+    							<a href="#">
+    							<i class="glyphicon glyphicon-user"></i>
+    							Account Settings </a>
+    						</li>
+    						<li>
+    							<a href="#" target="_blank">
+    							<i class="glyphicon glyphicon-ok"></i>
+    							Tasks </a>
+    						</li>
+    						<li>
+    							<a href="#">
+    							<i class="glyphicon glyphicon-flag"></i>
+    							Help </a>
+    						</li>
+    					</ul>
+    				</div>
+          -->
+    				<!-- END MENU -->
+    			</div>
+
+          <a class="twitter-timeline" href="https://twitter.com/m0izz_matt" data-tweet-limit="5" data-width="399" ></a>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+      </div>
+    </div>
+
+
+    <footer class="bg-dark">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 offset-md-2 text-center">
+            <a href="https://qrz.com/db/m0izz"><img src="/media/images/qrz.png" class="img-fluid" style="max-height: 56px;"/></a>
+          </div>
+
+          <div class="col-md-2 text-center">
+            <a href="https://twitter.com/m0izz_matt"><i class="fab fa-twitter display-4 text-light"></i></a>
+          </div>
+          <div class="col-md-2 text-center">
+            <a href="https://github.com/2e1hnk"><i class="fab fa-github display-4 text-light"></i></a>
+          </div>
+          <div class="col-md-2 text-center">
+            <a href="https://reddit.com/user/2e1hnk"><i class="fab fa-reddit display-4 text-light"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        document.getElementById("btnLogSearch").onclick = function () {
+            var url = "/logsearch.html?callsign=" + document.getElementById("searchCallsign").value;
+            location.href(url);
+            return false;
+        };
+    </script>
+  </body>
+</html>

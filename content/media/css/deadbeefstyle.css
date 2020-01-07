@@ -1,0 +1,19 @@
+@font-face {
+  font-family: 'Conspiracy';
+  src: url('/media/fonts/conspiracy/CONSPIRA.TTF')  format('truetype');
+}
+
+body {
+  background-image: url(/media/images/cafe.jpg);
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: #aaa;
+  background-blend-mode: screen;
+  font-family: 'Conspiracy';
+}
+
+.drop-shadow {
+  -webkit-text-shadow: 0px 0px 5px white;
+  -moz-text-shadow: 0px 0px 5px white;
+  text-shadow: 0px 0px 5px white;
+}

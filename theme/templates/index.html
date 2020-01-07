@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% from "macros.j2" import render_excerpt with context  %}
+{% block page_title %}Articles{% endblock %}
+
+{% block main %}
+    {% for article in articles %}
+      {{ render_excerpt(article) }}
+    {% endfor %}
+{% endblock %}
