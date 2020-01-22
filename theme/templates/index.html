@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% from "macros.j2" import render_excerpt with context  %}
-{% block page_title %}Articles{% endblock %}
+{% block page_title %}{{ SITENAME }} Blog{% endblock %}
 
 {% block main %}
     {% for article in articles %}

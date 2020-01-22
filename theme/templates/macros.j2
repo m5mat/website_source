@@ -3,12 +3,12 @@
     <a href="/{{ res.slug }}.html">
       <h2>{{ res.title }}</h2>
       {% if res.status %}
-        <div class="progress-bar status-{{ res.phase }}" style="height: 2px; width: {{ res.status }}%;"></div>
+        <!-- <div class="progress-bar status-{{ res.phase }}" style="height: 2px; width: {{ res.status }}%;"></div> -->
       {% endif %}
     </a>
 
     <section>
-      <em class="text-muted">By {{ res.author }} on <time datetime="{{ res.date.strftime('%Y-%m-%d') }}">{{ res.date.strftime('%a, %d %b %Y') }}</time></em>
+      <em class="text-muted">By {{ res.author }} on <time datetime="{{ res.date.strftime('%Y-%m-%d') }}">{{ res.date.strftime('%a, %d %b %Y') }}</time> - <a href="{{ SITEURL }}/{{ res.slug }}.html#disqus_thread">Comments</a></em>
     </section>
 
     <section>
@@ -16,12 +16,12 @@
     </section>
 
     <section>
-      {{ res.content|truncate(200) }}
+      {{ res.content|truncate(500) }}
     </section>
 
     <a href="/{{ res.slug }}.html">Read more...</a>
 
-<hr />
+    <hr />
 
 {% endmacro %}
 
@@ -29,46 +29,10 @@
   {% if res.tags %}
     <div class="tags">
       {% for tag in res.tags %}
-        <a class="btn btn-outline-secondary btn-sm" href="/blog/tags/{{ tag }}.html">{{ tag }}</a>
+        <a class="btn btn-outline-secondary btn-sm" href="/tag/{{ tag }}.html">{{ tag }}</a>
       {% endfor %}
     </div>
   {% endif %}
-{% endmacro %}
-
-{% macro render_comment_block(url, page_id) %}
-<div id="disqus_thread"></div>
-<script>
-
-/**
-*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
-*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
-/*
-var disqus_config = function () {
-this.page.url = '{{ url }}';  // Replace PAGE_URL with your page's canonical URL variable
-this.page.identifier = '{{ page_id }}'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-};
-*/
-(function() { // DON'T EDIT BELOW THIS LINE
-var d = document, s = d.createElement('script');
-s.src = 'https://2e1hnk.disqus.com/embed.js';
-s.setAttribute('data-timestamp', +new Date());
-(d.head || d.body).appendChild(s);
-})();
-</script>
-<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-{% endmacro %}
-
-
-{% macro render_analytics_block() %}
-<!-- Global site tag (gtag.js) - Google Analytics -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-138987624-1"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'UA-138987624-1');
-</script>
 {% endmacro %}
 
 {% macro render_map(myLocator, section, adifFile) -%}
@@ -276,6 +240,17 @@ s.setAttribute('data-timestamp', +new Date());
             yAxes: [{
               ticks: {
                 beginAtZero: true
+              }
+            }],
+            xAxes: [{
+              ticks:{
+                callback: function(value, index, values) {
+                  if ( index % 4 == 0 ) {
+                    return moment(value, "YYYYMMDD HHmm").format("HHmm");
+                  } else {
+                    return '';
+                  }
+                }
               }
             }]
           }

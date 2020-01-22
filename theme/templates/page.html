@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+
+{% block page_title %}
+  {{ page.title }}
+{% endblock %}
+
+{% block main -%}
+  <section>
+    <em class="text-muted">By {{ page.author }}</em>
+  </section>
+
+  {% if ( page.image ) %}
+    <section>
+      <center>
+        <img class="img-fluid" style="margin-top: 20px; margin-bottom: 20px;" src="{{ page.image }}" />
+      </center>
+    </section>
+  {% endif %}
+
+  {% if ( page.quote ) %}
+    <section>
+      <center>
+        <hr style="width: 50%" />
+        <blockquote class="blockquote">
+          {{ page.quote }}
+        </blockquote>
+        <hr style="width: 50%" />
+      </center>
+    </section>
+  {% endif %}
+
+  {% if page.category == 'CallsignInfo' %}
+    <section>
+      <table class="table">
+        {% if page.valid_from %}<tr><th>Valid from</th><td>{{ page.valid_from }}</td>{% endif %}
+        {% if page.valid_to %}<tr><th>Valid to</th><td>{{ page.valid_to }}</td>{% endif %}
+        {% if page.dmr_ids %}<tr><th>DMR ID(s)</th><td>{{ page.dmr_ids }}</td>{% endif %}
+      </table>
+    </section>
+  {% endif %}
+
+  <section>
+        {{ page.content }}
+  </section>
+
+  {% if page.comments is sameas true %}
+    <section>
+      <div id="disqus_thread"></div>
+      <script>
+
+      /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+      /*
+      var disqus_config = function () {
+      this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+      this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+      };
+      */
+      (function() { // DON'T EDIT BELOW THIS LINE
+      var d = document, s = d.createElement('script');
+      s.src = 'https://m5mat.disqus.com/embed.js';
+      s.setAttribute('data-timestamp', +new Date());
+      (d.head || d.body).appendChild(s);
+      })();
+      </script>
+      <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    </section>
+  {% endif %}
+{%- endblock %}

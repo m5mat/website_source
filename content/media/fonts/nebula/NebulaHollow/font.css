@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'NebulaHollow';
+  src: url('NebulaHollow.ttf') format('truetype'),
+       url('NebulaHollow.woff') format('woff'),
+       url('NebulaHollow.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+

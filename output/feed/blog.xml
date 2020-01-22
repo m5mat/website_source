@@ -1,0 +1,636 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>M5MAT - Blog</title><link href="https://m5mat.github.io/" rel="alternate"></link><link href="https://m5mat.github.io/feed/blog.xml" rel="self"></link><id>https://m5mat.github.io/</id><updated>2020-01-21T12:00:00+00:00</updated><entry><title>GPS and SMS messaging via APRS on Motorola MotoTRBO radios</title><link href="https://m5mat.github.io/gps-and-sms-messaging-via-aprs-on-motorola-mototrbo-radios.html" rel="alternate"></link><published>2020-01-21T12:00:00+00:00</published><updated>2020-01-21T12:00:00+00:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2020-01-21:/gps-and-sms-messaging-via-aprs-on-motorola-mototrbo-radios.html</id><summary type="html">&lt;p&gt;The following information is mostly derived from a &lt;a href="https://www.hamdigitaal.nl/download/algemene-informatie/GPS_Motorola_BM262.pdf"&gt;hamdigitaal.nl&lt;/a&gt; article and is only for use on the &lt;strong&gt;Brandmeister Network&lt;/strong&gt; - this will not work on Phoenix UK or any other networks.&lt;/p&gt;
+&lt;p&gt;Firstly, you need to know your local Brandmeister master node id. The UK node is &lt;code&gt;2341&lt;/code&gt; (list &lt;a href="https://brandmeister.network/?page=masters"&gt;here&lt;/a&gt;). The …&lt;/p&gt;</summary><content type="html">&lt;p&gt;The following information is mostly derived from a &lt;a href="https://www.hamdigitaal.nl/download/algemene-informatie/GPS_Motorola_BM262.pdf"&gt;hamdigitaal.nl&lt;/a&gt; article and is only for use on the &lt;strong&gt;Brandmeister Network&lt;/strong&gt; - this will not work on Phoenix UK or any other networks.&lt;/p&gt;
+&lt;p&gt;Firstly, you need to know your local Brandmeister master node id. The UK node is &lt;code&gt;2341&lt;/code&gt; (list &lt;a href="https://brandmeister.network/?page=masters"&gt;here&lt;/a&gt;). The ID that we need to use is the first three digits of this id, with &lt;code&gt;999&lt;/code&gt; added, so &lt;code&gt;234999&lt;/code&gt; for the UK (USA: &lt;code&gt;310999&lt;/code&gt;, France: &lt;code&gt;208999&lt;/code&gt; etc.)&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note 1:&lt;/strong&gt; there is still quite a lot of old info about this on the internet. ID &lt;code&gt;5057&lt;/code&gt; is no longer in use on Brandmeister. If you read an article that uses this ID then you're either reading an out-of-date article, or one about the Phoenix UK Network.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Note 2:&lt;/strong&gt; You'll need to put CPS into &lt;code&gt;Expert Mode&lt;/code&gt; to change some of these settings&lt;/p&gt;
+&lt;h2&gt;General setup&lt;/h2&gt;
+&lt;p&gt;In &lt;code&gt;Network -&amp;gt; Radio Network&lt;/code&gt;, set the following settings:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Setting&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;CAI Network&lt;/td&gt;
+&lt;td&gt;12&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CAI Group Network&lt;/td&gt;
+&lt;td&gt;225&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Protected Mode Control Station&lt;/td&gt;
+&lt;td&gt;unselected&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Max TX PDU Size&lt;/td&gt;
+&lt;td&gt;1500&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Telemetry UDP Port&lt;/td&gt;
+&lt;td&gt;4008&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Forward to PC&lt;/td&gt;
+&lt;td&gt;Disabled&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;In &lt;code&gt;Network -&amp;gt; Services&lt;/code&gt;, set the following settings:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Setting&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ARS Radio ID&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;234999&lt;/code&gt; (or whatever your local master is)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;ARS UDP Port&lt;/td&gt;
+&lt;td&gt;4005&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TMS Radio ID&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;234999&lt;/code&gt; (or whatever your local master is)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;TMS UDP Port&lt;/td&gt;
+&lt;td&gt;4007&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;User Defined UDP Port 1&lt;/td&gt;
+&lt;td&gt;Disabled&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;User Defined UDP Port 2&lt;/td&gt;
+&lt;td&gt;Disabled&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;User Defined UDP Port 3&lt;/td&gt;
+&lt;td&gt;Disabled&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;XCMP Server ID&lt;/td&gt;
+&lt;td&gt;&lt;code&gt;234999&lt;/code&gt; (or whatever your local master is)&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Battery Management Server ID&lt;/td&gt;
+&lt;td&gt;blank&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;Now, for each channel on which you want to be able to use messaging/APRS, the following settings need to be correct:&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Setting&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;ARS&lt;/td&gt;
+&lt;td&gt;On System/Site Change&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Enhanced GPS&lt;/td&gt;
+&lt;td&gt;not selected&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;IP Site Connect&lt;/td&gt;
+&lt;td&gt;Selected&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Messaging Delay (ms)&lt;/td&gt;
+&lt;td&gt;60&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Compressed UDP Data Header&lt;/td&gt;
+&lt;td&gt;DMR Standard&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Text Message Type&lt;/td&gt;
+&lt;td&gt;DMR Standard&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;And in the channel's TX Section&lt;/p&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;Setting&lt;/th&gt;
+&lt;th&gt;Value&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;GPS Revert&lt;/td&gt;
+&lt;td&gt;Selected&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Private Call Confirmed&lt;/td&gt;
+&lt;td&gt;Selected&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Data Call Confirmed&lt;/td&gt;
+&lt;td&gt;Selected&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Location Data Delivery Mode&lt;/td&gt;
+&lt;td&gt;Follow Data Call Confirmed&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;Enhanced Channel Access&lt;/td&gt;
+&lt;td&gt;not selected&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td&gt;CSBK Data&lt;/td&gt;
+&lt;td&gt;not selected&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;p&gt;On the Brandmeister Self-care portal, the &lt;code&gt;Brand&lt;/code&gt; for each ID should be set to &lt;code&gt;Motorola&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;GPS setup&lt;/h2&gt;
+&lt;p&gt;To enable GPS, select the &lt;code&gt;GPS&lt;/code&gt; tickbox in &lt;code&gt;General Settings&lt;/code&gt;. Reports suggest that changing the GNSS setting to include GLONASS also helps with fix-times - presumable this is a European thing.&lt;/p&gt;
+&lt;p&gt;In &lt;code&gt;General Settings -&amp;gt; Persistent LRRP Requests&lt;/code&gt;, set &lt;code&gt;Persistent LRRP Requests&lt;/code&gt; to &lt;code&gt;Save&lt;/code&gt; - this makes APRS updates more reliable.&lt;/p&gt;
+&lt;h2&gt;Testing&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;If the radio is sending position reports, then your callsign should show up on &lt;a href="http://aprs.fi"&gt;aprs.fi&lt;/a&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;You can try sending an SMS message to your radio by using &lt;a href="http://www.findu.com/cgi-bin/entermsg.cgi?"&gt;findu.com&lt;/a&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;To send a message from your radio to APRS, send an SMS to the master id (&lt;code&gt;234999&lt;/code&gt; for the UK, it might be worth storing this as a contact). The format of the message must be the destination callsign (with SSID), followed by a space, followed by the test of the message, e.g. &lt;code&gt;M5MAT-10 Hello Matt!&lt;/code&gt;.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;</content><category term="motorola"></category><category term="mototrbo"></category><category term="aprs"></category></entry><entry><title>More on the callsign changing saga</title><link href="https://m5mat.github.io/more-on-the-callsign-changing-saga.html" rel="alternate"></link><published>2020-01-13T20:00:00+00:00</published><updated>2020-01-13T20:00:00+00:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2020-01-13:/more-on-the-callsign-changing-saga.html</id><summary type="html">&lt;p&gt;I was going to post the following to the &lt;a href="https://groups.io/g/UKVHFContesting"&gt;UK VHF Contesting group&lt;/a&gt;, until I thought better of it and decided not to poke the hornet's nest...&lt;/p&gt;
+&lt;p&gt;A bit of a warning to those who intend to upgrade or otherwise change callsign, and care about your UKAC results... You need …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I was going to post the following to the &lt;a href="https://groups.io/g/UKVHFContesting"&gt;UK VHF Contesting group&lt;/a&gt;, until I thought better of it and decided not to poke the hornet's nest...&lt;/p&gt;
+&lt;p&gt;A bit of a warning to those who intend to upgrade or otherwise change callsign, and care about your UKAC results... You need to do it at the end of a year.&lt;/p&gt;
+&lt;p&gt;I upgraded to a full license a the RSGB Convention last year. Due to errors at Ofcom I've been issued a few different callsigns over the last few months (full details &lt;a href="https://m5mat.github.io/m5mat.html"&gt;here&lt;/a&gt;, in case you're interested). I entered the January 2m UKAC using my then-valid callsign M0IZZ. That's no longer my callsign - it's now M5MAT - but what I didn't anticipate is that UKAC results are tied to a callsign, not to an individual so even though M0IZZ was me, I can't have credit for my Jan 2m entry in the overall 2m and overall UKAC results. Interestingly if M0IZZ is re-issued within the year, which it can be - my G2KS callsign has been re-issued, whoever gets it will inherit my Jan 2m credit.&lt;/p&gt;
+&lt;p&gt;I accept that how this situation arose in my case is slightly odd, however it's entirely possible that someone upgrading from Foundation to Intermediate or Intermediate to Full (or indeed going through the whole set over the course of a year) could be disadvantaged if they choose to surrender their old licence, as we're encouraged to do.&lt;/p&gt;
+&lt;p&gt;Matt
+M5MAT, ex G2KS, ex M0IZZ, ex 2E1HNK&lt;/p&gt;</content><category term="license"></category><category term="UKAC"></category></entry><entry><title>M5MAT</title><link href="https://m5mat.github.io/m5mat.html" rel="alternate"></link><published>2020-01-09T12:00:00+00:00</published><updated>2020-01-09T12:00:00+00:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2020-01-09:/m5mat.html</id><summary type="html">&lt;p&gt;In September 2019 I passed my full license exam. Yay me. After the result was confirmed I filled in a paper application so that I could request a specific callsign - M5MAT (the online system doesn't allow you to request a particular callsign).&lt;/p&gt;
+&lt;p&gt;As far as I could tell that callsign …&lt;/p&gt;</summary><content type="html">&lt;p&gt;In September 2019 I passed my full license exam. Yay me. After the result was confirmed I filled in a paper application so that I could request a specific callsign - M5MAT (the online system doesn't allow you to request a particular callsign).&lt;/p&gt;
+&lt;p&gt;As far as I could tell that callsign was available - it wasn't registered on QRZ.com, it didn't come up as being assigned in recent Ofcom FoIA responses and nothing showed up when searching for it on Google, Twitter etc.&lt;/p&gt;
+&lt;p&gt;After paying the £20 fee Ofcom were happy to confirm that I had been issued the callsign G2KS. Err, wot?!?&lt;/p&gt;
+&lt;p&gt;That's obviously not the callsign I requested, but it's also not from the M0 range which they should have issued if the callsign that I had requested was not available. This didn't make any sense, so I phoned them up.&lt;/p&gt;
+&lt;p&gt;I've always found the people on the phones at Ofcom to be really helpful and this time was no different. I explained what had happened and that I was confused about the callsign I had been issued. They dug out the paperwork and confirmed that I had requested G2KS and had therefore been issued it. I told them that this simply wasn't the case and I suspected that paperwork may have been inadvertently shuffled so could they please compare handwriting or something. Apparently whoever had applied for G2KS had sufficiently different handwriting to me to make it obvious that the paperwork had been mixed up somehow. They informed me that they'd need to go via their policy people to get it resolved. Lo and behold, a couple of days later G2KS was revoked and I was issued with M0IZZ. This was still not what I had requested but obviously M5MAT was not available for some reason so they had issued me with the next available M0 callsign. I was annoyed that I didn't get my choice but there you go.&lt;/p&gt;
+&lt;p&gt;All sorted.&lt;/p&gt;
+&lt;p&gt;Or was it?&lt;/p&gt;
+&lt;p&gt;&lt;center&gt;
+&lt;blockquote class="twitter-tweet"&gt;&lt;p lang="en" dir="ltr"&gt;Looks like in a recent FoI &lt;a href="https://twitter.com/Ofcom?ref_src=twsrc%5Etfw"&gt;@ofcom&lt;/a&gt; provided a list of valid ham radio callsigns as of Sept 2019 minus personal info &lt;a href="https://t.co/X5rqVW7af4"&gt;https://t.co/X5rqVW7af4&lt;/a&gt;&lt;/p&gt;&amp;mdash; Peter Goodhall (2M0SQL) (@2m0sql) &lt;a href="https://twitter.com/2m0sql/status/1213444497880866817?ref_src=twsrc%5Etfw"&gt;January 4, 2020&lt;/a&gt;&lt;/blockquote&gt; &lt;script async src="https://platform.twitter.com/widgets.js" charset="utf-8"&gt;&lt;/script&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;A tweet from 2M0SQL alerted me to a more recent FoIA response from Ofcom which was published in September 2019. M5MAT didn't show as assigned in this list. The chance of that callsign being issued in the period between the list being published and me requesting it was pretty small, so I phoned up Ofcom and re-explained the situation. They confirmed that M5MAT was still available and that they would have to speak to their policy people - I guess their policy department must be one of the busier departments there.&lt;/p&gt;
+&lt;p&gt;A couple of days later I received a slightly concerning email.&lt;/p&gt;
+&lt;p&gt;My full license had been revoked.&lt;/p&gt;
+&lt;p&gt;No other explanation, nothing about another one being issued or anything like that. By the time I had the email and phoned them up their helpdesk was closed too.&lt;/p&gt;
+&lt;p&gt;I logged in to the licensing portal and my old intermediate license was there but nothing about a full one. It dawned on me that when I was originally issued with my G2KS callsign I had to pay an invoice via the licensing portal. I didn't get an email or any other notification to tell me that I needed to pay, the invoice just silently appeared and sat there. I eventually found my way back to that part of the portal (it's not very obvious) and there was another invoice for me to pay. I had hoped that I wouldn't need to pay anything extra - I'd already payed the £20 fee once - but at least its not too much. Once I paid it I was issued M5MAT and there we go, 4 callsigns (including my intermediate one) in 4 months and the reason why I've popped up during UKAC contests in multiple different guises recently.&lt;/p&gt;</content><category term="license"></category><category term="M5MAT"></category></entry><entry><title>2019 Wrap-up</title><link href="https://m5mat.github.io/2019-wrap-up.html" rel="alternate"></link><published>2019-12-31T23:59:59+00:00</published><updated>2019-12-31T23:59:59+00:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2019-12-31:/2019-wrap-up.html</id><summary type="html">&lt;h2&gt;Stats&lt;/h2&gt;
+&lt;p&gt;Total QSOs - 1225, about double 2018 total.&lt;/p&gt;
+&lt;p&gt;Contests Entered - 20 (10 &amp;times; 2m UKAC, 10 &amp;times; 70cm UKAC)&lt;/p&gt;
+&lt;p&gt;UKAC Final Position - 111/697 overall (10/203 on 2m, and &lt;a href="/media/pdf/2019-UKAC-2ndIntermediate.pdf"&gt;2nd place intermediate station&lt;/a&gt;, 13/151 on 70cm), last year was 304/733 (49/210 on 2m)&lt;/p&gt;
+&lt;h2&gt;Notable QSOs&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;G3MXH&lt;/em&gt; (2019-08-06) - Terry …&lt;/p&gt;&lt;/li&gt;&lt;/ul&gt;</summary><content type="html">&lt;h2&gt;Stats&lt;/h2&gt;
+&lt;p&gt;Total QSOs - 1225, about double 2018 total.&lt;/p&gt;
+&lt;p&gt;Contests Entered - 20 (10 &amp;times; 2m UKAC, 10 &amp;times; 70cm UKAC)&lt;/p&gt;
+&lt;p&gt;UKAC Final Position - 111/697 overall (10/203 on 2m, and &lt;a href="/media/pdf/2019-UKAC-2ndIntermediate.pdf"&gt;2nd place intermediate station&lt;/a&gt;, 13/151 on 70cm), last year was 304/733 (49/210 on 2m)&lt;/p&gt;
+&lt;h2&gt;Notable QSOs&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;G3MXH&lt;/em&gt; (2019-08-06) - Terry, G3MXH helped me pass my novice exam 20-odd years ago and did much to help my enthusiasm for amateur radio.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;I7CSB&lt;/em&gt; (2019-07-02) - A 2m SSB contact using just 10W to an 8-element yagi over 1736km. Nothing un-remarkable about that! Sporadic E might have had a part in this.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;9M4SJJJ&lt;/em&gt; (2019-10-19) - The first contact of JOTA 2019 from GB1WSG was with 9M4SJJJ in Malasia. We used DMR for this and some of our youngsters got to talk to youngsters there.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;em&gt;G0ABI&lt;/em&gt; (2019-06-09) - When I was a newly-licensed novice, the idea of satellites interested me, but they seemed difficult to get my head round, I also wasn't too sure whether or not novices were allowed to use satellites at the time. Well Intermediates definitly can, and I did. Pete will probably be the one and only person to contact 2E1HNK via satellite as I'll be using MØIZZ now. This QSO was FM via SO-50.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+&lt;p&gt;Most of my operating this year was in the RSGB UKAC series of contests - much like last year.&lt;/p&gt;
+&lt;p&gt;Other notable events included running JOTA for 1st Woodmancote Scouts, which saw approximately 70 youngsters get their first&amp;ast; introduction to Amateur Radio. The village also now has 70 more morse keys and buzzers in circulation than it did before, so apologies to the parents...&lt;/p&gt;
+&lt;p&gt;Last, and not least, I passed my full license exam and became MØIZZ.&lt;/p&gt;
+&lt;p&gt;&amp;ast; It wasn't the first for all - some were already aware of amateur radio, and two have been pointed in the direction of the local club to hopefully get a foundation license.&lt;/p&gt;</content></entry><entry><title>MØIZZ</title><link href="https://m5mat.github.io/moizz.html" rel="alternate"></link><published>2019-11-19T12:00:00+00:00</published><updated>2019-11-19T12:00:00+00:00</updated><author><name>Matt, MØIZZ</name></author><id>tag:m5mat.github.io,2019-11-19:/moizz.html</id><summary type="html">&lt;p&gt;I'm now MØIZZ!&lt;/p&gt;
+&lt;p&gt;After a fair amount of wrangling with Ofcom, including being issued G2KS for a period of 49 minutes, they have finally ignored my request for M5MAT and issued me MØIZZ. This callsign breaks a few of my self-imposed rules, notable it has a repeating character (Z) and …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I'm now MØIZZ!&lt;/p&gt;
+&lt;p&gt;After a fair amount of wrangling with Ofcom, including being issued G2KS for a period of 49 minutes, they have finally ignored my request for M5MAT and issued me MØIZZ. This callsign breaks a few of my self-imposed rules, notable it has a repeating character (Z) and also the twitter username @M0IZZ is not available, so on twitter I'll be &lt;a href="http://twitter.com/M0IZZ_Matt"&gt;@M0IZZ_Matt&lt;/a&gt;.&lt;/p&gt;</content><category term="license"></category><category term="M0IZZ"></category></entry><entry><title>Rules for a Good Callsign</title><link href="https://m5mat.github.io/rules-for-a-good-callsign.html" rel="alternate"></link><published>2019-10-14T23:00:00+01:00</published><updated>2019-10-14T23:00:00+01:00</updated><author><name>Matt, 2E1HNK</name></author><id>tag:m5mat.github.io,2019-10-14:/rules-for-a-good-callsign.html</id><summary type="html">&lt;p&gt;Having passed my full license exam, and now that you can essentially pick whichever (unissued) callsign you want, my mind has turned to trying to work out how to define a 'good' callsign. What I settled on is...&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Callsign should not contain character combinations that are used for other purposes …&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;p&gt;Having passed my full license exam, and now that you can essentially pick whichever (unissued) callsign you want, my mind has turned to trying to work out how to define a 'good' callsign. What I settled on is...&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Callsign should not contain character combinations that are used for other purposes, e.g. 'CQ'&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Callsign should not end in 'K', as that could be confusing in Morse.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;For Morse, shorter (i.e. fewer dots and dashes) is better, and dorts are shorter than dashes.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Callsign prefix should have originally been issed during a plausible time period. G3xxx was originally issued between 1946 and 1971 - it might be odd for someone who was born in the 1980's to be issued one of these.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Other considerations include:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;Is the callsign should be available to register on social media/other online services such as Twitter?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Is the callsign available as a personalised number plate?&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Would having a newer-style 'short call' cause more problems than it's worth? More likely that people ask for repeats, believing that they have not copied the whole callsign, or refusing to work me believing me to be a pirate. Also some of the 'old timers' might be of the opinion that short calls shouldn't have been issued and refuse to work it.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;Given all this, my shortlist at the moment is:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;M5MC&lt;/strong&gt; (-- ..... -- -.-.)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;M0MC&lt;/strong&gt; (-- ----- -- -.-.)&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;strong&gt;M5MAT&lt;/strong&gt; (-- ..... -- .- -)&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content><category term="license"></category></entry><entry><title>Full License</title><link href="https://m5mat.github.io/full-license.html" rel="alternate"></link><published>2019-10-13T11:00:00+01:00</published><updated>2019-10-13T11:00:00+01:00</updated><author><name>Matt, 2E1HNK</name></author><id>tag:m5mat.github.io,2019-10-13:/full-license.html</id><summary type="html">&lt;p&gt;I sat my full license exam at the 2019 RSGB convention, and passed!&lt;/p&gt;
+&lt;p&gt;Final score was 48/58 (83%, pass mark was 37/58). I completed the 2 hour exam in about 45 minutes so I was a bit nervous about clicking the 'submit' button, but turns out there was …&lt;/p&gt;</summary><content type="html">&lt;p&gt;I sat my full license exam at the 2019 RSGB convention, and passed!&lt;/p&gt;
+&lt;p&gt;Final score was 48/58 (83%, pass mark was 37/58). I completed the 2 hour exam in about 45 minutes so I was a bit nervous about clicking the 'submit' button, but turns out there was nothing to worry about, I seem to have picked up sufficient knowledge in my 20 years of being a novice/intermediate licensee.&lt;/p&gt;
+&lt;p&gt;Now I need to wait for confirmation and apply for a new callsign!&lt;/p&gt;</content></entry><entry><title>Common 3.5mm Audio Jack Wiring Standards</title><link href="https://m5mat.github.io/common-35mm-audio-jack-wiring-standards.html" rel="alternate"></link><published>2019-09-12T00:00:00+01:00</published><updated>2019-09-12T00:00:00+01:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2019-09-12:/common-35mm-audio-jack-wiring-standards.html</id><summary type="html"></summary><content type="html"></content></entry><entry><title>2E1HNK Interconnection Standards</title><link href="https://m5mat.github.io/2e1hnk-interconnection-standards.html" rel="alternate"></link><published>2019-09-11T08:00:00+01:00</published><updated>2019-09-11T08:00:00+01:00</updated><author><name>Matt, 2E1HNK</name></author><id>tag:m5mat.github.io,2019-09-11:/2e1hnk-interconnection-standards.html</id><summary type="html">&lt;p&gt;Standards exist to promote interoperability between systems. They define the physical and electrical characteristics of interconnections, such that two systems both implementing the same standard are able to connect to each other and interoperate without any concern about misunderstanding. Given that amateur radio deployments often consist of multiple different 'boxes' …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Standards exist to promote interoperability between systems. They define the physical and electrical characteristics of interconnections, such that two systems both implementing the same standard are able to connect to each other and interoperate without any concern about misunderstanding. Given that amateur radio deployments often consist of multiple different 'boxes' which need to be connected, it seems sensible to adhere to standards where possible. This is a list of the standards which I adhere to. It is primarily for my own reference although if anyone else decides to adopt these standards then that's great. In most cases I've tried to use publically-available already-published standards.&lt;/p&gt;
+&lt;h1&gt;Power&lt;/h1&gt;
+&lt;p&gt;&lt;center&gt;
+  &lt;img alt="Red and black Powerpole connectors showing red mounted to the right of black with tongues down, when viewed from the cable side" src="/media/images/powerpole.gif"&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Wherever possible equipment should run off 13.8VDC. Connections will be via 30A powerpole connectors wired to the &lt;a href="http://www.westmountainradio.com/kb_view_topic.php?id=ST166"&gt;ARES/RACES standard&lt;/a&gt;&lt;/p&gt;
+&lt;p&gt;Where connection to domestic 230VAC mains power is required then the UK mains connectors will be used.&lt;/p&gt;
+&lt;h1&gt;Antenna connectors&lt;/h1&gt;
+&lt;p&gt;For frequencies above 100MHz, N-Type connectors will be used. For frequencies below 100MHz, SO239/PL259 connectors will be used. In some cases BNC connections are used. This should be restricted to specific deployment scenarios (typically portable) and in all cases an appropriate adapted should be on hand to convert to the standard connector.&lt;/p&gt;
+&lt;h1&gt;Audio interconnections&lt;/h1&gt;
+&lt;p&gt;&lt;center&gt;
+  &lt;img alt="3.5mm 4-pole (TRRS) audio jack showing the use of each pole" src="/media/images/ctia-standard.png"&gt;
+&lt;/center&gt;&lt;/p&gt;
+&lt;p&gt;Where 4-pole (TRRS) 3.5mm jacks are used, they will use the CTIA standard.&lt;/p&gt;</content></entry><entry><title>UK 2m Channels</title><link href="https://m5mat.github.io/uk-2m-channels.html" rel="alternate"></link><published>2019-07-17T00:00:00+01:00</published><updated>2019-07-17T00:00:00+01:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2019-07-17:/uk-2m-channels.html</id><summary type="html">&lt;p&gt;I seem to have needed to look this up quite a lot recently, so I thought I should copy it here...&lt;/p&gt;
+&lt;table class="table"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Channel Name&lt;/th&gt;
+      &lt;th&gt;Frequency&lt;/th&gt;
+      &lt;th&gt;Use&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S8/V16&lt;/td&gt;&lt;td&gt;145.200MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;V17&lt;/td&gt;&lt;td&gt;145.2125MHz&lt;/td&gt;&lt;td&gt;Internet Voice Gateways&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S9/V18&lt;/td&gt;&lt;td&gt;145.225MHz&lt;/td&gt;&lt;td&gt;RAYNET&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;V19&lt;/td&gt;&lt;td&gt;145.2375MHz&lt;/td&gt;&lt;td&gt;FM Internet Voice Gateway&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S10/V20&lt;/td&gt;&lt;td&gt;145 …&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;</summary><content type="html">&lt;p&gt;I seem to have needed to look this up quite a lot recently, so I thought I should copy it here...&lt;/p&gt;
+&lt;table class="table"&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Channel Name&lt;/th&gt;
+      &lt;th&gt;Frequency&lt;/th&gt;
+      &lt;th&gt;Use&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S8/V16&lt;/td&gt;&lt;td&gt;145.200MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;V17&lt;/td&gt;&lt;td&gt;145.2125MHz&lt;/td&gt;&lt;td&gt;Internet Voice Gateways&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S9/V18&lt;/td&gt;&lt;td&gt;145.225MHz&lt;/td&gt;&lt;td&gt;RAYNET&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;V19&lt;/td&gt;&lt;td&gt;145.2375MHz&lt;/td&gt;&lt;td&gt;FM Internet Voice Gateway&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S10/V20&lt;/td&gt;&lt;td&gt;145.250MHz&lt;/td&gt;&lt;td&gt;Slow Morse&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;V21&lt;/td&gt;&lt;td&gt;145.2625MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S11/V22&lt;/td&gt;&lt;td&gt;145.275MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;V23&lt;/td&gt;&lt;td&gt;145.2875MHz&lt;/td&gt;&lt;td&gt;FM Internet Voice Gateway&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S12/V24&lt;/td&gt;&lt;td&gt;145.300MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;V25&lt;/td&gt;&lt;td&gt;145.3125MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S13/V26&lt;/td&gt;&lt;td&gt;145.325MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;V27&lt;/td&gt;&lt;td&gt;145.3375MHz&lt;/td&gt;&lt;td&gt;FM Internet Voice Gateway&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S14/V28&lt;/td&gt;&lt;td&gt;145.350MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;V29&lt;/td&gt;&lt;td&gt;145.3625MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S15/V30&lt;/td&gt;&lt;td&gt;145.375MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;V31&lt;/td&gt;&lt;td&gt;145.3875MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S16/V32&lt;/td&gt;&lt;td&gt;145.400MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;V33&lt;/td&gt;&lt;td&gt;145.4125MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S17/V34&lt;/td&gt;&lt;td&gt;145.425MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;V35&lt;/td&gt;&lt;td&gt;145.4375MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S18/V36&lt;/td&gt;&lt;td&gt;145.450MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;V37&lt;/td&gt;&lt;td&gt;145.4625MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S19/V38&lt;/td&gt;&lt;td&gt;145.475MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;V39&lt;/td&gt;&lt;td&gt;145.3875MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S20/V40&lt;/td&gt;&lt;td&gt;145.500MHz&lt;/td&gt;&lt;td&gt;Calling Channel&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;V41&lt;/td&gt;&lt;td&gt;145.5125MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S21/V42&lt;/td&gt;&lt;td&gt;145.525MHz&lt;/td&gt;&lt;td&gt;GB2RS&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;V43&lt;/td&gt;&lt;td&gt;145.5375MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S22/V44&lt;/td&gt;&lt;td&gt;145.550MHz&lt;/td&gt;&lt;td&gt;Rally Talk-in&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;V45&lt;/td&gt;&lt;td&gt;145.5625MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S23/V46&lt;/td&gt;&lt;td&gt;145.575MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;V47&lt;/td&gt;&lt;td&gt;145.5875MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;S24/V48&lt;/td&gt;&lt;td&gt;145.600MHz&lt;/td&gt;&lt;td&gt;&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</content></entry><entry><title>Emsystech RaspiLCD</title><link href="https://m5mat.github.io/emsystech-raspilcd.html" rel="alternate"></link><published>2019-04-22T23:00:00+01:00</published><updated>2019-04-22T23:00:00+01:00</updated><author><name>Matt, 2E1HNK</name></author><id>tag:m5mat.github.io,2019-04-22:/emsystech-raspilcd.html</id><summary type="html">&lt;p&gt;A number of years ago I bought a neat little LCD/Button add-on module for my 1st Gen Raspberry Pi. The company that produced these (Emsystech Engineering, Germany) no longer produce them and they no longer host information about them on their website. This is a mirror of the info …&lt;/p&gt;</summary><content type="html">&lt;p&gt;A number of years ago I bought a neat little LCD/Button add-on module for my 1st Gen Raspberry Pi. The company that produced these (Emsystech Engineering, Germany) no longer produce them and they no longer host information about them on their website. This is a mirror of the info that I've managed to collate from a number of sources, primarily the &lt;a href="https://archive.org/web/"&gt;Wayback Machine&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The following is text that has been copied from Emsystech's website after being auto-translated by Google, as the original was in German which I don't understand. It has been lightly edited to remove information that is either no longer relevant or refers to websites/products that can no longer be found and to include additional information that was not originally provided (or available to) Emsystech. This includes projects that have implemented support for the module in other programming languages. I have also corrected some of Google Translate idiosyncrasies. I've kept it here for my own reference, and to assist anyone else who may have purchased these modules and is struggling to find information on them. I can't offer any support on the product itself, other than by providing the information present here.&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;&lt;img alt="RaspiLCD 1" src="/media/images/raspberrypi-lcd-display-1.jpg" title="RaspiLCD 1"&gt;
+&lt;img alt="RaspiLCD 2" src="/media/images/raspberrypi-lcd-display-2.jpg" title="RaspiLCD 2"&gt;
+&lt;img alt="RaspiLCD 1" src="/media/images/Raspi-LCD-1.jpg" title="RaspiLCD 1"&gt;
+&lt;img alt="RaspiLCD with PI R2" src="/media/images/Raspi-LCD-Mit-Rev2.0.jpg" title="RaspiLCD with RPi 2"&gt;
+&lt;img alt="RaspiLCD Retro" src="/media/images/Raspi-LCD-Retro-1.jpg" title="RaspiLCD Retro"&gt;&lt;/p&gt;
+&lt;p&gt;With this module, a Raspberry Pi can be extended by a display and buttons. For many applications, a typical PC monitor and keyboard is too large and unwieldy. This gap closes the Raspi LCD. Projects such as web radios, streaming clients, home automation systems, ... can use this hardware. The circuit and a source code in C are available as open source. The basic "driver functionality" and necessary hardware access functions are implemented in this sample application. The keyboard area can be equipped with various buttons or separated. On the back of pads for receiving pin headers are already provided.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;1.8 inch display&lt;/li&gt;
+&lt;li&gt;Software adjustable contrast&lt;/li&gt;
+&lt;li&gt;White LED backlight (software controllable)&lt;/li&gt;
+&lt;li&gt;5 buttons (6 × 6 or 12x12mm)&lt;/li&gt;
+&lt;li&gt;Connection possibility for UART and I2C&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Reference Documents&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="/media/pdf/Raspi-LCD-SCHEMATIC.pdf"&gt;Raspi-LCD (SCHEMATIC)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/media/pdf/Raspi-LCD-MECHANIC.pdf"&gt;Raspi-LCD (MECHANIC)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/media/pdf/Raspi-LCD-PLACE.pdf"&gt;Raspi-LCD (PLACE)&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="/media/zip/RaspiLCD-V0.9.0.zip"&gt;RaspiLCD V0.9.0 (Open-Source / GPL)&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Language Bindings&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/StephanBeutel/RaspiLCD"&gt;Java&lt;/a&gt;(&lt;a href="/media/zip/RaspiLCD-master.zip"&gt;Mirror&lt;/a&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://bitbucket.org/Svedrin/raspilcd"&gt;Python&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://web.archive.org/web/20150112053140/http://www.nook24.eu/?p=678"&gt;PHP&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/tillmo/raspi_lcd"&gt;Ruby&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Projects&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href="https://github.com/dbader/piradio"&gt;piradio&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href="https://github.com/individual-it/RaspiLCDSysinfo"&gt;RaspiLCD System Information&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;Misc&lt;/h2&gt;
+&lt;ul&gt;
+&lt;li&gt;https://github.com/pboehm/libraspilcd&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Display&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="alt text" src="/media/images/RaspiLCD-memory.png" title="RaspiLCD Memory"&gt;&lt;/p&gt;
+&lt;p&gt;The display used or its &lt;a href="/media/pdf/NT7532.pdf"&gt;graphic controller&lt;/a&gt; is connected via SPI interface. In the current version this is emulated in the software (-&amp;gt; no driver necessary). The display with its 128 x 64 pixels is in principle a 1kByte large memory, with which each bit corresponds to a pixel. In the software, the coordinates (x / y) correspond to the top left corner (0/0) and bottom right (127/63). Since the smallest organizational unit is one byte, 8 pixels are always transmitted and stored together. The least significant bit of the first byte is the origin in the upper left corner. Then follow for all 1024 bytes, the bits: D1 = (0/1), ... D7 = (0/7), etc. Since the memory of the display only describe, but not read, there is a small problem with the pixel-wise Presentation. Should a function change a single pixel, The other 7 bits of the associated byte must also be transferred. For this reason, a so-called frame buffer is implemented in the software. This is a 1: 1 memory image of the display. All operations are done with the framebuffer. With the function &lt;code&gt;LCD_WriteFramebuffer();&lt;/code&gt; then the output and display is done on the display.&lt;/p&gt;
+&lt;p&gt;Output of the text "Hello World":&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;LCD_SetFont(0);&lt;/span&gt;
+&lt;span class="err"&gt;LCD_PrintXY(0,0, &amp;quot;Hello World&amp;quot;);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Drawing a rectangle with transparent fill and two pixel line width:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;LCD_SetFillColor(-1);&lt;/span&gt;
+&lt;span class="err"&gt;LCD_DrawRect(10,10,100,40,1);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Bitmaps can be converted to C arrays using the BMP2C V1.0 program  . eg: &lt;code&gt;const uint8 bmp_raspi [458] = {57, 64, 0×00, ... 0×00};&lt;/code&gt;
+Output of bitmap at position(0/0):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="err"&gt;LCD_DrawBitmap(0,0, bmp_raspi);&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h1&gt;Buttons&lt;/h1&gt;
+&lt;p&gt;The individual keys switch to ground when the key is pressed. Since the corresponding GPIO PINs are configured as an input with pullup, a depressed key means logical 0, an unpressed key logical 1.&lt;/p&gt;
+&lt;p&gt;The function &lt;code&gt;UpdateButtons();&lt;/code&gt; ensures that the state of the buttons is stored in the two variables ButtonPressed and Button as one bit each. Macros such as: &lt;code&gt;BUTTON_PRESSED_UP&lt;/code&gt;, &lt;code&gt;BUTTON_PRESSED_RIGHT&lt;/code&gt;, ... allow comfortable use of the keyboard.&lt;/p&gt;
+&lt;h1&gt;Backlight&lt;/h1&gt;
+&lt;p&gt;On the Raspi LCD there is a switching transistor for controlling the LED background illumination. The corresponding GPIO pin can be set via the function &lt;code&gt;SetBacklight();&lt;/code&gt; be controlled.&lt;/p&gt;</content></entry><entry><title>2018 Wrap-up</title><link href="https://m5mat.github.io/2018-wrap-up.html" rel="alternate"></link><published>2018-12-31T00:00:00+00:00</published><updated>2018-12-31T00:00:00+00:00</updated><author><name>Matt, 2E1HNK</name></author><id>tag:m5mat.github.io,2018-12-31:/2018-wrap-up.html</id><summary type="html">&lt;p&gt;Total QSOs - 615&lt;/p&gt;
+&lt;p&gt;Contests Entered - 14&lt;/p&gt;
+&lt;p&gt;Best DX - WB2REM @ 4267.8km (30m FT8)&lt;/p&gt;
+&lt;p&gt;UKAC Final Position - 304/733 (49/210 on 2m)&lt;/p&gt;</summary><content type="html">&lt;p&gt;Total QSOs - 615&lt;/p&gt;
+&lt;p&gt;Contests Entered - 14&lt;/p&gt;
+&lt;p&gt;Best DX - WB2REM @ 4267.8km (30m FT8)&lt;/p&gt;
+&lt;p&gt;UKAC Final Position - 304/733 (49/210 on 2m)&lt;/p&gt;</content></entry><entry><title>Yaesu FT-857d CAT Settings</title><link href="https://m5mat.github.io/yaesu-ft-857d-cat-settings.html" rel="alternate"></link><published>2018-11-05T08:00:00+00:00</published><updated>2018-11-05T08:00:00+00:00</updated><author><name>Matt, 2E1HNK</name></author><id>tag:m5mat.github.io,2018-11-05:/yaesu-ft-857d-cat-settings.html</id><summary type="html">&lt;p&gt;&lt;img alt="Yaesu FT-857d" src="[[images/ysu-ft-857d_xl.jpg]]"&gt;&lt;/p&gt;
+&lt;p&gt;Just parking this here because I can never find these settings when I need them...&lt;/p&gt;
+&lt;p&gt;Baud: 4800, 9600, 38400 (must be 4800 with LDG tuner)&lt;/p&gt;
+&lt;p&gt;Start Bits: 1&lt;/p&gt;
+&lt;p&gt;Bits per Byte: 8&lt;/p&gt;
+&lt;p&gt;Stop Bits: 2&lt;/p&gt;
+&lt;p&gt;Parity: None&lt;/p&gt;
+&lt;p&gt;Flow Control: ?&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Yaesu FT-857d" src="[[images/ysu-ft-857d_xl.jpg]]"&gt;&lt;/p&gt;
+&lt;p&gt;Just parking this here because I can never find these settings when I need them...&lt;/p&gt;
+&lt;p&gt;Baud: 4800, 9600, 38400 (must be 4800 with LDG tuner)&lt;/p&gt;
+&lt;p&gt;Start Bits: 1&lt;/p&gt;
+&lt;p&gt;Bits per Byte: 8&lt;/p&gt;
+&lt;p&gt;Stop Bits: 2&lt;/p&gt;
+&lt;p&gt;Parity: None&lt;/p&gt;
+&lt;p&gt;Flow Control: ?&lt;/p&gt;</content></entry><entry><title>Finding Good Hill-Top Portable Sites (2)</title><link href="https://m5mat.github.io/finding-good-hill-top-portable-sites-2.html" rel="alternate"></link><published>2018-06-27T17:00:00+01:00</published><updated>2018-06-27T17:00:00+01:00</updated><author><name>Matt, 2E1HNK</name></author><id>tag:m5mat.github.io,2018-06-27:/finding-good-hill-top-portable-sites-2.html</id><summary type="html">&lt;p&gt;This is a quick update to the blog post about &lt;a href="/blog/finding-good-hilltop-sites.html"&gt;Finding Good Hilltop Sites&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The Overpass API code given in the original blog post didn't take into account the presence of points in the vacinity with a higher elevation that the point in question. That is to say that it …&lt;/p&gt;</summary><content type="html">&lt;p&gt;This is a quick update to the blog post about &lt;a href="/blog/finding-good-hilltop-sites.html"&gt;Finding Good Hilltop Sites&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The Overpass API code given in the original blog post didn't take into account the presence of points in the vacinity with a higher elevation that the point in question. That is to say that it would find 'good' sites which were elevate and had road access but which might also have other land around which is more elevated than the site itself (think of something like a mountain pass - elevated but probably going between two large mountains). This update should resolve that by excluding any sites which have any features with a greated elevation within 2km of the site.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="json"&gt;
+  [out:json][timeout:800];
+
+  ( way({{bbox}})(if:t["ele"] &gt; 250);
+    node({{bbox}})(if:t["ele"] &gt; 250);
+    rel({{bbox}})(if:t["ele"] &gt; 250);
+  )-&gt;.summits;
+
+  foreach.summits-&gt;.this_summit (
+    ( node.summits(around.streets:2000)(if:t["ele"] &gt; 250);
+      way.summits(around.streets:2000)(if:t["ele"] &gt; 250);
+      rel.summits(around.streets:2000)(if:t["ele"] &gt; 250);
+    )-&gt;.prominence;
+
+    if ( .prominence.count &lt; 1 ) {
+      (.selected_summits; .this_summit;)-&gt;.selected_summits;
+    }
+  );
+
+  way(around.selected_summits:100)[highway][highway!~"^(footway|path|steps|bridleway|track|unclassified|cycleway|service)$"]
+    -&gt;.streets;
+
+  ( node.selected_summits(around.streets:100);
+    way.selected_summits(around.streets:100);
+    rel.selected_summits(around.streets:100);
+  )-&gt;.matchingSummits;
+
+  (.matchingSummits; .streets;);
+  out geom;
+&lt;/code&gt;&lt;/pre&gt;</content></entry><entry><title>Finding Good Hill-Top Portable Sites</title><link href="https://m5mat.github.io/finding-good-hill-top-portable-sites.html" rel="alternate"></link><published>2018-04-26T23:00:00+01:00</published><updated>2018-04-26T23:00:00+01:00</updated><author><name>Matt, 2E1HNK</name></author><id>tag:m5mat.github.io,2018-04-26:/finding-good-hill-top-portable-sites.html</id><summary type="html">&lt;p&gt;Finding good portable operating sites historically relied on local
+knowledge, anecdotal evidence from other amateurs, plenty of
+experimentation and a good dose of luck. Whilst there's nothing
+wrong with this approach it does rely on either knowing the local
+area well, or having contact with someone who does. This isn't …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Finding good portable operating sites historically relied on local
+knowledge, anecdotal evidence from other amateurs, plenty of
+experimentation and a good dose of luck. Whilst there's nothing
+wrong with this approach it does rely on either knowing the local
+area well, or having contact with someone who does. This isn't
+always available, for example holiday operation, moving to a new
+area or simply that all the good peaks have been taken. There must
+be a better way...&lt;/p&gt;
+&lt;p&gt;My approach to finding new hilltops to
+activate involves finding candidate hilltops, assessing whether
+operation is possible from that location, and then working out
+whether it's worth the effort of attempting to activate it. These
+are some of the resources I use to do this.&lt;/p&gt;
+&lt;h3&gt;Find Candidate Sites&lt;/h3&gt;
+&lt;h4&gt;Overpass Turbo&lt;/h4&gt;
+&lt;p&gt;&lt;a href="http://overpass-turbo.eu"&gt;Overpass Turbo&lt;/a&gt; allows users to run scripts against the Overpass API, part
+of the OpenStreetMap project. The script below finds ways, nodes
+and relationships (i.e. any object) with an elevation greater
+than 300m a.s.l (which works well for the area I'm interested in,
+depending on your local area you might need to change this). It
+then searches the area around those objects up to a radius to
+100m (you can tune this too, if you need to) to see if there are
+any highways, but excluding footpaths, bridleways, tracks,
+service roads, unclassified roads etc. This theoretically returns
+a list/map of summits which are accessible by car.&lt;/p&gt;
+&lt;pre&gt;&lt;code class="json"&gt;
+[out:json][timeout:800];
+(
+  way({{bbox}})(if:t["ele"] &gt; 300);
+  node({{bbox}})(if:t["ele"] &gt; 300);
+  rel({{bbox}})(if:t["ele"] &gt; 300);
+)-&gt;.summits;
+
+way
+  (around.summits:100)
+  [highway]
+  [highway!~"^(footway|path|bridleway|track|unclassified|cycleway|service)$"]
+-&gt;.streets;
+
+(
+  node.summits(around.streets:100);
+  way.summits(around.streets:100);
+  rel.summits(around.streets:100);
+)-&gt;.matchingSummits;
+
+(.matchingSummits; .streets;);
+out geom;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4&gt;UKACMap&lt;/h4&gt;
+&lt;p&gt;&lt;a href="ukacmap.html"&gt;UKACMap&lt;/a&gt; queries the Google
+Maps API to try to find the highest point in view. In some ways
+this is more reliable that the OverPass API approach as the
+Google Maps elevation data comes from surveys rather than
+user-entered data, however there are limitations in how many
+times the Google Maps API can be queried, so the application is
+not as accurate as it could be.&lt;/p&gt;
+&lt;h3&gt;Assess Accessability&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Is the land privately owned?&lt;/li&gt;
+&lt;li&gt;Is it possible to get a vehicle to the site?&lt;/li&gt;
+&lt;li&gt;Are there time restrictions (for example a car park that closes at dusk)?&lt;/li&gt;
+&lt;li&gt;Is there sufficient space to set up antennas?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;The answers to many of these questions can be found using online
+mapping services including &lt;a href="https://www.bing.com/maps"&gt;Bing Maps&lt;/a&gt; which has Ordnance Survey maps available and Google Maps
+which has aerial photography and also Google's fantastic Street
+View service.&lt;/p&gt;
+&lt;h3&gt;Assess Radio Coverage&lt;/h3&gt;
+&lt;p&gt;Of cource there's no point investing time and energy into
+climbing a peak is it's not going to give you the coverage you
+need.
+&lt;a href="http://www.ve2dbe.com/rmonline.html"&gt;Radio Mobile Online&lt;/a&gt; (and also the offline version) and Splat! are fantastic
+tools for assessing a site's radio coverage. Their use cannot be
+described briefly here but there are plenty of tutorials
+available. One I particularly like for Radio Mobile's offline
+versions can be found &lt;a href="http://radiomobile.pe1mew.nl/?How_to:A_first_example"&gt;here&lt;/a&gt;&lt;/p&gt;</content></entry><entry><title>Yaesu FT-857d Power Output Stuck</title><link href="https://m5mat.github.io/yaesu-ft-857d-power-output-stuck.html" rel="alternate"></link><published>2018-04-04T23:00:00+01:00</published><updated>2018-04-04T23:00:00+01:00</updated><author><name>Matt, 2E1HNK</name></author><id>tag:m5mat.github.io,2018-04-04:/yaesu-ft-857d-power-output-stuck.html</id><summary type="html">&lt;p&gt;&lt;img alt="Yaesu FT-857d" src="[[images/ysu-ft-857d_xl.jpg]]"&gt;&lt;/p&gt;
+&lt;p&gt;I fired up my Yaesu FT857d to take part in the RSGB's April 2018 2m
+UKAC Contest a couple of days ago to discover that the RF power
+output (Menu Option 75) was stuck at 50W and wouldn't change by
+rotating the VFO knob as it should.&lt;/p&gt;
+&lt;p&gt;Thankfully, despite being …&lt;/p&gt;</summary><content type="html">&lt;p&gt;&lt;img alt="Yaesu FT-857d" src="[[images/ysu-ft-857d_xl.jpg]]"&gt;&lt;/p&gt;
+&lt;p&gt;I fired up my Yaesu FT857d to take part in the RSGB's April 2018 2m
+UKAC Contest a couple of days ago to discover that the RF power
+output (Menu Option 75) was stuck at 50W and wouldn't change by
+rotating the VFO knob as it should.&lt;/p&gt;
+&lt;p&gt;Thankfully, despite being /P, I
+was in an area with good mobile coverage I had a quick google and
+although I found a few others who had experienced a few similar
+&lt;a href="http://www.eham.net/ehamforum/smf/index.php?topic=74837.0"&gt;issues&lt;/a&gt;,
+there was only one viable suggestion for resolving the problem,
+which was to perform a reset. There are three variations of reset
+available on an FT857d detailed &lt;a href="https://www.hamradio.hanklambert.com/8-ham-radio/23-yaesu-ft-857d-reset-procedures"&gt;here&lt;/a&gt;.
+It was the FUNC + PWR one that worked for me, however it wasn't
+clear to me that this is a power-on reset, so the rig has to be off
+for it to work. There is a sort of 'confirmation beep' to indicate
+that the memory has been reset and you'll also notice that the VFO
+will probably have changed (in my case it reset to 7MHz).&lt;/p&gt;</content></entry></feed>

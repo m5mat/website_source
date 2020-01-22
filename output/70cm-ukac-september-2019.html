@@ -6,13 +6,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138987624-1"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155986583-1"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'UA-138987624-1');
+      gtag('config', 'UA-155986583-1');
     </script>
+
 
 
     <!-- Bootstrap CSS -->
@@ -20,9 +21,12 @@
 
     <link rel="stylesheet" href="/media/css/all.css">
     <link rel="stylesheet" href="/media/css/profile.css">
+    <link rel="stylesheet" href="/media/tipuesearch/tipuesearch.css">
+    <link rel="stylesheet" href="/media/fonts/nebula/Nebula/font.css">
 
     <title>M5MAT</title>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js" integrity="sha256-H9jAz//QLkDOy/nzE9G4aYijQtkLt9FvGmdUTwBk6gs=" crossorigin="anonymous"></script>
 
   <!-- LeafletJS CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="">
@@ -35,10 +39,46 @@
   <script src="/media/js/chart.min.js"></script>
 
     <style>
+
+    @font-face {
+      font-family: 'Turtles';
+      src: url('/media/fonts/turtles/Turtles.ttf')  format('truetype'); /* Safari, Android, iOS */
+    }
+
+    @font-face {
+      font-family: 'Betty Noir';
+      src: url('/media/fonts/bettynoir/bettynoir.ttf')  format('truetype'); /* Safari, Android, iOS */
+    }
+
+    @font-face {
+      font-family: 'Paris';
+      src: url('/media/fonts/paris/paris.ttf')  format('truetype'); /* Safari, Android, iOS */
+    }
+
+    .navbar-brand, .header-text {
+      font-family: 'Nebula', Roboto, Calibri, Arial;
+    }
+
+    .turtles {
+          font-family: turtles, apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+          background: url(/media/images/Marble1.png) no-repeat center center;
+          background-size: cover;
+          color: #fff;
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+      }
+
+      .small-outline {
+          -webkit-text-stroke: 1px #002;
+      }
+
+      .big-outline {
+          -webkit-text-stroke: 3px #002;
+      }
+
       .header {
         text-align: center;
         vertical-align: middle;
-        margin-bottom: 20px;
       }
 
       .navbar-dark a span {
@@ -47,20 +87,25 @@
 
       @media only screen and (min-width: 600px) {
         .header {
-          background-image: url('/media/images/antennafield.jpg');
-          background-position-x: 50%;
-          background-position-y: 50%;
-          background-size: 100%;
-          display: block;
+          /* background-image: url('/media/images/art-deco-geometric-wallpaper.jpg');
+          background-repeat: repeat;
+          display: block;*/
           background-attachment: fixed;
-          color: white;
+          color: #eef;
         }
-        .navbar-dark {
+        .navbar {
+          background-color: rgba(0, 0, 20, 0.7);
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
           color: #fff;
         }
 
-        .navbar-dark a span {
-          color: #fff !important;
+        .navbar a {
+          color: #fff;
+        }
+
+        .navbar .dropdown-item {
+          color: #4e7999;
         }
 
         .header-text {
@@ -69,7 +114,18 @@
         }
       }
 
+      body {
+        background-color: #eee;
+        color: #36516e;
+      }
 
+      h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
+        color: #4e7999;
+      }
+
+      a {
+        color: #6d9bb5;
+      }
 
       section {
         padding-top: 10px;
@@ -83,30 +139,65 @@
       }
     </style>
 
+    <script src="/media/js/three.min.js"></script>
+    <script src="/media/js/postprocessing.min.js"></script>
+    <script src="/media/js/nebula.js"></script>
+
+    <style>
+      #nebula canvas {
+        position: fixed;
+        top:0;
+        left:0;
+        z-index:-99;
+      }
+      .content-block {
+        padding-top: 20px;
+        background-color: #fff;
+      }
+    </style>
+
   </head>
   <body>
-    <div class="container-fluid header">
+    <div id="nebula" class="container-fluid header">
       <div class="col-md-8 offset-md-2">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-transparent">
-          <a class="navbar-brand" href="/">M5MAT</a>
+        <nav class="navbar navbar-expand-lg navbar">
+          <a class="navbar-brand" href="https://m5mat.github.io/">M5MAT</a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
           </button>
 
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
-              <li class="nav-item">
-                <a class="nav-link" href="/about.html">About</a>
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="/pages/about.html"><i class="fa  fa-lg"></i> About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/category/blog.html"><i class="fa  fa-lg"></i> Blog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/category/contests.html"><i class="fa  fa-lg"></i> Contest Reports</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/category/projects.html"><i class="fa  fa-lg"></i> Projects</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/search.html"><i class="fa  fa-lg"></i> Search</a>
+                  </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Callsigns
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="/pages/m5mat.html">M5MAT</a>
+                      <a class="dropdown-item" href="/pages/2e1hnk.html">2E1HNK</a>
+                      <a class="dropdown-item" href="/pages/m0izz.html">M0IZZ</a>
+                      <a class="dropdown-item" href="/pages/g2ks.html">G2KS</a>
+                      <a class="dropdown-item" href="/pages/gb1wsg.html">GB1WSG</a>
+                </div>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/blog/">Blog</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/category/contests.html">Contest Reports</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/category/projects.html">Projects</a>
-              </li>
+
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   Tools
@@ -121,6 +212,12 @@
                 </div>
               </li>
             </ul>
+
+            <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="feeds/all.xml"><i class="fa fa-rss fa-lg"></i> Feed</a>
+                  </li>
+            </ul>
             <!--
             <form class="form-inline my-2 my-lg-0">
               <input id="searchCallsign" class="form-control mr-sm-2" type="search" placeholder="Search the Logbook" aria-label="Search">
@@ -131,14 +228,19 @@
         </nav>
 
         <div class="header-text">
-          <h1 class="display-1">  70cm UKAC September 2019
+          <h1 class="display-6 small-outline">
+
+                  &mdash;Contests&mdash;
+
+          </h1>
+          <h1 class="display-1 big-outline">  70cm UKAC September 2019
 </h1>
           <h4 class="display-4"></h4>
         </div>
       </div>
     </div>
 
-    <div class="container-fluid">
+    <div class="container-fluid content-block">
       <div class="row">
         <div class="col-md-6 offset-md-2">
 <section>
@@ -147,9 +249,9 @@
 
   <section>
     <div class="tags">
-        <a class="btn btn-outline-secondary btn-sm" href="/blog/tags/UKAC.html">UKAC</a>
-        <a class="btn btn-outline-secondary btn-sm" href="/blog/tags/Activation.html">Activation</a>
-      <a class="btn btn-outline-secondary btn-sm" href="/blog/tags/IO92ba.html">IO92ba</a>
+        <a class="btn btn-outline-secondary btn-sm" href="/tag/UKAC.html">UKAC</a>
+        <a class="btn btn-outline-secondary btn-sm" href="/tag/Activation.html">Activation</a>
+      <a class="btn btn-outline-secondary btn-sm" href="/tag/IO92ba.html">IO92ba</a>
     </div>
   </section>
 
@@ -404,6 +506,17 @@
               ticks: {
                 beginAtZero: true
               }
+            }],
+            xAxes: [{
+              ticks:{
+                callback: function(value, index, values) {
+                  if ( index % 4 == 0 ) {
+                    return moment(value, "YYYYMMDD HHmm").format("HHmm");
+                  } else {
+                    return '';
+                  }
+                }
+              }
             }]
           }
         },
@@ -452,12 +565,34 @@
 
 
         </section>
-        </div>
+
+  <section>
+    <div id="disqus_thread"></div>
+    <script>
+
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://m5mat.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </section>        </div>
         <div class="col-md-2 offset-md-1">
           <div class="profile-sidebar">
     				<!-- SIDEBAR USERPIC -->
     				<div class="profile-userpic ">
-    					<img src="https://pbs.twimg.com/profile_images/1196769278042742785/3PtAfM-f_400x400.jpg" class="img-responsive mx-auto d-block" alt="">
+    					<img src="https://twitter.com/m5mat/profile_image?size=bigger" class="img-responsive mx-auto d-block" alt="Profile pic">
     				</div>
     				<!-- END SIDEBAR USERPIC -->
     				<!-- SIDEBAR USER TITLE -->
@@ -466,7 +601,8 @@
     						Matt
     					</div>
     					<div class="profile-usertitle-job">
-    						M5MAT, 2E1HNK
+    						M5MAT<br />
+                <span class="text-muted">ex 2E1HNK</span>
     					</div>
     				</div>
     				<!-- END SIDEBAR USER TITLE -->
@@ -526,7 +662,7 @@
             <a href="https://twitter.com/m5mat"><i class="fab fa-twitter display-4 text-light"></i></a>
           </div>
           <div class="col-md-2 text-center">
-            <a href="https://github.com/2e1hnk"><i class="fab fa-github display-4 text-light"></i></a>
+            <a href="https://github.com/m5mat"><i class="fab fa-github display-4 text-light"></i></a>
           </div>
           <div class="col-md-2 text-center">
             <a href="https://reddit.com/user/2e1hnk"><i class="fab fa-reddit display-4 text-light"></i></a>
@@ -537,8 +673,7 @@
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script type="text/javascript">
         document.getElementById("btnLogSearch").onclick = function () {
@@ -547,5 +682,7 @@
             return false;
         };
     </script>
+    <script id="dsq-count-scr" src="//m5mat.disqus.com/count.js" async></script>
+
   </body>
 </html>

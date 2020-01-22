@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155986583-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-155986583-1');
+    </script>
+
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/media/css/all.css">
+    <link rel="stylesheet" href="/media/css/profile.css">
+    <link rel="stylesheet" href="/media/tipuesearch/tipuesearch.css">
+    <link rel="stylesheet" href="/media/fonts/nebula/Nebula/font.css">
+
+    <title>M5MAT</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js" integrity="sha256-H9jAz//QLkDOy/nzE9G4aYijQtkLt9FvGmdUTwBk6gs=" crossorigin="anonymous"></script>
+
+  <!-- LeafletJS CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="">
+  <link rel="stylesheet" href="/media/css/L.fullscreen.css" />
+  <meta name="description" content="">
+<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+  <script src="/media/js/leaflet-heatmap.js"></script>
+  <script src="/media/js/HamGridSquare.js"></script>
+  <script src="/media/js/adif.js"></script>
+  <script src="/media/js/chart.min.js"></script>
+
+    <style>
+
+    @font-face {
+      font-family: 'Turtles';
+      src: url('/media/fonts/turtles/Turtles.ttf')  format('truetype'); /* Safari, Android, iOS */
+    }
+
+    @font-face {
+      font-family: 'Betty Noir';
+      src: url('/media/fonts/bettynoir/bettynoir.ttf')  format('truetype'); /* Safari, Android, iOS */
+    }
+
+    @font-face {
+      font-family: 'Paris';
+      src: url('/media/fonts/paris/paris.ttf')  format('truetype'); /* Safari, Android, iOS */
+    }
+
+    .navbar-brand, .header-text {
+      font-family: 'Nebula', Roboto, Calibri, Arial;
+    }
+
+    .turtles {
+          font-family: turtles, apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+          background: url(/media/images/Marble1.png) no-repeat center center;
+          background-size: cover;
+          color: #fff;
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+      }
+
+      .small-outline {
+          -webkit-text-stroke: 1px #002;
+      }
+
+      .big-outline {
+          -webkit-text-stroke: 3px #002;
+      }
+
+      .header {
+        text-align: center;
+        vertical-align: middle;
+      }
+
+      .navbar-dark a span {
+        color: #212529 !important;
+      }
+
+      @media only screen and (min-width: 600px) {
+        .header {
+          /* background-image: url('/media/images/art-deco-geometric-wallpaper.jpg');
+          background-repeat: repeat;
+          display: block;*/
+          background-attachment: fixed;
+          color: #eef;
+        }
+        .navbar {
+          background-color: rgba(0, 0, 20, 0.7);
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          color: #fff;
+        }
+
+        .navbar a {
+          color: #fff;
+        }
+
+        .navbar .dropdown-item {
+          color: #4e7999;
+        }
+
+        .header-text {
+          padding-top: 100px;
+          padding-bottom: 100px;
+        }
+      }
+
+      body {
+        background-color: #eee;
+        color: #36516e;
+      }
+
+      h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
+        color: #4e7999;
+      }
+
+      a {
+        color: #6d9bb5;
+      }
+
+      section {
+        padding-top: 10px;
+      }
+
+      footer {
+        margin-top: 50px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+      }
+    </style>
+
+    <script src="/media/js/three.min.js"></script>
+    <script src="/media/js/postprocessing.min.js"></script>
+    <script src="/media/js/nebula.js"></script>
+
+    <style>
+      #nebula canvas {
+        position: fixed;
+        top:0;
+        left:0;
+        z-index:-99;
+      }
+      .content-block {
+        padding-top: 20px;
+        background-color: #fff;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div id="nebula" class="container-fluid header">
+      <div class="col-md-8 offset-md-2">
+        <nav class="navbar navbar-expand-lg navbar">
+          <a class="navbar-brand" href="https://m5mat.github.io/">M5MAT</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+                  <li class="nav-item">
+                    <a class="nav-link" href="/pages/about.html"><i class="fa  fa-lg"></i> About</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/category/blog.html"><i class="fa  fa-lg"></i> Blog</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/category/contests.html"><i class="fa  fa-lg"></i> Contest Reports</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/category/projects.html"><i class="fa  fa-lg"></i> Projects</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/search.html"><i class="fa  fa-lg"></i> Search</a>
+                  </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Callsigns
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="/pages/m5mat.html">M5MAT</a>
+                      <a class="dropdown-item" href="/pages/2e1hnk.html">2E1HNK</a>
+                      <a class="dropdown-item" href="/pages/m0izz.html">M0IZZ</a>
+                      <a class="dropdown-item" href="/pages/g2ks.html">G2KS</a>
+                      <a class="dropdown-item" href="/pages/gb1wsg.html">GB1WSG</a>
+                </div>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Tools
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="/ogps/">OGPS</a>
+                  <a class="dropdown-item" href="/morsechallenge/">Morse Challenge</a>
+                  <!--
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  -->
+                </div>
+              </li>
+            </ul>
+
+            <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="feeds/all.xml"><i class="fa fa-rss fa-lg"></i> Feed</a>
+                  </li>
+            </ul>
+            <!--
+            <form class="form-inline my-2 my-lg-0">
+              <input id="searchCallsign" class="form-control mr-sm-2" type="search" placeholder="Search the Logbook" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" id="btnLogSearch">Search</button>
+            </form>
+            -->
+          </div>
+        </nav>
+
+        <div class="header-text">
+          <h1 class="display-6 small-outline">
+
+                  &mdash;Blog&mdash;
+
+          </h1>
+          <h1 class="display-1 big-outline">  GPS and SMS messaging via APRS on Motorola MotoTRBO radios
+</h1>
+          <h4 class="display-4"></h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid content-block">
+      <div class="row">
+        <div class="col-md-6 offset-md-2">
+<section>
+    <em class="text-muted">By Matt, M5MAT on <time datetime="2020-01-21">Tue, 21 Jan 2020</time></em>
+  </section>
+
+  <section>
+    <div class="tags">
+        <a class="btn btn-outline-secondary btn-sm" href="/tag/motorola.html">motorola</a>
+        <a class="btn btn-outline-secondary btn-sm" href="/tag/mototrbo.html">mototrbo</a>
+        <a class="btn btn-outline-secondary btn-sm" href="/tag/aprs.html">aprs</a>
+    </div>
+  </section>
+
+
+
+  <section>
+        <p>The following information is mostly derived from a <a href="https://www.hamdigitaal.nl/download/algemene-informatie/GPS_Motorola_BM262.pdf">hamdigitaal.nl</a> article and is only for use on the <strong>Brandmeister Network</strong> - this will not work on Phoenix UK or any other networks.</p>
+<p>Firstly, you need to know your local Brandmeister master node id. The UK node is <code>2341</code> (list <a href="https://brandmeister.network/?page=masters">here</a>). The ID that we need to use is the first three digits of this id, with <code>999</code> added, so <code>234999</code> for the UK (USA: <code>310999</code>, France: <code>208999</code> etc.)</p>
+<p><strong>Note 1:</strong> there is still quite a lot of old info about this on the internet. ID <code>5057</code> is no longer in use on Brandmeister. If you read an article that uses this ID then you're either reading an out-of-date article, or one about the Phoenix UK Network.</p>
+<p><strong>Note 2:</strong> You'll need to put CPS into <code>Expert Mode</code> to change some of these settings</p>
+<h2>General setup</h2>
+<p>In <code>Network -&gt; Radio Network</code>, set the following settings:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CAI Network</td>
+<td>12</td>
+</tr>
+<tr>
+<td>CAI Group Network</td>
+<td>225</td>
+</tr>
+<tr>
+<td>Protected Mode Control Station</td>
+<td>unselected</td>
+</tr>
+<tr>
+<td>Max TX PDU Size</td>
+<td>1500</td>
+</tr>
+<tr>
+<td>Telemetry UDP Port</td>
+<td>4008</td>
+</tr>
+<tr>
+<td>Forward to PC</td>
+<td>Disabled</td>
+</tr>
+</tbody>
+</table>
+<p>In <code>Network -&gt; Services</code>, set the following settings:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARS Radio ID</td>
+<td><code>234999</code> (or whatever your local master is)</td>
+</tr>
+<tr>
+<td>ARS UDP Port</td>
+<td>4005</td>
+</tr>
+<tr>
+<td>TMS Radio ID</td>
+<td><code>234999</code> (or whatever your local master is)</td>
+</tr>
+<tr>
+<td>TMS UDP Port</td>
+<td>4007</td>
+</tr>
+<tr>
+<td>User Defined UDP Port 1</td>
+<td>Disabled</td>
+</tr>
+<tr>
+<td>User Defined UDP Port 2</td>
+<td>Disabled</td>
+</tr>
+<tr>
+<td>User Defined UDP Port 3</td>
+<td>Disabled</td>
+</tr>
+<tr>
+<td>XCMP Server ID</td>
+<td><code>234999</code> (or whatever your local master is)</td>
+</tr>
+<tr>
+<td>Battery Management Server ID</td>
+<td>blank</td>
+</tr>
+</tbody>
+</table>
+<p>Now, for each channel on which you want to be able to use messaging/APRS, the following settings need to be correct:</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>ARS</td>
+<td>On System/Site Change</td>
+</tr>
+<tr>
+<td>Enhanced GPS</td>
+<td>not selected</td>
+</tr>
+<tr>
+<td>IP Site Connect</td>
+<td>Selected</td>
+</tr>
+<tr>
+<td>Messaging Delay (ms)</td>
+<td>60</td>
+</tr>
+<tr>
+<td>Compressed UDP Data Header</td>
+<td>DMR Standard</td>
+</tr>
+<tr>
+<td>Text Message Type</td>
+<td>DMR Standard</td>
+</tr>
+</tbody>
+</table>
+<p>And in the channel's TX Section</p>
+<table>
+<thead>
+<tr>
+<th>Setting</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>GPS Revert</td>
+<td>Selected</td>
+</tr>
+<tr>
+<td>Private Call Confirmed</td>
+<td>Selected</td>
+</tr>
+<tr>
+<td>Data Call Confirmed</td>
+<td>Selected</td>
+</tr>
+<tr>
+<td>Location Data Delivery Mode</td>
+<td>Follow Data Call Confirmed</td>
+</tr>
+<tr>
+<td>Enhanced Channel Access</td>
+<td>not selected</td>
+</tr>
+<tr>
+<td>CSBK Data</td>
+<td>not selected</td>
+</tr>
+</tbody>
+</table>
+<p>On the Brandmeister Self-care portal, the <code>Brand</code> for each ID should be set to <code>Motorola</code></p>
+<h2>GPS setup</h2>
+<p>To enable GPS, select the <code>GPS</code> tickbox in <code>General Settings</code>. Reports suggest that changing the GNSS setting to include GLONASS also helps with fix-times - presumable this is a European thing.</p>
+<p>In <code>General Settings -&gt; Persistent LRRP Requests</code>, set <code>Persistent LRRP Requests</code> to <code>Save</code> - this makes APRS updates more reliable.</p>
+<h2>Testing</h2>
+<ul>
+<li>
+<p>If the radio is sending position reports, then your callsign should show up on <a href="http://aprs.fi">aprs.fi</a>.</p>
+</li>
+<li>
+<p>You can try sending an SMS message to your radio by using <a href="http://www.findu.com/cgi-bin/entermsg.cgi?">findu.com</a></p>
+</li>
+<li>
+<p>To send a message from your radio to APRS, send an SMS to the master id (<code>234999</code> for the UK, it might be worth storing this as a contact). The format of the message must be the destination callsign (with SSID), followed by a space, followed by the test of the message, e.g. <code>M5MAT-10 Hello Matt!</code>.</p>
+</li>
+</ul>
+  </section>
+
+
+  <section>
+    <div id="disqus_thread"></div>
+    <script>
+
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://m5mat.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </section>        </div>
+        <div class="col-md-2 offset-md-1">
+          <div class="profile-sidebar">
+    				<!-- SIDEBAR USERPIC -->
+    				<div class="profile-userpic ">
+    					<img src="https://twitter.com/m5mat/profile_image?size=bigger" class="img-responsive mx-auto d-block" alt="Profile pic">
+    				</div>
+    				<!-- END SIDEBAR USERPIC -->
+    				<!-- SIDEBAR USER TITLE -->
+    				<div class="profile-usertitle">
+    					<div class="profile-usertitle-name">
+    						Matt
+    					</div>
+    					<div class="profile-usertitle-job">
+    						M5MAT<br />
+                <span class="text-muted">ex 2E1HNK</span>
+    					</div>
+    				</div>
+    				<!-- END SIDEBAR USER TITLE -->
+    				<!-- SIDEBAR BUTTONS -->
+            <!--
+    				<div class="profile-userbuttons">
+    					<button type="button" class="btn btn-success btn-sm">Follow</button>
+    					<button type="button" class="btn btn-danger btn-sm">Message</button>
+    				</div>
+          -->
+    				<!-- END SIDEBAR BUTTONS -->
+    				<!-- SIDEBAR MENU -->
+            <!--
+    				<div class="profile-usermenu">
+    					<ul class="nav">
+    						<li class="active">
+    							<a href="#">
+    							<i class="glyphicon glyphicon-home"></i>
+    							Overview </a>
+    						</li>
+    						<li>
+    							<a href="#">
+    							<i class="glyphicon glyphicon-user"></i>
+    							Account Settings </a>
+    						</li>
+    						<li>
+    							<a href="#" target="_blank">
+    							<i class="glyphicon glyphicon-ok"></i>
+    							Tasks </a>
+    						</li>
+    						<li>
+    							<a href="#">
+    							<i class="glyphicon glyphicon-flag"></i>
+    							Help </a>
+    						</li>
+    					</ul>
+    				</div>
+          -->
+    				<!-- END MENU -->
+    			</div>
+
+          <a class="twitter-timeline" href="https://twitter.com/m5mat" data-tweet-limit="5" data-width="399" ></a>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+      </div>
+    </div>
+
+
+    <footer class="bg-dark">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 offset-md-2 text-center">
+            <a href="https://qrz.com/db/m5mat"><img src="/media/images/qrz.png" class="img-fluid" style="max-height: 56px;"/></a>
+          </div>
+
+          <div class="col-md-2 text-center">
+            <a href="https://twitter.com/m5mat"><i class="fab fa-twitter display-4 text-light"></i></a>
+          </div>
+          <div class="col-md-2 text-center">
+            <a href="https://github.com/m5mat"><i class="fab fa-github display-4 text-light"></i></a>
+          </div>
+          <div class="col-md-2 text-center">
+            <a href="https://reddit.com/user/2e1hnk"><i class="fab fa-reddit display-4 text-light"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        document.getElementById("btnLogSearch").onclick = function () {
+            var url = "/logsearch.html?callsign=" + document.getElementById("searchCallsign").value;
+            location.href(url);
+            return false;
+        };
+    </script>
+    <script id="dsq-count-scr" src="//m5mat.disqus.com/count.js" async></script>
+
+  </body>
+</html>

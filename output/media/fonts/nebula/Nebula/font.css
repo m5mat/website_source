@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'Nebula';
+  src: url('Nebula.ttf') format('truetype'),
+       url('Nebula.woff') format('woff'),
+       url('Nebula.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
