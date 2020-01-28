@@ -14,6 +14,11 @@ Comments: true
     <label for="ele">Minimum Elevation (degrees)</label>
     <input type="text" class="form-control" id="ele" onChange="updatePrediction()" value="10" />
   </div>
+  <div class="col">
+    <label for="tz">Time Zone</label>
+    <select class="form-control" id="tz" onChange="updatePrediction()">
+    </select>
+  </div>
 </div>
 
 <div class="form-group">
@@ -26,8 +31,7 @@ Comments: true
   <button class="btn" onclick="selectSats(linearSats)">Linear Sats</button>
   <button class="btn" onclick="selectSats(digitalSats)">Digital Sats</button>
 </div>
-*All times in UTC*
-*AOS and LOS may be reversed!*
+*All times in <span id="timezone-indicator">UTC</span>*
 <table id="pass-table" class="table">
   <thead>
     <tr>
@@ -46,6 +50,7 @@ Comments: true
 <script src="\media\node_modules\jspredict\satellite.js"></script>
 <script src="\media\node_modules\jspredict\jspredict.js"></script>
 <script src="\media\node_modules\moment\moment.js"></script>
+<script src="\media\node_modules\moment-timezone\builds\moment-timezone-with-data-10-year-range.min.js"></script>
 <script src="\media\js\HamGridSquare.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
 
@@ -59,6 +64,16 @@ Comments: true
   if(typeof Cookies.get('minElevation') !== "undefined") {
     $('#ele').val(Cookies.get('minElevation'));
   }
+
+  // Load TZ names
+  $.each(moment.tz.names(), function(index, name) {
+      var selected = "";
+      if (name == Cookies.get('tz') || ( typeof Cookies.get('tz') === "undefined" && name == moment.tz.guess() ) ) {
+        selected = " selected";
+      }
+      $('#tz').append("<option value=\"" + name + "\" " + selected + ">" + name + "</option>")
+  });
+
 
   // Set the QTH
   var qth = [HamGridSquare.toLatLon($('#locator').val())[0], HamGridSquare.toLatLon($('#locator').val())[1], 1];
@@ -93,9 +108,13 @@ Comments: true
   function updatePrediction() {
     var locator = $('#locator').val();
     var minElevation = $('#ele').val();
+    var tz = $('#tz').children("option:selected").val();
 
     Cookies.set('locator', locator);
     Cookies.set('minElevation', minElevation);
+    Cookies.set('tz', tz);
+
+    $('#timezone-indicator').html(tz);
 
     qth = [HamGridSquare.toLatLon(locator)[0], HamGridSquare.toLatLon(locator)[1], 1];
 
@@ -125,8 +144,8 @@ Comments: true
     $.each(allPasses, function(index, element) {
       $('#pass-table > tbody:last-child').append(
         "<tr><td>" + element.satellite + "</td>" +
-        "<td>" + moment.utc(element.start).format(timeDisplayFormat) + "<p class=\"font-weight-light\">AZ: " + element.aos.azimuth.toFixed(0) + "&deg;</p></td>" +
-        "<td>" + moment.utc(element.end).format(timeDisplayFormat) + "<p class=\"font-weight-light\">AZ: " + element.los.azimuth.toFixed(0) + "&deg;</p></td>" +
+        "<td>" + moment.utc(element.start).tz(tz).format(timeDisplayFormat) + "<p class=\"font-weight-light\">AZ: " + element.aos.azimuth.toFixed(0) + "&deg;</p></td>" +
+        "<td>" + moment.utc(element.end).tz(tz).format(timeDisplayFormat) + "<p class=\"font-weight-light\">AZ: " + element.los.azimuth.toFixed(0) + "&deg;</p></td>" +
         "<td>" + (element.duration/60000).toFixed(0) + " mins</td>" +
         "<td>" + element.maxElevation.toFixed(1) + "&deg;</td>" +
         "</tr>")
