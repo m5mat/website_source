@@ -291,11 +291,21 @@
 
 <script src="\media\js\HamGridSquare.js"></script>
 
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
+
 <script>
   var timeDisplayFormat = "ddd, HH:mm:ss";
 
-  // Set the Observer lat 51.9, lng -2.1, alt 100m
-  var qth = [51.9166666667, -2.0833333333, 1];
+  if(typeof Cookies.get('locator') !== "undefined") {
+    $('#locator').val(Cookies.get('locator'));
+  }
+
+  if(typeof Cookies.get('minElevation') !== "undefined") {
+    $('#ele').val(Cookies.get('minElevation'));
+  }
+
+  // Set the QTH
+  var qth = [HamGridSquare.toLatLon($('#locator').val())[0], HamGridSquare.toLatLon($('#locator').val())[1], 1];
 
   var fmSats = ["SAUDISAT 1C (SO-50)", "FOX-1D (AO-92)", "RADFXSAT (FOX-1B)", "DUCHIFAT-3"];
   var linearSats = ["NAYIF-1 (EO-88)", "OSCAR 7 (AO-7)", "JAS-2 (FO-29)", "FUNCUBE-1 (AO-73)", "XW-2A", "XW-2B", "XW-2F", "NUSAT-1 (FRESCO)", "JY1SAT (JO-97)"];
@@ -325,7 +335,13 @@
   });
 
   function updatePrediction() {
-    qth = [HamGridSquare.toLatLon($('#locator').val())[0], HamGridSquare.toLatLon($('#locator').val())[1], 1];
+    var locator = $('#locator').val();
+    var minElevation = $('#ele').val();
+
+    Cookies.set('locator', locator);
+    Cookies.set('minElevation', minElevation);
+
+    qth = [HamGridSquare.toLatLon(locator)[0], HamGridSquare.toLatLon(locator)[1], 1];
 
     $("#pass-table > tbody tr").remove();
     var allPasses = [];
@@ -336,10 +352,12 @@
 
       var sat_tle = sat + "\n" + tle[sat][0] + "\n" + tle[sat][1];
 
-      var passes = jspredict.transits(sat_tle, qth, moment(), moment().add(1, 'days'), $('#ele').val(), 10);
+      var passes = jspredict.transits(sat_tle, qth, moment(), moment().add(1, 'days'), minElevation, 10);
 
       $.each(passes, function(index, pass) {
         pass.satellite = sat;
+        pass.aos = jspredict.observe(sat_tle, qth, pass.start);
+        pass.los = jspredict.observe(sat_tle, qth, pass.end);
         allPasses.push(pass);
       });
     });
@@ -351,8 +369,8 @@
     $.each(allPasses, function(index, element) {
       $('#pass-table > tbody:last-child').append(
         "<tr><td>" + element.satellite + "</td>" +
-        "<td>" + moment.utc(element.start).format(timeDisplayFormat) + "<p class=\"font-weight-light\">AZ: " + element.minAzimuth.toFixed(0) + "&deg;</p></td>" +
-        "<td>" + moment.utc(element.end).format(timeDisplayFormat) + "<p class=\"font-weight-light\">AZ: " + element.maxAzimuth.toFixed(0) + "&deg;</p></td>" +
+        "<td>" + moment.utc(element.start).format(timeDisplayFormat) + "<p class=\"font-weight-light\">AZ: " + element.aos.azimuth.toFixed(0) + "&deg;</p></td>" +
+        "<td>" + moment.utc(element.end).format(timeDisplayFormat) + "<p class=\"font-weight-light\">AZ: " + element.los.azimuth.toFixed(0) + "&deg;</p></td>" +
         "<td>" + (element.duration/60000).toFixed(0) + " mins</td>" +
         "<td>" + element.maxElevation.toFixed(1) + "&deg;</td>" +
         "</tr>")
