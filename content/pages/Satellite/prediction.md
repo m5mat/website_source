@@ -5,6 +5,17 @@ Comments: true
 
 
 
+<div class="form-row">
+  <div class="col">
+    <label for="locator">Locator</label>
+    <input type="text" class="form-control" id="locator" onChange="updatePrediction()" value="IO81xw" />
+  </div>
+  <div class="col">
+    <label for="ele">Minimum Elevation (degrees)</label>
+    <input type="text" class="form-control" id="ele" onChange="updatePrediction()" value="10" />
+  </div>
+</div>
+
 <div class="form-group">
   <label for="sat">Select Satellite(s)</label>
   <select class="form-control" id="sat" onChange="updatePrediction()" multiple>
@@ -35,6 +46,7 @@ Comments: true
 <script src="\media\node_modules\jspredict\satellite.js"></script>
 <script src="\media\node_modules\jspredict\jspredict.js"></script>
 <script src="\media\node_modules\moment\moment.js"></script>
+<script src="\media\js\HamGridSquare.js"></script>
 
 <script>
   var timeDisplayFormat = "ddd, HH:mm:ss";
@@ -70,6 +82,8 @@ Comments: true
   });
 
   function updatePrediction() {
+    qth = [HamGridSquare.toLatLon($('#locator').val())[0], HamGridSquare.toLatLon($('#locator').val())[1], 1];
+
     $("#pass-table > tbody tr").remove();
     var allPasses = [];
 
@@ -79,7 +93,7 @@ Comments: true
 
       var sat_tle = sat + "\n" + tle[sat][0] + "\n" + tle[sat][1];
 
-      var passes = jspredict.transits(sat_tle, qth, moment(), moment().add(1, 'days'), 10, 10);
+      var passes = jspredict.transits(sat_tle, qth, moment(), moment().add(1, 'days'), $('#ele').val(), 10);
 
       $.each(passes, function(index, pass) {
         pass.satellite = sat;
