@@ -11,7 +11,7 @@ Comments: true
     <input type="text" class="form-control" id="locator" onChange="updatePrediction()" value="IO81xw" />
   </div>
   <div class="col">
-    <label for="ele">Minimum Elevation (degrees)</label>
+    <label for="ele">Minimum Elevation (&deg;)</label>
     <input type="text" class="form-control" id="ele" onChange="updatePrediction()" value="10" />
   </div>
   <div class="col">
@@ -22,9 +22,10 @@ Comments: true
 </div>
 
 <div class="form-group">
-  <label for="sat">Select Satellite(s)</label>
+  <label for="sat">Satellite(s)</label>
   <select class="form-control" id="sat" onChange="updatePrediction()" multiple>
   </select>
+  <span class="font-weight-light">Ctrl+Click to select multiple satellites</span>
 </div>
 <div class="form-group">
   <button class="btn" onclick="selectSats(fmSats)">FM Sats</button>
@@ -127,7 +128,7 @@ Comments: true
 
       var sat_tle = sat + "\n" + tle[sat][0] + "\n" + tle[sat][1];
 
-      var passes = jspredict.transits(sat_tle, qth, moment(), moment().add(1, 'days'), minElevation, 10);
+      var passes = jspredict.transits(sat_tle, qth, moment(), moment().add(7, 'days'), minElevation, 10);
 
       $.each(passes, function(index, pass) {
         pass.satellite = sat;
@@ -154,9 +155,7 @@ Comments: true
 
   function selectSats(satArr) {
     // Unselect all previously selected elements
-    $.each($('#sat').children("option:selected"), function(index, element) {
-      element.selected = false;
-    });
+    $('#sat').children("option:selected").removeAttr('selected');
 
     // Select all elements in satArr
     $.each(satArr, function(index, element) {
