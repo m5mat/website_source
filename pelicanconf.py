@@ -45,6 +45,10 @@ CALLSIGNMENU = [
     ['GB1WSG', '/pages/gb1wsg.html']
 ]
 
+TOOLSMENU = [
+    ['Satellite Pass Predictor', '/pages/pass-predictor.html']
+]
+
 # Blogroll
 LINKS = (('Pelican', 'http://getpelican.com/'),
          ('Python.org', 'http://python.org/'),
