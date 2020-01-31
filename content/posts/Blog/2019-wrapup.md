@@ -30,6 +30,41 @@ Most of my operating this year was in the RSGB UKAC series of contests - much li
 
 Other notable events included running JOTA for 1st Woodmancote Scouts, which saw approximately 70 youngsters get their first&ast; introduction to Amateur Radio. The village also now has 70 more morse keys and buzzers in circulation than it did before, so apologies to the parents...
 
-Last, and not least, I passed my full license exam and became MØIZZ.
+Last, and not least, I passed my full license exam and became MØIZZ (*edit: and then M5MAT*).
+
+Results
+-----
+
+
+| Contest | Section | Position | Entrants |
+|---------|---------|----------|----------|
+| 2m UKAC (Jan) | AL | 14 | 76 |
+| 2m UKAC (Feb) | AL | 13 | 75 |
+| 70cm UKAC (Feb) | AL | 32 | 77 |
+| 70cm UKAC (Mar) | AL | 13 | 61 |
+| 2m UKAC (Apr) | AL | 14 | 89 |
+| 70cm UKAC (Apr) | AL | 15 | 73 |
+| 2m UKAC (May) | AL | 15 | 90 |
+| 70cm UKAC (May) | AL | 21 | 70 |
+| 2m UKAC (Jun) | AL | 15 | 76 |
+| 70cm UKAC (Jun) | AL | 20 | 71 |
+| 2m UKAC (Jul) | AL | 8 | 73 |
+| 70cm UKAC (Jul) | AL | 16 | 67 |
+| 2m UKAC (Aug) | AL | 11 | 68 |
+| 70cm UKAC (Aug) | AL | 18 | 63 |
+| 2m UKAC (Sep) | AL | 10 | 70 |
+| 70cm UKAC (Sep) | AL | 13 | 65 |
+| 2m UKAC (Oct) | AL | 16 | 66 |
+| 70cm UKAC (Oct) | AL | 15 | 62 |
+| 70cm UKAC (Nov) | AL | 9 | 56 |
+| 2m UKAC (Dec) | AL | 8 | 67 |
+
+
+| Series | Position | Entrants |
+|--------|----------|----------|
+| Overall UKAC 2019 | 112 | 701 |
+| 144MHz UKAC (AL) | 10 | 203 |
+| 432MHz UKAC (AL) | 15 | 155 |
+
 
 &ast; It wasn't the first for all - some were already aware of amateur radio, and two have been pointed in the direction of the local club to hopefully get a foundation license.

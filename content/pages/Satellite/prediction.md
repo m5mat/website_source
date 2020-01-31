@@ -77,15 +77,15 @@ Comments: true
   </div>
 </div>
 
-<script src="\media\node_modules\jspredict\satellite.js"></script>
-<script src="\media\node_modules\jspredict\jspredict.js"></script>
-<script src="\media\node_modules\moment\moment.js"></script>
-<script src="\media\node_modules\moment-timezone\builds\moment-timezone-with-data-10-year-range.min.js"></script>
-<script src="\media\js\HamGridSquare.js"></script>
-<script src="\media\js\FileSaver.min.js"></script>
-<script src="\media\js\Blob.js"></script>
-<script src="\media\js\ics.js"></script>
-<script src="\media\js\timetable.min.js"></script>
+<script src="/media/node_modules/jspredict/satellite.js"></script>
+<script src="/media/node_modules/jspredict/jspredict.js"></script>
+<script src="/media/node_modules/moment/moment.js"></script>
+<script src="/media/node_modules/moment-timezone/builds/moment-timezone-with-data-10-year-range.min.js"></script>
+<script src="/media/js/HamGridSquare.js"></script>
+<script src="/media/js/FileSaver.min.js"></script>
+<script src="/media/js/Blob.js"></script>
+<script src="/media/js/ics.js"></script>
+<script src="/media/js/timetable.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@beta/dist/js.cookie.min.js"></script>
 
 <script>
