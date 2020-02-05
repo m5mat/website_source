@@ -7,4 +7,5 @@
     {% for article in articles %}
       {{ render_excerpt(article) }}
     {% endfor %}
+    {% include 'pagination.html' %}
 {% endblock %}
