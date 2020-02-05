@@ -4,7 +4,7 @@
 {% block page_title %}{{ SITENAME }} Blog{% endblock %}
 
 {% block main %}
-    {% for article in articles %}
+    {% for article in articles_page.object_list %}
       {{ render_excerpt(article) }}
     {% endfor %}
     {% include 'pagination.html' %}
