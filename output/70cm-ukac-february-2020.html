@@ -1,0 +1,705 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155986583-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'UA-155986583-1');
+    </script>
+
+
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="/media/css/all.css">
+    <link rel="stylesheet" href="/media/css/profile.css">
+    <link rel="stylesheet" href="/media/css/timetable.min.css">
+    <link rel="stylesheet" href="/media/tipuesearch/tipuesearch.css">
+    <link rel="stylesheet" href="/media/fonts/nebula/Nebula/font.css">
+
+    <title>M5MAT</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.js" integrity="sha256-H9jAz//QLkDOy/nzE9G4aYijQtkLt9FvGmdUTwBk6gs=" crossorigin="anonymous"></script>
+
+  <!-- LeafletJS CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.3.1/dist/leaflet.css" integrity="sha512-Rksm5RenBEKSKFjgI3a41vrjkw4EVPlJ3+OiI65vTjIdo9brlAacEuKOiQ5OFh7cOI1bkDwLqdLw3Zg0cRJAAQ==" crossorigin="">
+  <link rel="stylesheet" href="/media/css/L.fullscreen.css" />
+  <meta name="description" content="">
+<script src="https://unpkg.com/leaflet@1.3.1/dist/leaflet.js" integrity="sha512-/Nsx9X4HebavoBvEBuyp3I7od5tA0UzAxs+j83KgC8PU0kgB4XiK4Lfe4y4cgBtaRJQEIFCW+oC506aPT2L1zw==" crossorigin=""></script>
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="/media/js/leaflet-heatmap.js"></script>
+  <script src="/media/js/HamGridSquare.js"></script>
+  <script src="/media/js/adif.js"></script>
+  <script src="/media/js/chart.min.js"></script>
+
+    <style>
+
+    @font-face {
+      font-family: 'Turtles';
+      src: url('/media/fonts/turtles/Turtles.ttf')  format('truetype'); /* Safari, Android, iOS */
+    }
+
+    @font-face {
+      font-family: 'Betty Noir';
+      src: url('/media/fonts/bettynoir/bettynoir.ttf')  format('truetype'); /* Safari, Android, iOS */
+    }
+
+    @font-face {
+      font-family: 'Paris';
+      src: url('/media/fonts/paris/paris.ttf')  format('truetype'); /* Safari, Android, iOS */
+    }
+
+    .navbar-brand, .header-text {
+      font-family: 'Nebula', Roboto, Calibri, Arial;
+    }
+
+    .turtles {
+          font-family: turtles, apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial,sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+          background: url(/media/images/Marble1.png) no-repeat center center;
+          background-size: cover;
+          color: #fff;
+          -webkit-text-fill-color: transparent;
+          -webkit-background-clip: text;
+      }
+
+      .small-outline {
+          -webkit-text-stroke: 1px #002;
+      }
+
+      .big-outline {
+          -webkit-text-stroke: 3px #002;
+      }
+
+      .header {
+        text-align: center;
+        vertical-align: middle;
+      }
+
+      .navbar-dark a span {
+        color: #212529 !important;
+      }
+
+      @media only screen and (min-width: 600px) {
+        .header {
+          /* background-image: url('/media/images/art-deco-geometric-wallpaper.jpg');
+          background-repeat: repeat;
+          display: block;*/
+          background-attachment: fixed;
+          color: #eef;
+        }
+        .navbar {
+          background-color: rgba(0, 0, 20, 0.7);
+          border-bottom-left-radius: 10px;
+          border-bottom-right-radius: 10px;
+          color: #fff;
+        }
+
+        .navbar a {
+          color: #fff;
+        }
+
+        .navbar .dropdown-item {
+          color: #4e7999;
+        }
+
+        .header-text {
+          padding-top: 100px;
+          padding-bottom: 100px;
+        }
+      }
+
+      body {
+        background-color: #eee;
+        color: #36516e;
+      }
+
+      h2, h3, h4, h5, h6, .h2, .h3, .h4, .h5, .h6 {
+        color: #4e7999;
+      }
+
+      a {
+        color: #6d9bb5;
+      }
+
+      section {
+        padding-top: 10px;
+      }
+
+      footer {
+        margin-top: 50px;
+        padding-top: 20px;
+        padding-bottom: 20px;
+
+      }
+    </style>
+
+    <script src="/media/node_modules/three/build/three.js"></script>
+    <script src="/media/nebula/postprocessing.min.js"></script>
+    <script src="/media/js/nebula.js"></script>
+
+    <style>
+      #nebula canvas {
+        position: fixed;
+        top:0;
+        left:0;
+        z-index:-99;
+      }
+      .content-block {
+        padding-top: 20px;
+        background-color: #fff;
+      }
+    </style>
+
+  </head>
+  <body>
+    <div id="nebula" class="container-fluid header">
+      <div class="col-md-8 offset-md-2">
+        <nav class="navbar navbar-expand-lg navbar">
+          <a class="navbar-brand" href="https://m5mat.github.io/">M5MAT</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  About
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="/pages/about.html">About Me</a>
+                      <a class="dropdown-item" href="/pages/m5mat.html">M5MAT</a>
+                      <a class="dropdown-item" href="/pages/2e1hnk.html">2E1HNK</a>
+                      <a class="dropdown-item" href="/pages/m0izz.html">M0IZZ</a>
+                      <a class="dropdown-item" href="/pages/g2ks.html">G2KS</a>
+                      <a class="dropdown-item" href="/pages/gb1wsg.html">GB1WSG</a>
+                </div>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Categories
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="Blog">Blog (16)</a>
+                    <a class="dropdown-item" href="Contests">Contests (39)</a>
+                    <a class="dropdown-item" href="Projects">Projects (5)</a>
+                </div>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Tools
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="/pages/pass-predictor.html">Satellite Pass Predictor</a>
+                  <!--
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  -->
+                </div>
+              </li>
+            </ul>
+
+            <form class="form-inline my-2 my-lg-0" action="/pages/search.html" method="get">
+              <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+              </div>
+            </form>
+
+            <ul class="navbar-nav ml-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="feed/all.xml"><i class="fa fa-rss fa-lg"></i> Feed</a>
+                  </li>
+            </ul>
+            <!--
+            <form class="form-inline my-2 my-lg-0">
+              <input id="searchCallsign" class="form-control mr-sm-2" type="search" placeholder="Search the Logbook" aria-label="Search">
+              <button class="btn btn-outline-success my-2 my-sm-0" id="btnLogSearch">Search</button>
+            </form>
+            -->
+          </div>
+        </nav>
+
+        <div class="header-text">
+          <h1 class="display-6 small-outline">
+
+                  &mdash;Contests&mdash;
+
+          </h1>
+          <h1 class="display-1 big-outline">  70cm UKAC February 2020
+</h1>
+          <h4 class="display-4"></h4>
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid content-block">
+      <div class="row">
+        <div class="col-md-6 offset-md-2">
+<section>
+    <em class="text-muted">By Matt, M5MAT on <time datetime="2020-02-11">Tue, 11 Feb 2020</time></em>
+  </section>
+
+  <section>
+    <div class="tags">
+        <a class="btn btn-outline-secondary btn-sm" href="/tag/UKAC.html">UKAC</a>
+        <a class="btn btn-outline-secondary btn-sm" href="/tag/Activation.html">Activation</a>
+      <a class="btn btn-outline-secondary btn-sm" href="/tag/IO92ba.html">IO92ba</a>
+    </div>
+  </section>
+
+
+
+  <section>
+        <p>Yet again, an uninspiring evening. Wind meant the mast, which was originally at 7.5m, was used at 4.5m and just the small 7-element yagi.</p>
+  </section>
+
+        <section>
+        <h2>Stats</h2>
+        <div id="stats-">
+  <p>Total QSOs: <span id="stats--totalqsos">?</span></p>
+  <p>Total Points: <span id="stats--total">?</span> (<span id="stats--points">?</span> QSO points + <span id="stats--bonus">?</span> bonus points)</p>
+  <p>ODX: <span id="stats--odx">?</span></p>
+</div>
+
+<script>
+  var myLocation = [];
+  gridSquareToLatLon("IO92ba", myLocation);
+
+  readTextFile("/media/logs/M5MAT_2020_02_11_432 MHz.adi", function(log) {
+    totalQsos = 0;
+    odxDist = 0;
+    points = 0;
+    bonusSquares = [];
+    odx = "";
+    for(var i=0; i<log.length; i++) {
+      if ( log[i].latitude && log[i].longitude ) {
+        if ( distBetweenLocations(myLocation.lat, myLocation.lon, log[i].latitude, log[i].longitude) > odxDist ) {
+          odxDist = distBetweenLocations(myLocation.lat, myLocation.lon, log[i].latitude, log[i].longitude);
+          odx = log[i].callsign + " (" + log[i].locator + ", " + Math.round(odxDist) + "km)"
+        }
+      }
+      if ( !bonusSquares.includes(log[i].locator.substring(0,4)) ) {
+        bonusSquares.push(log[i].locator.substring(0,4));
+      }
+      totalQsos++;
+      points += log[i].points;
+    }
+    document.getElementById("stats--totalqsos").textContent = totalQsos;
+    document.getElementById("stats--points").textContent = points;
+    document.getElementById("stats--bonus").textContent = bonusSquares.length * 500;
+    document.getElementById("stats--total").textContent = points + bonusSquares.length * 500;
+    document.getElementById("stats--odx").textContent = odx;
+  });
+</script>
+
+
+        <div id="container" style="width: 100%;">
+  <canvas id="rateChart-" class="rate-chart"></canvas>
+</div>
+<div style="height: 450px" id="map-"></div>
+
+<script src="/media/js/chartjs.plugin.annotation.js"></script>
+<script src="/media/js/L.maidenheadcoloured.js"></script>
+<script src="/media/js/L.fullscreen.js"></script>
+<script>
+  var myLocation = [];
+
+  gridSquareToLatLon("IO92ba", myLocation);
+
+  var osmLayer = L.tileLayer('//tileserver.eastus.cloudapp.azure.com/{id}/{z}/{x}/{y}.png', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>',
+    maxZoom: 18,
+    id: 'ham'
+  });
+
+  var lightTiles = L.tileLayer('//cartodb-basemaps-{s}.global.ssl.fastly.net/{id}/{z}/{x}/{y}.png', {
+    attribution: 'Map tiles by Carto, under CC BY 3.0. Data by <a href="//www.openstreetmap.org/">OpenStreetMap</a>, under ODbL.',
+    maxZoom: 18,
+    id: 'light_all'
+  });
+
+  var darkTiles = L.tileLayer('//cartodb-basemaps-{s}.global.ssl.fastly.net/{id}/{z}/{x}/{y}.png', {
+    attribution: 'Map tiles by Carto, under CC BY 3.0. Data by <a href="//www.openstreetmap.org/">OpenStreetMap</a>, under ODbL.',
+    maxZoom: 18,
+    id: 'dark_all'
+  });
+
+  var portableIcon = L.icon({
+    iconUrl: '/media/svg/portable.svg',
+    iconSize:     [30, 30], // size of the icon
+    iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
+  });
+
+  var mobileIcon = L.icon({
+    iconUrl: '/media/svg/mobile.svg',
+    iconSize:     [30, 30], // size of the icon
+    iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
+  });
+
+  var baseIcon = L.icon({
+    iconUrl: '/media/svg/base.svg',
+    iconSize:     [30, 30], // size of the icon
+    iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, -30] // point from which the popup should open relative to the iconAnchor
+  });
+
+  var myIcon = L.icon({
+    iconUrl: '/media/svg/me-portable.svg',
+    iconSize:     [30, 30], // size of the icon
+    iconAnchor:   [15, 15], // point of the icon which will correspond to marker's location
+    popupAnchor:  [0, -30]  // point from which the popup should open relative to the iconAnchor
+  });
+
+  var heatmapLayer = L.heatLayer([], {radius: 80, maxZoom: 16});
+
+  var stationsLayer = L.featureGroup([]);
+
+  var gridLayer = L.maidenhead({ worked: [], confirmed: [] });
+  gridLayer._map = map;
+
+  stationsLayer.addLayer(
+    L.marker(
+      [myLocation.lat, myLocation.lon],
+      {icon: myIcon}
+    ).bindPopup(
+      "<b>IO92ba<br />"
+    )
+  );
+
+  readTextFile("/media/logs/M5MAT_2020_02_11_432 MHz.adi", function(log) {
+    rate = {};
+    opmode = [];
+    var currMode = "s_p";
+    var lastRunStart = "";
+
+    rateGroupInterval = 5;   // Interval (in minutes) to group QSOs for the rate graph
+
+    for(var i=0; i<log.length; i++) {
+      if ( log[i].latitude && log[i].longitude ) {
+        var added = false;
+        for ( var j=0; j<heatmapLayer._latlngs.length; j++ ) {
+          if ( heatmapLayer._latlngs[j][0] == log[i].latitude && heatmapLayer._latlngs[j][1] == log[i].longitude ) {
+            var count = heatmapLayer._latlngs[j][2] + 1;
+            console.log("In heatmap, setting count to " + count);
+            heatmapLayer._latlngs[j] = [log[i].latitude, log[i].longitude, count];
+            added = true;
+          }
+        }
+        if ( !added ) {
+          heatmapLayer.addLatLng([log[i].latitude, log[i].longitude, 1]);
+        }
+
+        console.log(heatmapLayer);
+        if ( log[i].callsign.endsWith("/P") ) {
+          var iconType = portableIcon;
+        } else if ( log[i].callsign.endsWith("/M") ) {
+          var iconType = mobileIcon;
+        } else {
+          var iconType = baseIcon;
+        }
+          stationsLayer.addLayer(
+            L.marker(
+              [log[i].latitude, log[i].longitude],
+              {icon: iconType}
+            ).bindPopup(
+              "<table>" +
+              "<tr><th colspan=2><b>" + log[i].callsign + "</b></th></tr>" +
+              "<tr><th>Locator:</th><td>" + log[i].locator + "</td></tr>" +
+              "<tr><th>Date:</th><td>" + log[i].date.substr(0,4) + "-" + log[i].date.substr(4,2) + "-" + log[i].date.substr(6,2) + "</td></tr>" +
+              "<tr><th>Time:</th><td>" + log[i].time.substr(0,2) +":" + log[i].time.substr(2,2) + "</td></tr>" +
+              "<tr><th>TX:</th><td>" + log[i].rst_tx + " / " + log[i].serial_tx + "</td></tr>" +
+              "<tr><th>RX:</th><td>" + log[i].rst_rx + " / " + log[i].serial_rx + "</td></tr>" +
+              "</table>"
+            )
+          );
+      } else if ( log[i].locator ) {
+        latlng = gridSquareToLatLon(log[i].locator, log[i]);
+        heatmapLayer.addLatLng([log[i].lat, log[i].lon, 1]);
+      }
+
+      // Add to grid shading
+      if ( log[i].locator ) {
+        gridLayer.grids.worked.push(log[i].locator);
+      }
+      gridLayer.redraw();
+
+      // Add QSO to rate object
+      rateKey = log[i].date + " " + Math.floor(parseInt(log[i].time) / rateGroupInterval) * rateGroupInterval;
+      rateKey in rate ? rate[rateKey]++ : rate[rateKey] = 1;
+
+      // Work out if we were running or S&P
+      if ( i > 1 && i < (log.length-1) ) {
+        if ( log[i].frequency == log[i+1].frequency || log[i].frequency == log[i-1].frequency ) {
+          // in run mode
+          if (currMode == "s_p") {
+            // Start a new run session
+            lastRunStart = log[i].date + " " + log[i].time;
+            currMode = "run";
+          } // else still running
+        } else {
+          if (currMode == "run") {
+            // End a run session
+            opmode.push([lastRunStart, log[i].date + " " + log[i].time]);
+            currMode = "s_p";
+          } // else still s_p
+        }
+      }
+    }
+
+    map.fitBounds(stationsLayer.getBounds().pad(0.5));
+
+    console.log("rate", rate);
+
+    var chartData = {
+      labels: Object.keys(rate),
+      datasets: [{
+        label: "QSOs per " + rateGroupInterval + " mins",
+        backgroundColor: '#5695c8',
+				borderColor: '#31517a',
+				borderWidth: 1,
+        fill: false,
+				data: Object.values(rate)
+      },{
+        label: "",
+        backgroundColor: '#5695c8',
+				borderColor: '#31517a',
+				borderWidth: 1,
+        fill: false,
+				data: opmode
+      }]
+    };
+
+    console.log("chartData", chartData);
+
+
+    // Draw the rate chart
+    //window.onload = function() {
+      var ctx = document.getElementById('rateChart-').getContext('2d');
+      window.rateBarChart = new Chart(ctx, {
+        type: 'line',
+        data: chartData,
+        options: {
+          responsive: true,
+          run_periods: opmode,
+          chartArea: {
+            backgroundColor: 'rgba(251, 85, 85, 0.4)'
+          },
+          legend: {
+            position: 'top',
+          },
+          title: {
+            display: true,
+            text: ' Rate Chart'
+          },
+          scales: {
+            yAxes: [{
+              ticks: {
+                beginAtZero: true
+              }
+            }],
+            xAxes: [{
+              ticks:{
+                callback: function(value, index, values) {
+                  if ( index % 4 == 0 ) {
+                    return moment(value, "YYYYMMDD HHmm").format("HHmm");
+                  } else {
+                    return '';
+                  }
+                }
+              }
+            }]
+          }
+        },
+        plugins: {
+          annotation: {
+            drawTime: 'afterDatasetsDraw',
+            annotations: [{
+      				id: 'a-line-1', // optional
+      				type: 'line',
+      				mode: 'horizontal',
+      				scaleID: 'y-axis-0',
+      				value: '2',
+      				borderColor: 'red',
+      				borderWidth: 2,
+
+      				// Fires when the user clicks this annotation on the chart
+      				// (be sure to enable the event in the events array below).
+      				onClick: function(e) {
+      					// `this` is bound to the annotation element
+      				}
+      			}]
+          }
+        }
+      });
+      console.log("rate chart", window.rateBarChart);
+    //};
+  });
+
+  heatmapLayer.redraw();
+
+  var basemaps = {"OpenStreetMap": osmLayer, "Carto Light": lightTiles, "Carto Dark": darkTiles};
+  var overlayMaps = {"Grid": gridLayer, "Heatmap": heatmapLayer, "Stations": stationsLayer};
+
+  var map = new L.map('map-', {
+    zoom: 6,
+    attributionControl: true,
+    fullscreenControl: true,
+    layers: [lightTiles, heatmapLayer, gridLayer, stationsLayer]
+  });
+  //map.setView([51.945732, -1.926986], 6);
+  map.fitBounds(stationsLayer.getBounds().pad(0.5));
+
+  L.control.layers(basemaps, overlayMaps).addTo(map);
+
+</script>
+
+
+        </section>
+
+  <section>
+    <div id="disqus_thread"></div>
+    <script>
+
+    /**
+    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+    /*
+    var disqus_config = function () {
+    this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    */
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://m5mat.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+  </section>        </div>
+        <div class="col-md-2 offset-md-1">
+          <div class="profile-sidebar">
+    				<!-- SIDEBAR USERPIC -->
+    				<div class="profile-userpic ">
+    					<img src="https://twitter.com/m5mat/profile_image?size=bigger" class="img-responsive mx-auto d-block" alt="Profile pic">
+    				</div>
+    				<!-- END SIDEBAR USERPIC -->
+    				<!-- SIDEBAR USER TITLE -->
+    				<div class="profile-usertitle">
+    					<div class="profile-usertitle-name">
+    						Matt
+    					</div>
+    					<div class="profile-usertitle-job">
+    						M5MAT<br />
+                <span class="text-muted">ex 2E1HNK</span>
+    					</div>
+    				</div>
+    				<!-- END SIDEBAR USER TITLE -->
+    				<!-- SIDEBAR BUTTONS -->
+            <!--
+    				<div class="profile-userbuttons">
+    					<button type="button" class="btn btn-success btn-sm">Follow</button>
+    					<button type="button" class="btn btn-danger btn-sm">Message</button>
+    				</div>
+          -->
+    				<!-- END SIDEBAR BUTTONS -->
+    				<!-- SIDEBAR MENU -->
+            <!--
+    				<div class="profile-usermenu">
+    					<ul class="nav">
+    						<li class="active">
+    							<a href="#">
+    							<i class="glyphicon glyphicon-home"></i>
+    							Overview </a>
+    						</li>
+    						<li>
+    							<a href="#">
+    							<i class="glyphicon glyphicon-user"></i>
+    							Account Settings </a>
+    						</li>
+    						<li>
+    							<a href="#" target="_blank">
+    							<i class="glyphicon glyphicon-ok"></i>
+    							Tasks </a>
+    						</li>
+    						<li>
+    							<a href="#">
+    							<i class="glyphicon glyphicon-flag"></i>
+    							Help </a>
+    						</li>
+    					</ul>
+    				</div>
+          -->
+    				<!-- END MENU -->
+    			</div>
+
+          <a class="twitter-timeline" href="https://twitter.com/m5mat" data-tweet-limit="5" data-width="399" ></a>
+          <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        </div>
+      </div>
+    </div>
+
+
+    <footer class="bg-dark">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 offset-md-2 text-center">
+            <a href="https://qrz.com/db/m5mat"><img src="/media/images/qrz.png" class="img-fluid" style="max-height: 56px;"/></a>
+          </div>
+
+          <div class="col-md-2 text-center">
+            <a href="https://twitter.com/m5mat"><i class="fab fa-twitter display-4 text-light"></i></a>
+          </div>
+          <div class="col-md-2 text-center">
+            <a href="https://github.com/m5mat"><i class="fab fa-github display-4 text-light"></i></a>
+          </div>
+          <div class="col-md-2 text-center">
+            <a href="https://reddit.com/user/2e1hnk"><i class="fab fa-reddit display-4 text-light"></i></a>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script type="text/javascript">
+        document.getElementById("btnLogSearch").onclick = function () {
+            var url = "/logsearch.html?callsign=" + document.getElementById("searchCallsign").value;
+            location.href(url);
+            return false;
+        };
+    </script>
+    <script id="dsq-count-scr" src="//m5mat.disqus.com/count.js" async></script>
+
+    <script>
+
+       $(document).ready(function () {
+         // Convert tables to bootstrap style
+          $("table").attr("class","table table-striped");
+
+          // Make images responsive
+          $("img").attr("class","img-fluid");
+       });
+
+
+    </script>
+
+  </body>
+</html>

@@ -35,6 +35,10 @@ Expansion Activities
 
 * Can we create some sort of game, maybe something like laser-tag?
 
+* Game idea 1: *Laser Tag* - Badges are on two teams. If your badge 'sees' a member of the other team then you lose a life. After you lose three lives (or some other configurable number) then you're out of the game.
+
+* Game idea 2: *Zombies* - All badges are 'people' (green LED lit), one badge becomes a 'zombie' (red LED lit). If a person 'sees' a zombie then they become a zombie too. Last person alive wins.
+
 * Could add a piezo buzzer for audio? (would tie in nicely with the game idea).
 
 Circuit Diagram

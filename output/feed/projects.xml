@@ -35,6 +35,12 @@
 &lt;p&gt;Can we create some sort of game, maybe something like laser-tag?&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
+&lt;p&gt;Game idea 1: &lt;em&gt;Laser Tag&lt;/em&gt; - Badges are on two teams. If your badge 'sees' a member of the other team then you lose a life. After you lose three lives (or some other configurable number) then you're out of the game.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Game idea 2: &lt;em&gt;Zombies&lt;/em&gt; - All badges are 'people' (green LED lit), one badge becomes a 'zombie' (red LED lit). If a person 'sees' a zombie then they become a zombie too. Last person alive wins.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
 &lt;p&gt;Could add a piezo buzzer for audio? (would tie in nicely with the game idea).&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;

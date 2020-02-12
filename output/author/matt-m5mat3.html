@@ -165,32 +165,28 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
 
-                  <li class="nav-item">
-                    <a class="nav-link" href="/pages/about.html"><i class="fa  fa-lg"></i> About</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/category/blog.html"><i class="fa  fa-lg"></i> Blog</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/category/contests.html"><i class="fa  fa-lg"></i> Contest Reports</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/category/projects.html"><i class="fa  fa-lg"></i> Projects</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/search.html"><i class="fa  fa-lg"></i> Search</a>
-                  </li>
-
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Callsigns
+                  About
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="/pages/about.html">About Me</a>
                       <a class="dropdown-item" href="/pages/m5mat.html">M5MAT</a>
                       <a class="dropdown-item" href="/pages/2e1hnk.html">2E1HNK</a>
                       <a class="dropdown-item" href="/pages/m0izz.html">M0IZZ</a>
                       <a class="dropdown-item" href="/pages/g2ks.html">G2KS</a>
                       <a class="dropdown-item" href="/pages/gb1wsg.html">GB1WSG</a>
+                </div>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Categories
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="Blog">Blog (16)</a>
+                    <a class="dropdown-item" href="Contests">Contests (39)</a>
+                    <a class="dropdown-item" href="Projects">Projects (5)</a>
                 </div>
               </li>
 
@@ -208,9 +204,16 @@
               </li>
             </ul>
 
+            <form class="form-inline my-2 my-lg-0" action="/pages/search.html" method="get">
+              <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+              </div>
+            </form>
+
             <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                    <a class="nav-link" href="feeds/all.xml"><i class="fa fa-rss fa-lg"></i> Feed</a>
+                    <a class="nav-link" href="feed/all.xml"><i class="fa fa-rss fa-lg"></i> Feed</a>
                   </li>
             </ul>
             <!--
@@ -236,6 +239,62 @@
     <div class="container-fluid content-block">
       <div class="row">
         <div class="col-md-6 offset-md-2">
+      
+    <a href="/dxclusterbridge.html">
+      <h2>DXClusterBridge</h2>
+        <!-- <div class="progress-bar status-" style="height: 2px; width: published%;"></div> -->
+    </a>
+
+    <section>
+      <em class="text-muted">By Matt, M5MAT on <time datetime="2019-12-09">Mon, 09 Dec 2019</time> - <a href="https://m5mat.github.io/dxclusterbridge.html#disqus_thread">Comments</a></em>
+    </section>
+
+    <section>
+      
+    </section>
+
+    <section>
+      <p>Deadbeef Cafe appserver DXClusterBridge setup. This is mostly for my own reference</p>
+<h1>Admin</h1>
+<h2>Add a user</h2>
+<p><code>sudo mosquitto_passwd /etc/mosquitto/passwd &lt;callsign&gt;</code></p>
+<p>Stop and start the broker (note that a restart doesn't seem to work)</p>
+<p><code>sudo systemctl stop mosquitto</code></p>
+<p>wait a bit...</p>
+<p><code>sudo systemctl start mosquitto</code></p>
+    </section>
+
+    <a href="/dxclusterbridge.html">Read more...</a>
+
+    <hr />
+
+
+      
+    <a href="/deadbeef-cafe-app-server.html">
+      <h2>Deadbeef Cafe App Server</h2>
+        <!-- <div class="progress-bar status-" style="height: 2px; width: published%;"></div> -->
+    </a>
+
+    <section>
+      <em class="text-muted">By Matt, M5MAT on <time datetime="2019-12-09">Mon, 09 Dec 2019</time> - <a href="https://m5mat.github.io/deadbeef-cafe-app-server.html#disqus_thread">Comments</a></em>
+    </section>
+
+    <section>
+      
+    </section>
+
+    <section>
+      <p>Deadbeef Cafe appserver setup. This is mostly for my own reference</p>
+<p>Inbound connections permitted on 80, 443 and 8080. 8080 goes directly to Tomcat, 80 &amp; 443 are terminated by an nginx reverse proxy. This proxy redirects 80 to 443 and terminates SSL with a LetsEncrypt Cert (for app.deadbeef.cafe, other subdomains not implemented). LetsEncrypt cert is managed by certbot.</p>
+<h2>Services</h2>
+<p>The following services are running on the app...
+    </section>
+
+    <a href="/deadbeef-cafe-app-server.html">Read more...</a>
+
+    <hr />
+
+
       
     <a href="/common-35mm-audio-jack-wiring-standards.html">
       <h2>Common 3.5mm Audio Jack Wiring Standards</h2>

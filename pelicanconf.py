@@ -24,20 +24,12 @@ TRANSLATION_FEED_ATOM = None
 AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
-# Menu
-LEFTMENUITEMS = [
-    ['About', "/pages/about.html", ''],
-    ['Blog', "/category/blog.html", ''],
-    ['Contest Reports', "/category/contests.html", ''],
-    ['Projects', '/category/projects.html', ''],
-    ['Search', '/search.html', '']
-]
-
 RIGHTMENUITEMS = [
-    ['Feed', "feeds/all.xml", 'fa-rss']
+    ['Feed', "feed/all.xml", 'fa-rss']
 ]
 
-CALLSIGNMENU = [
+ABOUTMENU = [
+    ['About Me', "/pages/about.html"],
     ['M5MAT', '/pages/m5mat.html'],
     ['2E1HNK', '/pages/2e1hnk.html'],
     ['M0IZZ', '/pages/m0izz.html'],

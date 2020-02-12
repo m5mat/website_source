@@ -174,19 +174,24 @@
               {% block addednav %}
               {% endblock addednav %}
 
-              {% for title, link, icon in LEFTMENUITEMS %}
-                  <li class="nav-item">
-                    <a class="nav-link" href="{{ link }}"><i class="fa {{icon}} fa-lg"></i> {{ title }}</a>
-                  </li>
-              {% endfor %}
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  About
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  {% for title, link in ABOUTMENU %}
+                      <a class="dropdown-item" href="{{ link }}">{{ title }}</a>
+                  {% endfor %}
+                </div>
+              </li>
 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Callsigns
+                  Categories
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  {% for title, link in CALLSIGNMENU %}
-                      <a class="dropdown-item" href="{{ link }}">{{ title }}</a>
+                  {% for category, articles in categories %}
+                    <a class="dropdown-item" href="{{ category }}">{{ category }} ({{ articles|count }})</a>
                   {% endfor %}
                 </div>
               </li>
@@ -206,6 +211,13 @@
                 </div>
               </li>
             </ul>
+
+            <form class="form-inline my-2 my-lg-0" action="/pages/search.html" method="get">
+              <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+              </div>
+            </form>
 
             <ul class="navbar-nav ml-auto">
               {% for title, link, icon in RIGHTMENUITEMS %}

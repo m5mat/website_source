@@ -171,32 +171,28 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
 
-                  <li class="nav-item">
-                    <a class="nav-link" href="/pages/about.html"><i class="fa  fa-lg"></i> About</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/category/blog.html"><i class="fa  fa-lg"></i> Blog</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/category/contests.html"><i class="fa  fa-lg"></i> Contest Reports</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/category/projects.html"><i class="fa  fa-lg"></i> Projects</a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="/search.html"><i class="fa  fa-lg"></i> Search</a>
-                  </li>
-
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                  Callsigns
+                  About
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a class="dropdown-item" href="/pages/about.html">About Me</a>
                       <a class="dropdown-item" href="/pages/m5mat.html">M5MAT</a>
                       <a class="dropdown-item" href="/pages/2e1hnk.html">2E1HNK</a>
                       <a class="dropdown-item" href="/pages/m0izz.html">M0IZZ</a>
                       <a class="dropdown-item" href="/pages/g2ks.html">G2KS</a>
                       <a class="dropdown-item" href="/pages/gb1wsg.html">GB1WSG</a>
+                </div>
+              </li>
+
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Categories
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <a class="dropdown-item" href="Blog">Blog (16)</a>
+                    <a class="dropdown-item" href="Contests">Contests (39)</a>
+                    <a class="dropdown-item" href="Projects">Projects (5)</a>
                 </div>
               </li>
 
@@ -214,9 +210,16 @@
               </li>
             </ul>
 
+            <form class="form-inline my-2 my-lg-0" action="/pages/search.html" method="get">
+              <input class="form-control mr-sm-2" name="q" type="search" placeholder="Search" aria-label="Search">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i class="fas fa-search"></i></button>
+              </div>
+            </form>
+
             <ul class="navbar-nav ml-auto">
                   <li class="nav-item">
-                    <a class="nav-link" href="feeds/all.xml"><i class="fa fa-rss fa-lg"></i> Feed</a>
+                    <a class="nav-link" href="feed/all.xml"><i class="fa fa-rss fa-lg"></i> Feed</a>
                   </li>
             </ul>
             <!--
@@ -278,6 +281,12 @@
 </li>
 <li>
 <p>Can we create some sort of game, maybe something like laser-tag?</p>
+</li>
+<li>
+<p>Game idea 1: <em>Laser Tag</em> - Badges are on two teams. If your badge 'sees' a member of the other team then you lose a life. After you lose three lives (or some other configurable number) then you're out of the game.</p>
+</li>
+<li>
+<p>Game idea 2: <em>Zombies</em> - All badges are 'people' (green LED lit), one badge becomes a 'zombie' (red LED lit). If a person 'sees' a zombie then they become a zombie too. Last person alive wins.</p>
 </li>
 <li>
 <p>Could add a piezo buzzer for audio? (would tie in nicely with the game idea).</p>

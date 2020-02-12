@@ -1,5 +1,4 @@
 title: 2m UKAC October 2019
-category: Contest
 author: Matt, 2E1HNK
 date: 2019-10-03 23:00:00
 tags: UKAC, Activation
