@@ -496,9 +496,28 @@ hadn't realised that membership was a prerequisite for entering.</p>
       }
     }
 
+
+
     map.fitBounds(stationsLayer.getBounds().pad(0.5));
 
     console.log("rate", rate);
+    console.log("Rate Object minimum", moment(minKey(rate), "YYYYMMDD HHmm").unix());
+    console.log("Rate Object maximum", moment(maxKey(rate), "YYYYMMDD HHmm").unix());
+
+    console.log("Processing periods");
+    for ( period = moment(minKey(rate), "YYYYMMDD HHmm").unix(); period < moment(maxKey(rate), "YYYYMMDD HHmm").unix(); period += rateGroupInterval * 60 ) {
+      console.log("Processing period", period);
+      console.log("rateKey", moment.unix(period).format("YYYYMMDD HHmm"))
+      console.log("current value", rate[moment.unix(period).format("YYYYMMDD HHmm")]);
+
+      if ( !(moment.unix(period).format("YYYYMMDD HHmm") in rate) ) {
+        console.log("Setting period " + moment.unix(period).format("YYYYMMDD HHmm") + " to 0");
+        rate[moment.unix(period).format("YYYYMMDD HHmm")] = 0;
+      }
+    }
+    console.log("Done processing periods");
+
+    rate = sortObject(rate);
 
     var chartData = {
       labels: Object.keys(rate),
@@ -544,7 +563,8 @@ hadn't realised that membership was a prerequisite for entering.</p>
           scales: {
             yAxes: [{
               ticks: {
-                beginAtZero: true
+                beginAtZero: true,
+                precision: 0
               }
             }],
             xAxes: [{
@@ -600,6 +620,24 @@ hadn't realised that membership was a prerequisite for entering.</p>
   map.fitBounds(stationsLayer.getBounds().pad(0.5));
 
   L.control.layers(basemaps, overlayMaps).addTo(map);
+
+  function sortObject(object) {
+    // Sort the object
+    return Object.keys(object)
+      .sort()
+      .reduce(function (acc, key) {
+          acc[key] = object[key];
+          return acc;
+      }, {});
+  }
+
+  function minKey(object) {
+    return Object.keys(sortObject(object))[0];
+  }
+
+  function maxKey(object) {
+    return Object.keys(sortObject(object))[(Object.keys(object).length - 1)];
+  }
 
 </script>
 

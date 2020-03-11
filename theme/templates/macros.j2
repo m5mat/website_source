@@ -191,9 +191,28 @@
       }
     }
 
+
+
     map{{ section }}.fitBounds(stationsLayer{{ section }}.getBounds().pad(0.5));
 
     console.log("rate", rate{{ section }});
+    console.log("Rate Object minimum", moment(minKey(rate{{ section }}), "YYYYMMDD HHmm").unix());
+    console.log("Rate Object maximum", moment(maxKey(rate{{ section }}), "YYYYMMDD HHmm").unix());
+
+    console.log("Processing periods");
+    for ( period = moment(minKey(rate{{ section }}), "YYYYMMDD HHmm").unix(); period < moment(maxKey(rate{{ section }}), "YYYYMMDD HHmm").unix(); period += rateGroupInterval * 60 ) {
+      console.log("Processing period", period);
+      console.log("rateKey", moment.unix(period).format("YYYYMMDD HHmm"))
+      console.log("current value", rate{{ section }}[moment.unix(period).format("YYYYMMDD HHmm")]);
+
+      if ( !(moment.unix(period).format("YYYYMMDD HHmm") in rate{{ section }}) ) {
+        console.log("Setting period " + moment.unix(period).format("YYYYMMDD HHmm") + " to 0");
+        rate{{ section }}[moment.unix(period).format("YYYYMMDD HHmm")] = 0;
+      }
+    }
+    console.log("Done processing periods");
+
+    rate{{ section }} = sortObject(rate{{ section }});
 
     var chartData{{ section }} = {
       labels: Object.keys(rate{{ section }}),
@@ -239,7 +258,8 @@
           scales: {
             yAxes: [{
               ticks: {
-                beginAtZero: true
+                beginAtZero: true,
+                precision: 0
               }
             }],
             xAxes: [{
@@ -295,6 +315,24 @@
   map{{ section }}.fitBounds(stationsLayer{{ section }}.getBounds().pad(0.5));
 
   L.control.layers(basemaps{{ section }}, overlayMaps{{ section }}).addTo(map{{ section }});
+
+  function sortObject(object) {
+    // Sort the object
+    return Object.keys(object)
+      .sort()
+      .reduce(function (acc, key) {
+          acc[key] = object[key];
+          return acc;
+      }, {});
+  }
+
+  function minKey(object) {
+    return Object.keys(sortObject(object))[0];
+  }
+
+  function maxKey(object) {
+    return Object.keys(sortObject(object))[(Object.keys(object).length - 1)];
+  }
 
 </script>
 
