@@ -222,7 +222,12 @@
 				borderColor: '#31517a',
 				borderWidth: 1,
         fill: false,
-				data: Object.values(rate{{ section }})
+				data: Object.values(rate{{ section }}),
+        trendlineLinear: {
+          style: "rgba(255,105,180, .8)",
+          lineStyle: "dotted",
+          width: 2
+        }
       },{
         label: "",
         backgroundColor: '#5695c8',

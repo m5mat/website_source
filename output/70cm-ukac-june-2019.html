@@ -39,6 +39,7 @@
   <script src="/media/js/HamGridSquare.js"></script>
   <script src="/media/js/adif.js"></script>
   <script src="/media/js/chart.min.js"></script>
+  <script src="/media/js/chartjs.plugin.trendline.min.js"></script>
 
     <style>
 
@@ -491,7 +492,12 @@
 				borderColor: '#31517a',
 				borderWidth: 1,
         fill: false,
-				data: Object.values(rate)
+				data: Object.values(rate),
+        trendlineLinear: {
+          style: "rgba(255,105,180, .8)",
+          lineStyle: "dotted",
+          width: 2
+        }
       },{
         label: "",
         backgroundColor: '#5695c8',
