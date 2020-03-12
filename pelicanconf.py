@@ -15,7 +15,7 @@ DEFAULT_LANG = 'en'
 STATIC_PATHS = ['media']
 
 PLUGIN_PATHS = ['plugins']
-PLUGINS = ['tipue_search']
+PLUGINS = ['tipue_search', 'similar_posts']
 
 # Feed generation is usually not desired when developing
 FEED_ALL_ATOM = 'feed/all.xml'
@@ -52,6 +52,9 @@ SOCIAL = (('You can add links in your config file', '#'),
           ('Another social link', '#'),)
 
 DEFAULT_PAGINATION = 5
+
+# Similar posts
+SIMILAR_POSTS_MAX_COUNT = 5
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True

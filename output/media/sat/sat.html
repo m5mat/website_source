@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+
+<head>
+  <meta charset="utf-8">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.4.0/dist/leaflet.css" integrity="sha512-puBpdR0798OZvTTbP4A8Ix/l+A4dHDD0DGqYW6RQ+9jxkRFclaxxQb/SJAWZfWAkuyeQUytO7+7N4QKrDh+drA=="
+    crossorigin="" />
+  <script src="https://unpkg.com/leaflet@1.4.0/dist/leaflet.js" integrity="sha512-QVftwZFqvtRNi0ZyCtsznlKSWOStnDORoefr1enyq5mVL4tmKB3S/EnC3rRJcxCPavG10IcrVGSmPh6Qw5lwrg=="
+    crossorigin=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/promise-polyfill@8.1/dist/polyfill.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/whatwg-fetch@3.0/dist/fetch.umd.min.js"></script>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script src="https://d3js.org/d3-geo-projection.v2.min.js"></script>
+  <script src="https://d3js.org/d3-queue.v3.min.js"></script>
+  <script src="https://d3js.org/topojson.v2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/satellite.js/3.0.0/satellite.min.js"></script>
+  <style>
+    .footprint--LEO {
+      fill: rgba(255, 0, 0, 0.5);
+      stroke: rgba(255, 0, 0, 0.5);
+    }
+
+    .footprint--MEO {
+      fill: rgba(0, 255, 0, 0.5);
+      stroke: rgba(0, 255, 0, 0.5);
+    }
+
+    .footprint--GEO {
+      fill: rgba(0, 0, 255, 0.5);
+      stroke: rgba(0, 0, 255, 0.5);
+    }
+  </style>
+</head>
+
+<body>
+  <svg id="globe" width="960" height="500"></svg>
+  <script src="sat.js"></script>
+</body>
+
+</html>

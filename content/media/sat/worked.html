@@ -1,0 +1,64 @@
+<html>
+<head>
+  <title>Worked Grids</title>
+  <style>
+    body {
+      font-family: 'Sans Serif', Arial;
+    }
+    #worked_table {
+      font-size:  6pt;
+      border-collapse: collapse;
+    }
+    table#worked_table, th, td {
+      border: 1px solid black;
+    }
+
+    .confirmed {
+      background-color: green !important;
+    }
+
+    .worked {
+      background-color: yellow;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="/media/js/HamGridSquare.js"></script>
+  <script src="/media/js/adif.js"></script>
+  <script>
+    $('#map').append('<table id="worked_table">');
+
+    var westFirstChar = 'D', eastFirstChar = 'O';
+    var northSecondChar = 'Q', southSecondChar = 'L';
+
+    for (var a = northSecondChar.charCodeAt(0); a >= southSecondChar.charCodeAt(0); a--) {            // 2nd char
+        for (var c = 9; c >= 0; c--) {          // 2nd digit
+          var row = $('#worked_table').append('<tr>');
+          for (var b = westFirstChar.charCodeAt(0); b <= eastFirstChar.charCodeAt(0); b++) {      // 1st char
+          for (var d = 0; d <= 9; d++) {        // 1st digit
+            var square = String.fromCharCode(b, a) + d + c;
+            row.append('<td id="' + square + '">' + square + '</td>');
+          }
+        }
+      }
+    }
+
+    readAdiManifest("/media/logs/adi.manifest", function(log) {
+      for(var i=0; i<log.length; i++) {
+        if ( log[i].locator ) {
+          if ( log[i].qsl.lotw_rcvd == "Y" || log[i].qsl.eqsl_rcvd == "Y") {
+            console.log("Adding confirmed tag to " + log[i].locator.substring(0,4));
+            $('#' + log[i].locator.substring(0,4)).addClass('confirmed');
+          } else {
+            console.log("Adding worked tag to " + log[i].locator.substring(0,4));
+            $('#' + log[i].locator.substring(0,4)).addClass('worked');
+          }
+        }
+      }
+    });
+
+  </script>
+</body>

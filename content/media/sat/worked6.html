@@ -1,0 +1,80 @@
+<html>
+<head>
+  <title>Worked Grids</title>
+  <style>
+    body {
+      font-family: 'Sans Serif', Arial;
+    }
+    #worked_table {
+      font-size:  6pt;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+    table#worked_table, th, td {
+    /*  border: 1px solid black;*/
+    }
+
+    th {
+      max-height: 3px;
+    }
+
+    td {
+      max-width: 3px;
+      max-height: 3px;
+      overflow: hidden;
+      color: white;
+    }
+
+    .confirmed {
+      background-color: green !important;
+    }
+
+    .worked {
+      background-color: yellow;
+    }
+
+  </style>
+</head>
+<body>
+  <div id="map"></div>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="/media/js/HamGridSquare.js"></script>
+  <script src="/media/js/adif.js"></script>
+  <script>
+    $('#map').append('<table id="worked_table">');
+
+    var westFirstChar = 'I', eastFirstChar = 'I';
+    var northSecondChar = 'O', southSecondChar = 'O';
+
+    for (var a = northSecondChar.charCodeAt(0); a >= southSecondChar.charCodeAt(0); a--) {    // 2nd char
+      for (var c = 9; c >= 0; c--) {                                                          // 2nd digit
+        for (var e = 120; e >= 97; e-- ) {                                                    // 2nd small letter
+          var row = $('#worked_table').append('<tr>');
+          for (var b = westFirstChar.charCodeAt(0); b <= eastFirstChar.charCodeAt(0); b++) {  // 1st char
+            for (var d = 0; d <= 9; d++) {                                                    // 1st digit
+              for (var f = 97; f <= 120; f++) {                                               // 1st small letter
+                var square = String.fromCharCode(b, a) + d + c + String.fromCharCode(f, e);
+                row.append('<td id="' + square + '">' + square + '</td>');
+              }
+            }
+          }
+        }
+      }
+    }
+
+    readAdiManifest("/media/logs/adi.manifest", function(log) {
+      for(var i=0; i<log.length; i++) {
+        if ( log[i].locator ) {
+          if ( log[i].qsl.lotw_rcvd == "Y" || log[i].qsl.eqsl_rcvd == "Y") {
+            console.log("Adding confirmed tag to " + log[i].locator);
+            $('#' + log[i].locator).addClass('confirmed');
+          } else {
+            console.log("Adding worked tag to " + log[i].locator);
+            $('#' + log[i].locator).addClass('worked');
+          }
+        }
+      }
+    });
+
+  </script>
+</body>

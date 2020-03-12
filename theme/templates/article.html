@@ -100,3 +100,17 @@
   </section>
 
 {%- endblock %}
+
+
+{% block sidebar -%}
+  <h2>Similar Posts</h2>
+  <ul class="nav">
+  {% for similar in article.similar_posts %}
+    <li><a href="{{ similar.url }}">{{ similar.title }}</a><br />
+      <small>{{ similar.date.strftime('%d/%m/%Y') }}</small><br />
+      <small>{{ similar.content|truncate(100) }}</small>
+      <hr />
+    </li>
+  {% endfor %}
+  </ul>
+{%- endblock %}
