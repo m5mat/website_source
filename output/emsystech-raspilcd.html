@@ -190,7 +190,7 @@
                   Categories
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="Blog">Blog (16)</a>
+                    <a class="dropdown-item" href="Blog">Blog (17)</a>
                     <a class="dropdown-item" href="Contests">Contests (42)</a>
                     <a class="dropdown-item" href="Projects">Projects (5)</a>
                 </div>
@@ -308,21 +308,21 @@
 <p><img alt="alt text" src="/media/images/RaspiLCD-memory.png" title="RaspiLCD Memory"></p>
 <p>The display used or its <a href="/media/pdf/NT7532.pdf">graphic controller</a> is connected via SPI interface. In the current version this is emulated in the software (-&gt; no driver necessary). The display with its 128 x 64 pixels is in principle a 1kByte large memory, with which each bit corresponds to a pixel. In the software, the coordinates (x / y) correspond to the top left corner (0/0) and bottom right (127/63). Since the smallest organizational unit is one byte, 8 pixels are always transmitted and stored together. The least significant bit of the first byte is the origin in the upper left corner. Then follow for all 1024 bytes, the bits: D1 = (0/1), ... D7 = (0/7), etc. Since the memory of the display only describe, but not read, there is a small problem with the pixel-wise Presentation. Should a function change a single pixel, The other 7 bits of the associated byte must also be transferred. For this reason, a so-called frame buffer is implemented in the software. This is a 1: 1 memory image of the display. All operations are done with the framebuffer. With the function <code>LCD_WriteFramebuffer();</code> then the output and display is done on the display.</p>
 <p>Output of the text "Hello World":</p>
-<div class="highlight"><pre><span></span><span class="err">LCD_SetFont(0);</span>
+<div class="highlight"><pre><span></span><code><span class="err">LCD_SetFont(0);</span>
 <span class="err">LCD_PrintXY(0,0, &quot;Hello World&quot;);</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Drawing a rectangle with transparent fill and two pixel line width:</p>
-<div class="highlight"><pre><span></span><span class="err">LCD_SetFillColor(-1);</span>
+<div class="highlight"><pre><span></span><code><span class="err">LCD_SetFillColor(-1);</span>
 <span class="err">LCD_DrawRect(10,10,100,40,1);</span>
-</pre></div>
+</code></pre></div>
 
 
 <p>Bitmaps can be converted to C arrays using the BMP2C V1.0 program  . eg: <code>const uint8 bmp_raspi [458] = {57, 64, 0×00, ... 0×00};</code>
 Output of bitmap at position(0/0):</p>
-<div class="highlight"><pre><span></span><span class="err">LCD_DrawBitmap(0,0, bmp_raspi);</span>
-</pre></div>
+<div class="highlight"><pre><span></span><code><span class="err">LCD_DrawBitmap(0,0, bmp_raspi);</span>
+</code></pre></div>
 
 
 <h1>Buttons</h1>
