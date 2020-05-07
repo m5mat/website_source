@@ -4,7 +4,6 @@ description: >
 date: 2019-04-26 08:00:00
 links:
     description:  http://n5dux.com/ham/pubs/hammag-2010/hammag-04-2010.pdf
-status: 50
 phase: in-progress
 
 

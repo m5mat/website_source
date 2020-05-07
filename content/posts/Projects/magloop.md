@@ -4,7 +4,6 @@ description: >
 date: 2019-04-11 23:00:00
 links:
     description:  http://www.g4izh.co.uk/indoor-mag-loop-for-hf.html
-status: 100
 phase: completed
 
 <table>

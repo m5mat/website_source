@@ -1,6 +1,7 @@
 title: Coronavirus/COVID-19 Lockdown & HF Data Modes
 author: Matt, M5MAT
-date: 2020-04-2 11:00:00
+date: 2020-04-02 11:00:00
+tags: Coronavirus, COVID-19, Lockdown, HF
 
 
 Like most of the country, and indeed the world, I'm currently stuck at home due to coronavirus. Most of my radio kit lives in the car most of the time for UKAC contests, and general commuter-mobile use. As that won't be happening for the foreseeable future I've moved the FT-857d into the garage, hooked it up to a G5RV Jr antenna which is strung up in the roof of the garage (via my YT-100 tuner) and also to an X200 dual-band colinear. The G5RV is all of 3m agl (possibly 4m if I'm being generous) with significantly folded ends and the base of the colinear is at 1.5m agl. This isn't ideal but it's better than being unused in the car.

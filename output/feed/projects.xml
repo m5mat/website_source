@@ -85,7 +85,317 @@
 &lt;li&gt;Avatar (https://app.deadbeef.cafe/avatar)&lt;/li&gt;
 &lt;li&gt;&lt;a href="app-server-dxclusterbridge.html"&gt;DXClusterBridge&lt;/a&gt; - Bridges DXCluster messages to an MQTT Broker which is accessible on app.deadbeef.cafe:1883. Messages are posted to the broker using the username &lt;code&gt;admin&lt;/code&gt;. You'll need a user account on the broker to get access to messages. Request access from Matt MØIZZ. At this time messages posted to the broker do not go out to the wider DXCluster servers.&lt;/li&gt;
 &lt;li&gt;Weblog (in progress)&lt;/li&gt;
-&lt;/ul&gt;</content><category term="Projects"></category></entry><entry><title>Suppliers</title><link href="https://m5mat.github.io/suppliers.html" rel="alternate"></link><published>2019-04-10T23:00:00+01:00</published><updated>2019-04-10T23:00:00+01:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2019-04-10:/suppliers.html</id><summary type="html">&lt;h2&gt;Antenna Parts&lt;/h2&gt;
+&lt;/ul&gt;</content><category term="Projects"></category></entry><entry><title>2m/70cm Satellite Station</title><link href="https://m5mat.github.io/2m70cm-satellite-station.html" rel="alternate"></link><published>2019-04-26T08:00:00+01:00</published><updated>2019-04-26T08:00:00+01:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2019-04-26:/2m70cm-satellite-station.html</id><summary type="html">&lt;h1&gt;Satellite Reception using RTL-SDR, GQRX and GPredict&lt;/h1&gt;
+&lt;p&gt;This is mostly sourced from http://teslaintheether.blogspot.com/2018/02/setting-up-gqrx-and-gpredict-for.html, all credit goes to Jacen Solo and it's only reproduced here in case the original disappears. All images come from his original blog post.&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Install and start both GQRX and …&lt;/p&gt;&lt;/li&gt;&lt;/ol&gt;</summary><content type="html">&lt;h1&gt;Satellite Reception using RTL-SDR, GQRX and GPredict&lt;/h1&gt;
+&lt;p&gt;This is mostly sourced from http://teslaintheether.blogspot.com/2018/02/setting-up-gqrx-and-gpredict-for.html, all credit goes to Jacen Solo and it's only reproduced here in case the original disappears. All images come from his original blog post.&lt;/p&gt;
+&lt;hr /&gt;
+
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;Install and start both GQRX and GPredict&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In GPredict, click &lt;code&gt;Edit&lt;/code&gt; &amp;gt; &lt;code&gt;Preferences&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click &lt;code&gt;Interfaces&lt;/code&gt; then &lt;code&gt;Add New&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Fill in the following:&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Name: GQRX&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Host: localhost&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Port: 7356&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Radio Type: RX Only&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Click &lt;code&gt;OK&lt;/code&gt; then &lt;code&gt;OK&lt;/code&gt; again.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;now bring up the interface by clicking on the down arrow at the upper-left of the main screen then &lt;code&gt;Radio Control&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="GPredict Connect to Radio" src="/media/images/sat-station-1.png"&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Under 'Downlink', enter the downlink frequency of the satellite.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;In GQRX, click the two computers icon (below) to connect it to GPredict.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="GQRX Connect to GPredict" src="/media/images/sat-station-2.png"&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Back in GPredict, select the target satellite in the drop-down menu and click &lt;code&gt;Track&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img alt="GPredict Track Satellite" src="/media/images/sat-station-3.png"&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Ensure that GPredict is linked to GQRX&lt;/p&gt;
+&lt;p&gt;&lt;img alt="Ensure GPredict is linked to GQRX" src="/media/images/sat-station-4.png"&gt;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;Now you will see the frequencies tracking in both the radio control window and in GQRX. Next just hit play in GQRX and you'll be all set to receive your target satellite.&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;</content><category term="Projects"></category></entry><entry><title>HF Magnetic Loop Antenna</title><link href="https://m5mat.github.io/hf-magnetic-loop-antenna.html" rel="alternate"></link><published>2019-04-11T23:00:00+01:00</published><updated>2019-04-11T23:00:00+01:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2019-04-11:/hf-magnetic-loop-antenna.html</id><summary type="html">&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;form action="javascript:calculate()"&gt;
+        &lt;label for="frequency"&gt;Frequency (MHz) &lt;input type="text" name="frequency" id="frequency"&gt;&lt;/input&gt;&lt;/label&gt;&lt;br /&gt;
+        &lt;label for="frequency"&gt;Loop Area (m²) &lt;input type="text" name="area" id="area"&gt;&lt;/input&gt;&lt;/label&gt;&lt;br /&gt;
+        &lt;label for="frequency"&gt;Loop Length (m) &lt;input type="text" name="length" id="length"&gt;&lt;/input&gt;&lt;/label&gt;&lt;br /&gt;
+        &lt;label for="frequency"&gt;Conductor Diameter (mm) &lt;input type="text" name="diameter" id="diameter"&gt;&lt;/input&gt;&lt;/label&gt;&lt;br /&gt;
+        &lt;label for="frequency"&gt;Power (Watts) &lt;input type="text" name="power" id="power"&gt;&lt;/input&gt;&lt;/label&gt;&lt;br /&gt;
+        &lt;input type="submit" /&gt;
+      &lt;/form&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+      &lt;div class="results"&gt;
+        Radiation Resistance (mΩ) = &lt;span id="radiation_resistance"&gt;&lt;/span&gt;&lt;br /&gt;
+        Loss Resistance (mΩ) = &lt;span id="loss_resistance"&gt;&lt;/span&gt;&lt;br /&gt;
+        Efficiency (%) = &lt;span id="efficiency"&gt;&lt;/span&gt;&lt;br /&gt;
+        Inductance (μH) = &lt;span id="inductance"&gt;&lt;/span&gt;&lt;br /&gt;
+        Inductive Reactance (Ω) = &lt;span id="inductive_reactance"&gt;&lt;/span&gt;&lt;br /&gt;
+        Tuning Capacitor (pF) = &lt;span id="tuning_capacitor"&gt;&lt;/span&gt;&lt;br /&gt;
+        Q Factor = &lt;span id="q_factor"&gt;&lt;/span&gt;&lt;br /&gt;
+        Bandwidth (Hz) = &lt;span id="bandwidth"&gt;&lt;/span&gt;&lt;br /&gt;
+        Distributed Capacitance (pF) = &lt;span id="distributed_capacity"&gt;&lt;/span&gt;&lt;br /&gt;
+        Capacitor Potential (V) = &lt;span id="capacitor_potential"&gt;&lt;/span&gt;&lt;br /&gt;
+        Minimum Plate Spacing (mm) = &lt;span id="minimum_plate_spacing"&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;form action="javascript:sweep()"&gt;
+        &lt;label for="frequency"&gt;Start Frequency (MHz) &lt;input type="text" name="sweep_start_frequency" id="sweep_start_frequency"&gt;&lt;/input&gt;&lt;/label&gt;&lt;br /&gt;
+        &lt;label for="frequency"&gt;End Frequency (MHz) &lt;input type="text" name="sweep_end_frequency" id="sweep_end_frequency"&gt;&lt;/input&gt;&lt;/label&gt;&lt;br /&gt;
+        &lt;label for="frequency"&gt;Step Size …&lt;/label&gt;&lt;/form&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;</summary><content type="html">&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;form action="javascript:calculate()"&gt;
+        &lt;label for="frequency"&gt;Frequency (MHz) &lt;input type="text" name="frequency" id="frequency"&gt;&lt;/input&gt;&lt;/label&gt;&lt;br /&gt;
+        &lt;label for="frequency"&gt;Loop Area (m²) &lt;input type="text" name="area" id="area"&gt;&lt;/input&gt;&lt;/label&gt;&lt;br /&gt;
+        &lt;label for="frequency"&gt;Loop Length (m) &lt;input type="text" name="length" id="length"&gt;&lt;/input&gt;&lt;/label&gt;&lt;br /&gt;
+        &lt;label for="frequency"&gt;Conductor Diameter (mm) &lt;input type="text" name="diameter" id="diameter"&gt;&lt;/input&gt;&lt;/label&gt;&lt;br /&gt;
+        &lt;label for="frequency"&gt;Power (Watts) &lt;input type="text" name="power" id="power"&gt;&lt;/input&gt;&lt;/label&gt;&lt;br /&gt;
+        &lt;input type="submit" /&gt;
+      &lt;/form&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+      &lt;div class="results"&gt;
+        Radiation Resistance (mΩ) = &lt;span id="radiation_resistance"&gt;&lt;/span&gt;&lt;br /&gt;
+        Loss Resistance (mΩ) = &lt;span id="loss_resistance"&gt;&lt;/span&gt;&lt;br /&gt;
+        Efficiency (%) = &lt;span id="efficiency"&gt;&lt;/span&gt;&lt;br /&gt;
+        Inductance (μH) = &lt;span id="inductance"&gt;&lt;/span&gt;&lt;br /&gt;
+        Inductive Reactance (Ω) = &lt;span id="inductive_reactance"&gt;&lt;/span&gt;&lt;br /&gt;
+        Tuning Capacitor (pF) = &lt;span id="tuning_capacitor"&gt;&lt;/span&gt;&lt;br /&gt;
+        Q Factor = &lt;span id="q_factor"&gt;&lt;/span&gt;&lt;br /&gt;
+        Bandwidth (Hz) = &lt;span id="bandwidth"&gt;&lt;/span&gt;&lt;br /&gt;
+        Distributed Capacitance (pF) = &lt;span id="distributed_capacity"&gt;&lt;/span&gt;&lt;br /&gt;
+        Capacitor Potential (V) = &lt;span id="capacitor_potential"&gt;&lt;/span&gt;&lt;br /&gt;
+        Minimum Plate Spacing (mm) = &lt;span id="minimum_plate_spacing"&gt;&lt;/span&gt;
+      &lt;/div&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;hr /&gt;
+
+&lt;table&gt;
+  &lt;tr&gt;
+    &lt;td&gt;
+      &lt;form action="javascript:sweep()"&gt;
+        &lt;label for="frequency"&gt;Start Frequency (MHz) &lt;input type="text" name="sweep_start_frequency" id="sweep_start_frequency"&gt;&lt;/input&gt;&lt;/label&gt;&lt;br /&gt;
+        &lt;label for="frequency"&gt;End Frequency (MHz) &lt;input type="text" name="sweep_end_frequency" id="sweep_end_frequency"&gt;&lt;/input&gt;&lt;/label&gt;&lt;br /&gt;
+        &lt;label for="frequency"&gt;Step Size (MHz) &lt;input type="text" name="sweep_step_size" id="sweep_step_size"&gt;&lt;/input&gt;&lt;/label&gt;&lt;br /&gt;
+        &lt;label for="frequency"&gt;Loop Area (m²) &lt;input type="text" name="sweep_area" id="sweep_area"&gt;&lt;/input&gt;&lt;/label&gt;&lt;br /&gt;
+        &lt;label for="frequency"&gt;Loop Length (m) &lt;input type="text" name="sweep_length" id="sweep_length"&gt;&lt;/input&gt;&lt;/label&gt;&lt;br /&gt;
+        &lt;label for="frequency"&gt;Conductor Diameter (mm) &lt;input type="text" name="sweep_diameter" id="sweep_diameter"&gt;&lt;/input&gt;&lt;/label&gt;&lt;br /&gt;
+        &lt;label for="frequency"&gt;Power (Watts) &lt;input type="text" name="sweep_power" id="sweep_power"&gt;&lt;/input&gt;&lt;/label&gt;&lt;br /&gt;
+        &lt;input type="submit" /&gt;
+      &lt;/form&gt;
+    &lt;/td&gt;
+    &lt;td&gt;
+      Minimum Plate Spacing (mm) = &lt;span id="sweep_minimum_plate_spacing"&gt;&lt;/span&gt;
+    &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/table&gt;
+
+&lt;div style="width:100%;"&gt;
+  &lt;canvas id="q_chart_canvas"&gt;&lt;/canvas&gt;
+  &lt;canvas id="capacitor_chart_canvas"&gt;&lt;/canvas&gt;
+&lt;/div&gt;
+
+&lt;script src="/media/js/calculators/small-transmitting-loop.js"&gt;&lt;/script&gt;
+
+&lt;script src="/media/js/chart.min.js"&gt;&lt;/script&gt;
+
+&lt;script&gt;
+  // Q chart
+  var q_chart_config = {
+    data: {
+      labels: [],
+      datasets: [{
+        label: 'Q Factor',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [],
+        yAxisID: 'y-axis-1',
+        fill: false,
+      },{
+        label: 'Efficiency',
+        backgroundColor: 'rgb(54, 162, 235)',
+        borderColor: 'rgb(54, 162, 235)',
+        data: [],
+        yAxisID: 'y-axis-2',
+        fill: false,
+      }]
+    },
+    options: {
+      scales: {
+                        yAxes: [{
+                            type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                            display: true,
+                            position: 'left',
+                            id: 'y-axis-1',
+                        }, {
+                            type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                            display: true,
+                            position: 'right',
+                            id: 'y-axis-2',
+
+                            // grid line settings
+                            gridLines: {
+                                drawOnChartArea: false, // only want the grid lines for one axis to show up
+                            },
+                        }],
+                    }
+    }
+  };
+
+  // Capacitor chart
+  var capacitor_chart_config = {
+    data: {
+      labels: [],
+      datasets: [{
+        label: 'Tuning Capacitor Value (pF)',
+        backgroundColor: 'rgb(255, 99, 132)',
+        borderColor: 'rgb(255, 99, 132)',
+        data: [],
+        yAxisID: 'y-axis-1',
+        fill: false,
+      },{
+        label: 'Tuning Capacitor Potential (V)',
+        backgroundColor: 'rgb(54, 162, 235)',
+        borderColor: 'rgb(54, 162, 235)',
+        data: [],
+        yAxisID: 'y-axis-2',
+        fill: false,
+      }]
+    },
+    options: {
+      scales: {
+                        yAxes: [{
+                            type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                            display: true,
+                            position: 'left',
+                            id: 'y-axis-1',
+                        }, {
+                            type: 'linear', // only linear but allow scale type registration. This allows extensions to exist solely for log scale for instance
+                            display: true,
+                            position: 'right',
+                            id: 'y-axis-2',
+
+                            // grid line settings
+                            gridLines: {
+                                drawOnChartArea: false, // only want the grid lines for one axis to show up
+                            },
+                        }],
+                    }
+    }
+  };
+
+  function calculate() {
+    result = calculateSTL(document.getElementById("frequency").value, document.getElementById("area").value, document.getElementById("length").value, document.getElementById("diameter").value, document.getElementById("power").value);
+    document.getElementById("radiation_resistance").innerHTML = (result.radiation_resistance * 1e3).toFixed(2);
+    document.getElementById("loss_resistance").innerHTML = (result.loss_resistance * 1e3).toFixed(2);
+    document.getElementById("efficiency").innerHTML = (result.efficiency * 100).toFixed(2);
+    document.getElementById("inductance").innerHTML = (result.inductance_H * 1e6).toFixed(2);
+    document.getElementById("inductive_reactance").innerHTML = result.inductive_reactance_ohms.toFixed(2);
+    document.getElementById("tuning_capacitor").innerHTML = (result.tuning_capacitor_F * 1e12).toFixed(3);
+    document.getElementById("q_factor").innerHTML = result.q_factor.toFixed(1);
+    document.getElementById("bandwidth").innerHTML = Math.round(result.bandwidth_hz);
+    document.getElementById("distributed_capacity").innerHTML = (result.distributed_capacity_pF).toFixed(3);
+    document.getElementById("capacitor_potential").innerHTML = Math.round(result.capacitor_potential_V);
+    document.getElementById("minimum_plate_spacing").innerHTML = (result.minimum_plate_spacing_mm).toFixed(1);
+  }
+
+  function sweep() {
+    result = STLSweep(
+                parseFloat(document.getElementById("sweep_start_frequency").value),
+                parseFloat(document.getElementById("sweep_end_frequency").value),
+                parseFloat(document.getElementById("sweep_step_size").value),
+                parseFloat(document.getElementById("sweep_area").value),
+                parseFloat(document.getElementById("sweep_length").value),
+                parseFloat(document.getElementById("sweep_diameter").value),
+                parseFloat(document.getElementById("sweep_power").value)
+              );
+    q_chart_config.data.labels = [];
+    q_chart_config.data.datasets[0].data = [];
+    q_chart_config.data.datasets[1].data = [];
+
+    capacitor_chart_config.data.labels = [];
+    capacitor_chart_config.data.datasets[0].data = [];
+    capacitor_chart_config.data.datasets[1].data = [];
+
+    plateSpacing = 0;
+
+    for ( var i = 0; i &lt; result.length; i++ ) {
+      console.log()
+      q_chart_config.data.labels.push(result[i].frequency + "MHz");
+      q_chart_config.data.datasets[0].data.push(result[i].q_factor);
+      q_chart_config.data.datasets[1].data.push(result[i].efficiency * 100);
+
+      capacitor_chart_config.data.labels.push(result[i].frequency + "MHz");
+      capacitor_chart_config.data.datasets[0].data.push(result[i].tuning_capacitor_F*1e12);
+      capacitor_chart_config.data.datasets[1].data.push(result[i].capacitor_potential_V);
+
+      if ( parseFloat(result[i].minimum_plate_spacing_mm) &gt; plateSpacing ) {
+        plateSpacing = parseFloat(result[i].minimum_plate_spacing_mm);
+      }
+    }
+
+    console.log(q_chart_config);
+
+    var q_chart_ctx = document.getElementById('q_chart_canvas').getContext('2d');
+    window.q_chart = new Chart.Line(q_chart_ctx, q_chart_config);
+    window.q_chart.update();
+
+    var capacitor_chart_ctx = document.getElementById('capacitor_chart_canvas').getContext('2d');
+    window.capacitor_chart = new Chart.Line(capacitor_chart_ctx, capacitor_chart_config);
+    window.capacitor_chart.update();
+
+    document.getElementById("sweep_minimum_plate_spacing").innerHTML = Math.ceil(plateSpacing*10)/10;
+  }
+
+  calculateSTL(14.15, 0.5625, 3, 22, 20);
+  var sweepResults = STLSweep(10, 30, 0.5, 0.5625, 3, 22, 20);
+  console.log(sweepResults);
+&lt;/script&gt;</content><category term="Projects"></category></entry><entry><title>Suppliers</title><link href="https://m5mat.github.io/suppliers.html" rel="alternate"></link><published>2019-04-10T23:00:00+01:00</published><updated>2019-04-10T23:00:00+01:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2019-04-10:/suppliers.html</id><summary type="html">&lt;h2&gt;Antenna Parts&lt;/h2&gt;
 &lt;h3&gt;Aluminium&lt;/h3&gt;
 &lt;h4&gt;&lt;a href="https://www.aluminiumwarehouse.co.uk/"&gt;Aluminium Warehouse&lt;/a&gt;&lt;/h4&gt;
 &lt;ul&gt;
@@ -163,4 +473,10 @@
 &lt;li&gt;Pipe Clamps&lt;/li&gt;
 &lt;/ul&gt;
 &lt;h2&gt;Enclosures&lt;/h2&gt;
-&lt;h3&gt;&lt;a href="https://www.lincolnbinns.com/en/"&gt;Lincoln Binns&lt;/a&gt;&lt;/h3&gt;</content><category term="Projects"></category></entry></feed>
+&lt;h3&gt;&lt;a href="https://www.lincolnbinns.com/en/"&gt;Lincoln Binns&lt;/a&gt;&lt;/h3&gt;</content><category term="Projects"></category></entry><entry><title>3D-printed Morse Key/Sounder for JOTA</title><link href="https://m5mat.github.io/3d-printed-morse-keysounder-for-jota.html" rel="alternate"></link><published>2019-04-02T23:00:00+01:00</published><updated>2019-04-02T23:00:00+01:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2019-04-02:/3d-printed-morse-keysounder-for-jota.html</id><content type="html"></content><category term="Projects"></category></entry><entry><title>40cm CW Pixie Transceiver</title><link href="https://m5mat.github.io/40cm-cw-pixie-transceiver.html" rel="alternate"></link><published>2019-04-02T23:00:00+01:00</published><updated>2019-04-02T23:00:00+01:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2019-04-02:/40cm-cw-pixie-transceiver.html</id><content type="html"></content><category term="Projects"></category></entry><entry><title>6m Portable Moxon Antenna</title><link href="https://m5mat.github.io/6m-portable-moxon-antenna.html" rel="alternate"></link><published>2019-04-02T23:00:00+01:00</published><updated>2019-04-02T23:00:00+01:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2019-04-02:/6m-portable-moxon-antenna.html</id><content type="html"></content><category term="Projects"></category></entry><entry><title>70cm 23-element DK7ZB Yagi</title><link href="https://m5mat.github.io/70cm-23-element-dk7zb-yagi.html" rel="alternate"></link><published>2019-04-02T23:00:00+01:00</published><updated>2019-04-02T23:00:00+01:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2019-04-02:/70cm-23-element-dk7zb-yagi.html</id><content type="html">&lt;p&gt;&lt;img alt="70cm 23-element DK7ZB" src="/media/images/70cm-23-ele.jpg" title="70cm 23-element DK7ZB"&gt;&lt;/p&gt;
+&lt;p&gt;(Note that the feed arrangement has changed since the photo was taken)&lt;/p&gt;</content><category term="Projects"></category><category term="DK7ZB"></category><category term="Antenna"></category></entry><entry><title>70cm 7-element DK7ZB Yagi</title><link href="https://m5mat.github.io/70cm-7-element-dk7zb-yagi.html" rel="alternate"></link><published>2019-04-02T23:00:00+01:00</published><updated>2019-04-02T23:00:00+01:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2019-04-02:/70cm-7-element-dk7zb-yagi.html</id><content type="html">&lt;p&gt;&lt;img alt="70cm 7-element DK7ZB" src="/media/images/70cm-7-ele.jpg" title="70cm 7-element DK7ZB"&gt;&lt;/p&gt;</content><category term="Projects"></category><category term="DK7ZB"></category><category term="Antenna"></category></entry><entry><title>Bitx40</title><link href="https://m5mat.github.io/bitx40.html" rel="alternate"></link><published>2019-04-02T23:00:00+01:00</published><updated>2019-04-02T23:00:00+01:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2019-04-02:/bitx40.html</id><content type="html"></content><category term="Projects"></category></entry><entry><title>FT-857d Installation in a Mitsubishi L200</title><link href="https://m5mat.github.io/ft-857d-installation-in-a-mitsubishi-l200.html" rel="alternate"></link><published>2019-04-02T23:00:00+01:00</published><updated>2019-04-02T23:00:00+01:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2019-04-02:/ft-857d-installation-in-a-mitsubishi-l200.html</id><content type="html"></content><category term="Projects"></category></entry><entry><title>ISS SSTV Reception Kit</title><link href="https://m5mat.github.io/iss-sstv-reception-kit.html" rel="alternate"></link><published>2019-04-02T23:00:00+01:00</published><updated>2019-04-02T23:00:00+01:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2019-04-02:/iss-sstv-reception-kit.html</id><content type="html"></content><category term="Projects"></category></entry><entry><title>Portable Mast</title><link href="https://m5mat.github.io/portable-mast.html" rel="alternate"></link><published>2019-04-02T23:00:00+01:00</published><updated>2019-04-02T23:00:00+01:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2019-04-02:/portable-mast.html</id><content type="html"></content><category term="Projects"></category></entry><entry><title>Scouts JOTA Fox-Hunt (ARDF) Kit</title><link href="https://m5mat.github.io/scouts-jota-fox-hunt-ardf-kit.html" rel="alternate"></link><published>2019-04-02T23:00:00+01:00</published><updated>2019-04-02T23:00:00+01:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2019-04-02:/scouts-jota-fox-hunt-ardf-kit.html</id><content type="html"></content><category term="Projects"></category></entry><entry><title>Weather Satellite Reception Kit</title><link href="https://m5mat.github.io/weather-satellite-reception-kit.html" rel="alternate"></link><published>2019-04-02T23:00:00+01:00</published><updated>2019-04-02T23:00:00+01:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2019-04-02:/weather-satellite-reception-kit.html</id><content type="html"></content><category term="Projects"></category></entry><entry><title>6m 5-Element DK7ZB Yagi</title><link href="https://m5mat.github.io/6m-5-element-dk7zb-yagi.html" rel="alternate"></link><published>2019-03-02T23:00:00+00:00</published><updated>2019-03-02T23:00:00+00:00</updated><author><name>Matt, M5MAT</name></author><id>tag:m5mat.github.io,2019-03-02:/6m-5-element-dk7zb-yagi.html</id><summary type="html">&lt;p&gt;Update @2020-05-07:&lt;/p&gt;
+&lt;p&gt;After having effectively mothballed the project for a year or so some early Es activity has prompted me to get building again. The boom and passive elements were all completed last year, left to do is the driven element and feed, and the boom mounting method.&lt;/p&gt;
+&lt;p&gt;I've mostly …&lt;/p&gt;</summary><content type="html">&lt;p&gt;Update @2020-05-07:&lt;/p&gt;
+&lt;p&gt;After having effectively mothballed the project for a year or so some early Es activity has prompted me to get building again. The boom and passive elements were all completed last year, left to do is the driven element and feed, and the boom mounting method.&lt;/p&gt;
+&lt;p&gt;I've mostly build the driven element and matching section - and it's tuned out quite neat too (metalwork we never a strength of mine). I'm particularly pleased that the 2 75&amp;#8486; bits of coax fit in the feed box - this makes the whole setup much more tidy although I don't know what this will do to the RF properties, so it may need to change. This arrangement was only possible by using RG179 for the matching coax, which limits the power handling to 200W (and possibly less due to the coaxes proximity to other metalwork). This is fine for now but will need to change if I decide to run more power in the future. If this does happen it should be fairly trivial to rebuild the feed box without having to drastically alter the rest of the antenna.&lt;/p&gt;
+&lt;p&gt;&lt;img alt="6m 5-element DK7ZB Feed Box" src="/media/images/6m-feed.jpg" title="6m 5-element DK7ZB Feed Box"&gt;&lt;/p&gt;</content><category term="Projects"></category><category term="DK7ZB"></category><category term="Antenna"></category></entry></feed>
