@@ -62,4 +62,11 @@ APRS SSIDs
     <td>&cross;</td>
     <td>&check; (static, via APRS-IS only)</td>
   </tr>
+  <tr>
+    <td>15</td>
+    <td>Remote Station</td>
+    <td>RTL-SDR Dongle, Raspberry Pi and Direwolf RX-only iGate</td>
+    <td>&cross;</td>
+    <td>&check; (static, via APRS-IS only)</td>
+  </tr>
 </table>

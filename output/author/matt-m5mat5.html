@@ -184,7 +184,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                     <a class="dropdown-item" href="/category/Blog.html">Blog (19)</a>
-                    <a class="dropdown-item" href="/category/Contests.html">Contests (44)</a>
+                    <a class="dropdown-item" href="/category/Contests.html">Contests (48)</a>
                     <a class="dropdown-item" href="/category/Projects.html">Projects (19)</a>
                 </div>
               </li>
@@ -239,6 +239,119 @@
       <div class="row">
         <div class="col-md-6 offset-md-2">
       
+    <a href="/2019-wrap-up.html">
+      <h2>2019 Wrap-up</h2>
+        <!-- <div class="progress-bar status-" style="height: 2px; width: published%;"></div> -->
+    </a>
+
+    <section>
+      <em class="text-muted">By Matt, M5MAT on <time datetime="2019-12-31">Tue, 31 Dec 2019</time> - <a href="https://m5mat.github.io/2019-wrap-up.html#disqus_thread">Comments</a></em>
+    </section>
+
+    <section>
+      
+    </section>
+
+    <section>
+      <h2>Stats</h2>
+<p>Total QSOs - 1225, about double 2018 total.</p>
+<p>Contests Entered - 20 (10 &times; 2m UKAC, 10 &times; 70cm UKAC)</p>
+<p>UKAC Final Position - 111/697 overall (10/203 on 2m, and <a href="/media/pdf/2019-UKAC-2ndIntermediate.pdf">2nd place intermediate station</a>, 13/151 on 70cm), last year was 304/733 (49/210 on 2m)</p>
+<h2>Notable QSOs</h2>
+<ul>
+<li>
+<p><em>G3MXH</em> (2019-08-06) - Terry, G3MXH helped me pass my novice exam 20-odd years ago and did much to help my...
+    </section>
+
+    <a href="/2019-wrap-up.html">Read more...</a>
+
+    <hr />
+
+
+      
+    <a href="/avatar.html">
+      <h2>Avatar</h2>
+        <!-- <div class="progress-bar status-" style="height: 2px; width: published%;"></div> -->
+    </a>
+
+    <section>
+      <em class="text-muted">By Matt, M5MAT on <time datetime="2019-12-09">Mon, 09 Dec 2019</time> - <a href="https://m5mat.github.io/avatar.html#disqus_thread">Comments</a></em>
+    </section>
+
+    <section>
+      
+    </section>
+
+    <section>
+      <p>Avatar is a simple avatar generator. Styles and colours are derived from the MD5 hash of the 'name' provided. Two generators are included - 'robot' and 'face'.</p>
+<p>Some examples are given below. The format for the url is</p>
+<p><code>https://app.deadbeef.cafe/avatar/{style}/{name}</code></p>
+<p>e.g. For an 8-Bit style face avatar of M0IZZ:</p>
+<p><img alt="M0IZZ Face" src="https://app.deadbeef.cafe/avatar/face/m0izz" title="M0IZZ...
+    </section>
+
+    <a href="/avatar.html">Read more...</a>
+
+    <hr />
+
+
+      
+    <a href="/dxclusterbridge.html">
+      <h2>DXClusterBridge</h2>
+        <!-- <div class="progress-bar status-" style="height: 2px; width: published%;"></div> -->
+    </a>
+
+    <section>
+      <em class="text-muted">By Matt, M5MAT on <time datetime="2019-12-09">Mon, 09 Dec 2019</time> - <a href="https://m5mat.github.io/dxclusterbridge.html#disqus_thread">Comments</a></em>
+    </section>
+
+    <section>
+      
+    </section>
+
+    <section>
+      <p>Deadbeef Cafe appserver DXClusterBridge setup. This is mostly for my own reference</p>
+<h1>Admin</h1>
+<h2>Add a user</h2>
+<p><code>sudo mosquitto_passwd /etc/mosquitto/passwd &lt;callsign&gt;</code></p>
+<p>Stop and start the broker (note that a restart doesn't seem to work)</p>
+<p><code>sudo systemctl stop mosquitto</code></p>
+<p>wait a bit...</p>
+<p><code>sudo systemctl start mosquitto</code></p>
+    </section>
+
+    <a href="/dxclusterbridge.html">Read more...</a>
+
+    <hr />
+
+
+      
+    <a href="/deadbeef-cafe-app-server.html">
+      <h2>Deadbeef Cafe App Server</h2>
+        <!-- <div class="progress-bar status-" style="height: 2px; width: published%;"></div> -->
+    </a>
+
+    <section>
+      <em class="text-muted">By Matt, M5MAT on <time datetime="2019-12-09">Mon, 09 Dec 2019</time> - <a href="https://m5mat.github.io/deadbeef-cafe-app-server.html#disqus_thread">Comments</a></em>
+    </section>
+
+    <section>
+      
+    </section>
+
+    <section>
+      <p>Deadbeef Cafe appserver setup. This is mostly for my own reference</p>
+<p>Inbound connections permitted on 80, 443 and 8080. 8080 goes directly to Tomcat, 80 &amp; 443 are terminated by an nginx reverse proxy. This proxy redirects 80 to 443 and terminates SSL with a LetsEncrypt Cert (for app.deadbeef.cafe, other subdomains not implemented). LetsEncrypt cert is managed by certbot.</p>
+<h2>Services</h2>
+<p>The following services are running on the app...
+    </section>
+
+    <a href="/deadbeef-cafe-app-server.html">Read more...</a>
+
+    <hr />
+
+
+      
     <a href="/common-35mm-audio-jack-wiring-standards.html">
       <h2>Common 3.5mm Audio Jack Wiring Standards</h2>
         <!-- <div class="progress-bar status-" style="height: 2px; width: published%;"></div> -->
@@ -261,156 +374,12 @@
     <hr />
 
 
-      
-    <a href="/uk-2m-channels.html">
-      <h2>UK 2m Channels</h2>
-        <!-- <div class="progress-bar status-" style="height: 2px; width: published%;"></div> -->
-    </a>
-
-    <section>
-      <em class="text-muted">By Matt, M5MAT on <time datetime="2019-07-17">Wed, 17 Jul 2019</time> - <a href="https://m5mat.github.io/uk-2m-channels.html#disqus_thread">Comments</a></em>
-    </section>
-
-    <section>
-      
-    </section>
-
-    <section>
-      <p>I seem to have needed to look this up quite a lot recently, so I thought I should copy it here...</p>
-<table class="table">
-  <thead>
-    <tr>
-      <th>Channel Name</th>
-      <th>Frequency</th>
-      <th>Use</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>S8/V16</td><td>145.200MHz</td><td></td>
-    </tr>
-    <tr>
-      <td>V17</td><td>145.2125MHz</td><td>Internet Voice Gateways</td>
-    </tr>
-    <tr>
-      <td>S9/V18</td><td>145.225MHz</td><td>RAYNET</td>
-    </tr>
-    <tr>
-    ...
-    </section>
-
-    <a href="/uk-2m-channels.html">Read more...</a>
-
-    <hr />
-
-
-      
-    <a href="/2m70cm-satellite-station.html">
-      <h2>2m/70cm Satellite Station</h2>
-        <!-- <div class="progress-bar status-in-progress" style="height: 2px; width: published%;"></div> -->
-    </a>
-
-    <section>
-      <em class="text-muted">By Matt, M5MAT on <time datetime="2019-04-26">Fri, 26 Apr 2019</time> - <a href="https://m5mat.github.io/2m70cm-satellite-station.html#disqus_thread">Comments</a></em>
-    </section>
-
-    <section>
-      
-    </section>
-
-    <section>
-      <h1>Satellite Reception using RTL-SDR, GQRX and GPredict</h1>
-<p>This is mostly sourced from http://teslaintheether.blogspot.com/2018/02/setting-up-gqrx-and-gpredict-for.html, all credit goes to Jacen Solo and it's only reproduced here in case the original disappears. All images come from his original blog post.</p>
-<hr />
-
-<ol>
-<li>
-<p>Install and start both GQRX and GPredict</p>
-</li>
-<li>
-<p>In GPredict, click <code>Edit</code> &gt; <code>Preferences</code></p>
-</li>
-<li>
-<p>Click...
-    </section>
-
-    <a href="/2m70cm-satellite-station.html">Read more...</a>
-
-    <hr />
-
-
-      
-    <a href="/hf-magnetic-loop-antenna.html">
-      <h2>HF Magnetic Loop Antenna</h2>
-        <!-- <div class="progress-bar status-completed" style="height: 2px; width: published%;"></div> -->
-    </a>
-
-    <section>
-      <em class="text-muted">By Matt, M5MAT on <time datetime="2019-04-11">Thu, 11 Apr 2019</time> - <a href="https://m5mat.github.io/hf-magnetic-loop-antenna.html#disqus_thread">Comments</a></em>
-    </section>
-
-    <section>
-      
-    </section>
-
-    <section>
-      <table>
-  <tr>
-    <td>
-      <form action="javascript:calculate()">
-        <label for="frequency">Frequency (MHz) <input type="text" name="frequency" id="frequency"></input></label><br />
-        <label for="frequency">Loop Area (m²) <input type="text" name="area" id="area"></input></label><br />
-        <label for="frequency">Loop Length (m) <input type="text" name="length" id="length"></input></label><br />
-        <label for="frequency">Conductor Diameter (mm) <input type="text"...
-    </section>
-
-    <a href="/hf-magnetic-loop-antenna.html">Read more...</a>
-
-    <hr />
-
-
-      
-    <a href="/suppliers.html">
-      <h2>Suppliers</h2>
-        <!-- <div class="progress-bar status-" style="height: 2px; width: published%;"></div> -->
-    </a>
-
-    <section>
-      <em class="text-muted">By Matt, M5MAT on <time datetime="2019-04-10">Wed, 10 Apr 2019</time> - <a href="https://m5mat.github.io/suppliers.html#disqus_thread">Comments</a></em>
-    </section>
-
-    <section>
-      
-    </section>
-
-    <section>
-      <h2>Antenna Parts</h2>
-<h3>Aluminium</h3>
-<h4><a href="https://www.aluminiumwarehouse.co.uk/">Aluminium Warehouse</a></h4>
-<ul>
-<li>Aluminium stock up to 5m (metric and imperial sizes)</li>
-<li>Aluminium sheets up to 3mm, cut to size</li>
-<li>Collection possible</li>
-<li>Good prices</li>
-</ul>
-<h4><a href="https://www.1stchoicemetals.co.uk/">1st Choice Metals</a></h4>
-<ul>
-<li>Local (but collection probably not possible)</li>
-<li>All imperial sizes</li>
-<li>Aluminium stock up to...
-    </section>
-
-    <a href="/suppliers.html">Read more...</a>
-
-    <hr />
-
-
 
 <nav aria-label="Page navigation example">
   <center>
     <ul class="pagination">
             <li class="page-item"><a class="page-link" href="author/matt-m5mat4.html">&laquo;</a></li>
-    <li class="page-item"><a class="page-link">Page 5 / 8</a></li>
+    <li class="page-item"><a class="page-link">Page 5 / 9</a></li>
         <li class="page-item"><a class="page-link" href="author/matt-m5mat6.html">&raquo;</a></li>
     </ul>
   </center>
