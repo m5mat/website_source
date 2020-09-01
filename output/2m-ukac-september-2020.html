@@ -237,7 +237,7 @@
                   &mdash;Contests&mdash;
 
           </h1>
-          <h1 class="display-1 big-outline">  2m UKAC August 2020
+          <h1 class="display-1 big-outline">  2m UKAC September 2020
 </h1>
           <h4 class="display-4"></h4>
         </div>
@@ -248,22 +248,21 @@
       <div class="row">
         <div class="col-md-6 offset-md-2">
 <section>
-    <em class="text-muted">By Matt, M5MAT on <time datetime="2020-08-04">Tue, 04 Aug 2020</time></em>
+    <em class="text-muted">By Matt, M5MAT on <time datetime="2020-09-01">Tue, 01 Sep 2020</time></em>
   </section>
 
   <section>
     <div class="tags">
         <a class="btn btn-outline-secondary btn-sm" href="/tag/UKAC.html">UKAC</a>
         <a class="btn btn-outline-secondary btn-sm" href="/tag/Activation.html">Activation</a>
-      <a class="btn btn-outline-secondary btn-sm" href="/tag/IO92ba.html">IO92ba</a>
+      <a class="btn btn-outline-secondary btn-sm" href="/tag/IO91bx.html">IO91bx</a>
     </div>
   </section>
 
 
 
   <section>
-        <p><img alt="2m 23-element DK7ZB @10m" src="/media/images/UKAC-2m-Aug-2020-1.jpg" title="2m 8-element @10m"></p>
-<p><img alt="2m 23-element DK7ZB @10m" src="/media/images/UKAC-2m-Aug-2020-2.jpg" title="2m 8-element @10m"></p>
+        <p>This session didn't start too well - my primary site was unavailable, I'd forgotten the laptop PSU (and didn't have any pens/pencils so couldn't even log on paper), the mast support on the roof of the car decided to cease to be a support and the FT857d screen is now so badly zebra-striped that it is unusable. My dad generously offered to run the PSU out to me, the CAT connection to the rig actually worked for once (so I could cope without the screen) and everything else was sorted out on site. All this meant I missed the FMAC session but was up and running for UKAC. The 2m UKAC sessions are now incredibly busy - I struggled to find a free spot to call CQ and more often than not I'd only be able to make a handful of QSOs before being bumped off by another station calling on top of me. S&amp;P did work well though and I think this week was my highest number of squares worked, and also my highest-scoring UKAC.</p>
   </section>
 
         <section>
@@ -276,9 +275,9 @@
 
 <script>
   var myLocation = [];
-  gridSquareToLatLon("IO92ba", myLocation);
+  gridSquareToLatLon("IO91bx", myLocation);
 
-  readTextFile("/media/logs/M5MAT_2020_08_04_144 MHz_UKAC.adi", function(log) {
+  readTextFile("/media/logs/M5MAT_2020_09_01_144 MHz.adi", function(log) {
     totalQsos = 0;
     odxDist = 0;
     points = 0;
@@ -317,7 +316,7 @@
 <script>
   var myLocation = [];
 
-  gridSquareToLatLon("IO92ba", myLocation);
+  gridSquareToLatLon("IO91bx", myLocation);
 
   var osmLayer = L.tileLayer('//tileserver.eastus.cloudapp.azure.com/{id}/{z}/{x}/{y}.png', {
     attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery &copy; <a href="https://www.mapbox.com/">Mapbox</a>',
@@ -377,11 +376,11 @@
       [myLocation.lat, myLocation.lon],
       {icon: myIcon}
     ).bindPopup(
-      "<b>IO92ba<br />"
+      "<b>IO91bx<br />"
     )
   );
 
-  readTextFile("/media/logs/M5MAT_2020_08_04_144 MHz_UKAC.adi", function(log) {
+  readTextFile("/media/logs/M5MAT_2020_09_01_144 MHz.adi", function(log) {
     rate = {};
     opmode = [];
     var currMode = "s_p";
